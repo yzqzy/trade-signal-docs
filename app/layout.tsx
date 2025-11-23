@@ -70,8 +70,8 @@ const search = <Search placeholder="搜索..." />;
 const footer = (
   <footer className="flex justify-center items-center mb-4 h-6 text-xs sm:text-sm text-gray-500 dark:text-gray-400 px-2">
     MIT {new Date().getFullYear()} ©{" "}
-    <a href="https://github.com/trade-signal" target="_blank">
-      Trade Signal
+    <a href="https://github.com/yzqzy" target="_blank">
+      yzqzy
     </a>
     .
   </footer>

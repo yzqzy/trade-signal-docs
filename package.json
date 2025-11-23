@@ -2,7 +2,7 @@
   "name": "trade-signal-docs",
   "version": "1.0.0",
   "description": "Trade Signal 官方文档",
-  "author": "Trade Signal",
+  "author": "yzqzy",
   "license": "MIT",
   "scripts": {
     "dev": "next",

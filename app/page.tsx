@@ -22,13 +22,13 @@ export default function Home() {
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-start items-center px-2">
               <Link
-                href="/signal-feed"
+                href="/signal-client"
                 className="w-full sm:w-auto px-5 sm:px-8 py-2.5 sm:py-4 text-sm sm:text-lg font-semibold border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-600 hover:text-white transition-colors duration-200 rounded-lg cursor-pointer text-center"
               >
                 立即体验
               </Link>
               <a
-                href="https://github.com/trade-signal"
+                href="https://github.com/yzqzy"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto px-5 sm:px-8 py-2.5 sm:py-4 text-sm sm:text-lg font-semibold bg-emerald-700 text-white hover:bg-emerald-800 transition-colors duration-200 rounded-lg flex items-center justify-center gap-2 cursor-pointer"
