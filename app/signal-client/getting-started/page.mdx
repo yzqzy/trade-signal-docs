@@ -51,14 +51,18 @@ description: 下载、安装和使用指南
 
 ## 应用界面预览
 
-<div className="my-6 p-4 border border-gray-200 dark:border-gray-700 rounded-lg bg-gray-50 dark:bg-gray-900">
-  <div className="text-center py-8">
-    <p className="text-gray-500 dark:text-gray-400 mb-4">📸 应用主界面截图</p>
-    <div className="bg-white dark:bg-gray-800 rounded border-2 border-dashed border-gray-300 dark:border-gray-600 p-8">
-      <p className="text-sm text-gray-400">此处预留应用主界面截图区域</p>
-      <p className="text-xs text-gray-400 mt-2">建议尺寸：1920x1080 或 1440x900</p>
-    </div>
-  </div>
+<div className="my-6">
+  <figure className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden shadow-sm">
+    <img
+      src="/imgs/dashboard.png"
+      alt="应用主界面（盘后看板）"
+      className="w-full object-cover"
+      loading="lazy"
+    />
+    <figcaption className="text-xs text-gray-500 dark:text-gray-400 px-4 py-2">
+      应用主界面：盘后复盘看板
+    </figcaption>
+  </figure>
 </div>
 
 ## 首次使用
@@ -77,11 +81,7 @@ description: 下载、安装和使用指南
   </div>
 </div>
 
-### 2. 账户登录
-
-如果您已有账户，请使用您的账号密码登录。新用户需要先注册账户。
-
-### 3. 数据同步
+### 2. 数据同步
 
 登录后，应用会自动同步最新的市场数据。首次同步可能需要几分钟时间，请耐心等待。
 

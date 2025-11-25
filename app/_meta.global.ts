@@ -1,11 +1,11 @@
 export default {
   "signal-client": {
     type: "page",
-    title: "产品文档"
+    title: "客户端"
   },
   "signal-feed": {
     type: "page",
-    title: "Signal Feed",
+    title: "数据接口库",
     display: "hidden"
   },
   index: {
