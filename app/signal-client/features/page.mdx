@@ -3,6 +3,8 @@ title: 功能特性
 description: 详细功能说明和使用场景
 ---
 
+import Image from 'next/image'
+
 ## 📊 盘后复盘核心工具
 
 ### 看板 - 盘后复盘第一站
@@ -13,12 +15,15 @@ description: 详细功能说明和使用场景
 
 <div className="my-6">
   <figure className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden shadow-sm">
-    <img
-      src="/imgs/dashboard.png"
-      alt="看板界面（盘后复盘第一站）"
-      className="w-full object-cover"
-      loading="lazy"
-    />
+    <div className="relative w-full" style={{ aspectRatio: "16/9" }}>
+      <Image
+        src="/imgs/dashboard.png"
+        alt="看板界面（盘后复盘第一站）"
+        fill
+        className="object-cover"
+        unoptimized
+      />
+    </div>
     <figcaption className="text-xs text-gray-500 dark:text-gray-400 px-4 py-2">
       看板界面：盘后复盘第一站
     </figcaption>
@@ -50,12 +55,15 @@ description: 详细功能说明和使用场景
 
 <div className="my-6">
   <figure className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden shadow-sm">
-    <img
-      src="/imgs/hotmap.png"
-      alt="热图界面（热点板块）"
-      className="w-full object-cover"
-      loading="lazy"
-    />
+    <div className="relative w-full" style={{ aspectRatio: "16/9" }}>
+      <Image
+        src="/imgs/hotmap.png"
+        alt="热图界面（热点板块）"
+        fill
+        className="object-cover"
+        unoptimized
+      />
+    </div>
     <figcaption className="text-xs text-gray-500 dark:text-gray-400 px-4 py-2">
       热图界面：直观发现热点板块
     </figcaption>
@@ -80,12 +88,15 @@ description: 详细功能说明和使用场景
 
 <div className="my-6">
   <figure className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden shadow-sm">
-    <img
-      src="/imgs/stock-screener.png"
-      alt="选股筛选器界面"
-      className="w-full object-cover"
-      loading="lazy"
-    />
+    <div className="relative w-full" style={{ aspectRatio: "16/9" }}>
+      <Image
+        src="/imgs/stock-screener.png"
+        alt="选股筛选器界面"
+        fill
+        className="object-cover"
+        unoptimized
+      />
+    </div>
     <figcaption className="text-xs text-gray-500 dark:text-gray-400 px-4 py-2">
       选股筛选器：多维度指标组合筛选
     </figcaption>
@@ -116,12 +127,15 @@ description: 详细功能说明和使用场景
 
 <div className="my-6">
   <figure className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden shadow-sm">
-    <img
-      src="/imgs/etf-screener.png"
-      alt="ETF 筛选器界面"
-      className="w-full object-cover"
-      loading="lazy"
-    />
+    <div className="relative w-full" style={{ aspectRatio: "16/9" }}>
+      <Image
+        src="/imgs/etf-screener.png"
+        alt="ETF 筛选器界面"
+        fill
+        className="object-cover"
+        unoptimized
+      />
+    </div>
     <figcaption className="text-xs text-gray-500 dark:text-gray-400 px-4 py-2">
       ETF 筛选器：估值分位与多维度筛选
     </figcaption>
@@ -148,12 +162,15 @@ description: 详细功能说明和使用场景
 
 <div className="my-6">
   <figure className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden shadow-sm">
-    <img
-      src="/imgs/stock-analysis.png"
-      alt="个股分析界面"
-      className="w-full object-cover"
-      loading="lazy"
-    />
+    <div className="relative w-full" style={{ aspectRatio: "16/9" }}>
+      <Image
+        src="/imgs/stock-analysis.png"
+        alt="个股分析界面"
+        fill
+        className="object-cover"
+        unoptimized
+      />
+    </div>
     <figcaption className="text-xs text-gray-500 dark:text-gray-400 px-4 py-2">
       个股分析：安全边际与趋势共振一图掌握
     </figcaption>
@@ -207,12 +224,15 @@ description: 详细功能说明和使用场景
 
 <div className="my-6">
   <figure className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden shadow-sm">
-    <img
-      src="/imgs/shareholder.png"
-      alt="股东分析界面"
-      className="w-full object-cover"
-      loading="lazy"
-    />
+    <div className="relative w-full" style={{ aspectRatio: "16/9" }}>
+      <Image
+        src="/imgs/shareholder.png"
+        alt="股东分析界面"
+        fill
+        className="object-cover"
+        unoptimized
+      />
+    </div>
     <figcaption className="text-xs text-gray-500 dark:text-gray-400 px-4 py-2">
       股东分析：洞察机构与大股东动向
     </figcaption>
@@ -237,12 +257,15 @@ description: 详细功能说明和使用场景
 
 <div className="my-6">
   <figure className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden shadow-sm">
-    <img
-      src="/imgs/topic-library.png"
-      alt="题材库界面"
-      className="w-full object-cover"
-      loading="lazy"
-    />
+    <div className="relative w-full" style={{ aspectRatio: "16/9" }}>
+      <Image
+        src="/imgs/topic-library.png"
+        alt="题材库界面"
+        fill
+        className="object-cover"
+        unoptimized
+      />
+    </div>
     <figcaption className="text-xs text-gray-500 dark:text-gray-400 px-4 py-2">
       题材库：管理与追踪热点题材
     </figcaption>
@@ -264,12 +287,15 @@ description: 详细功能说明和使用场景
 
 <div className="my-6">
   <figure className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden shadow-sm">
-    <img
-      src="/imgs/news.png"
-      alt="要闻界面"
-      className="w-full object-cover"
-      loading="lazy"
-    />
+    <div className="relative w-full" style={{ aspectRatio: "16/9" }}>
+      <Image
+        src="/imgs/news.png"
+        alt="要闻界面"
+        fill
+        className="object-cover"
+        unoptimized
+      />
+    </div>
     <figcaption className="text-xs text-gray-500 dark:text-gray-400 px-4 py-2">
       要闻：聚合重要资讯与公告
     </figcaption>
