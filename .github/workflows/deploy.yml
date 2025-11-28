@@ -61,8 +61,7 @@ jobs:
       - name: Build with Next.js
         run: pnpm run build
         env:
-          NODE_ENV: production
-          PAGES_BASE_PATH: ${{ steps.setup_pages.outputs.base_path }}
+          PAGES_BASE_PATH: /trade-signal-docs
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
