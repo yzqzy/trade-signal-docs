@@ -74,21 +74,74 @@ import Image from 'next/image'
 
 ### 1. 启动应用
 
-安装完成后，启动应用。首次启动时，应用会引导您完成初始设置。
+安装完成后，启动应用。首次进入时，如果无权限，应用会自动跳转到用户授权页面。
 
-<div className="my-6 p-4 border border-gray-200 dark:border-gray-700 rounded-lg bg-gray-50 dark:bg-gray-900">
-  <div className="text-center py-8">
-    <p className="text-gray-500 dark:text-gray-400 mb-4">📸 首次启动引导界面截图</p>
-    <div className="bg-white dark:bg-gray-800 rounded border-2 border-dashed border-gray-300 dark:border-gray-600 p-8">
-      <p className="text-sm text-gray-400">此处预留首次启动引导界面截图区域</p>
-      <p className="text-xs text-gray-400 mt-2">建议尺寸：1920x1080</p>
+### 2. 用户授权
+
+首次使用需要完成用户授权，确保数据访问权限。授权通过后，才能进入主页：
+
+<div className="my-6">
+  <figure className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden shadow-sm">
+    <div className="relative w-full" style={{ aspectRatio: "16/9" }}>
+      <Image
+        src="/imgs/user-auth.png"
+        alt="用户授权界面"
+        fill
+        className="object-cover"
+        unoptimized
+      />
     </div>
-  </div>
+    <figcaption className="text-xs text-gray-500 dark:text-gray-400 px-4 py-2">
+      用户授权：完成授权以访问数据服务
+    </figcaption>
+  </figure>
 </div>
 
-### 2. 数据同步
+### 3. 进入主页与数据同步
 
-登录后，应用会自动同步最新的市场数据。首次同步可能需要几分钟时间，请耐心等待。
+授权通过后，进入应用主页。应用会通过实时接口自动同步最新的市场数据。
+
+### 4. 用户指南
+
+首次进入主页时，会显示用户指南提示，帮助您快速了解工具的使用方法和最佳实践：
+
+<div className="my-6">
+  <figure className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden shadow-sm">
+    <div className="relative w-full" style={{ aspectRatio: "16/9" }}>
+      <Image
+        src="/imgs/user-guide.png"
+        alt="用户指南界面"
+        fill
+        className="object-cover"
+        unoptimized
+      />
+    </div>
+    <figcaption className="text-xs text-gray-500 dark:text-gray-400 px-4 py-2">
+      用户指南：了解工具使用方法
+    </figcaption>
+  </figure>
+</div>
+
+### 5. 用户设置
+
+在用户设置中配置个性化选项和偏好设置：
+
+<div className="my-6">
+  <figure className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden shadow-sm">
+    <div className="relative w-full" style={{ aspectRatio: "16/9" }}>
+      <Image
+        src="/imgs/user-settings.png"
+        alt="用户设置界面"
+        fill
+        className="object-cover"
+        unoptimized
+      />
+    </div>
+    <figcaption className="text-xs text-gray-500 dark:text-gray-400 px-4 py-2">
+      用户设置：个性化配置与偏好设置
+    </figcaption>
+  </figure>
+</div>
 
 ## 常见问题
 
@@ -101,7 +154,7 @@ A:
 
 ### Q: 数据加载缓慢
 
-A: 首次使用需要下载大量历史数据，请确保网络连接稳定。后续使用会更快。
+A: 应用使用实时接口同步数据，请确保网络连接稳定。如遇加载缓慢，请检查网络连接或联系技术支持。
 
 ### Q: 应用崩溃或闪退
 
