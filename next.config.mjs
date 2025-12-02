@@ -21,6 +21,9 @@ export default withNextra({
   basePath: basePath,
   assetPrefix: basePath,
   images: {
-    unoptimized: true // GitHub Pages 不支持 Next.js 图片优化
+    unoptimized: true
+  },
+  env: {
+    NEXT_PUBLIC_BASE_PATH: basePath
   }
 });
