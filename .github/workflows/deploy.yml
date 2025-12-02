@@ -58,7 +58,10 @@ jobs:
             ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-
 
       - name: Build with Next.js
-        run: pnpm run build
+        run: |
+          echo "PAGES_BASE_PATH: ${{ steps.setup_pages.outputs.base_path }}"
+          echo "NODE_ENV: ${{ env.NODE_ENV }}"
+          pnpm run build
         env:
           PAGES_BASE_PATH: ${{ steps.setup_pages.outputs.base_path }}
 
