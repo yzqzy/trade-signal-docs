@@ -3,21 +3,21 @@
 import NextImage from "next/image";
 import { useMemo } from "react";
 
-/**
- * 自定义 Image 组件，自动处理 basePath
- * 在静态导出模式下，确保图片路径包含 basePath
- */
 export default function Image({ src, ...props }) {
-  // 获取 basePath
-  // 在客户端，从 window.__NEXT_DATA__ 获取（Next.js 自动注入）
-  // 在构建时，从环境变量获取
   const basePath = useMemo(() => {
+    // 优先使用环境变量（构建时已替换为实际值）
+    const envBasePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
     if (typeof window !== "undefined") {
-      // 客户端：从 Next.js 注入的数据中获取
-      return window.__NEXT_DATA__?.assetPrefix || "";
+      // 客户端：尝试从 window.__NEXT_DATA__ 获取（如果存在且更可靠）
+      const nextData = window.__NEXT_DATA__;
+      if (nextData?.assetPrefix) {
+        return nextData.assetPrefix;
+      }
     }
-    // 服务端：从环境变量获取（构建时）
-    return process.env.NEXT_PUBLIC_BASE_PATH || "";
+
+    // 使用环境变量（构建时已替换）
+    return envBasePath;
   }, []);
 
   // 处理图片路径
