@@ -15,6 +15,7 @@ permissions:
   contents: read
   pages: write
   id-token: write
+  # 如果需要访问私有仓库的 Releases，需要 contents: read 权限（已包含）
 
 concurrency:
   group: "pages"
@@ -56,6 +57,14 @@ jobs:
           key: ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
           restore-keys: |
             ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-
+
+      - name: Fetch latest release info
+        run: pnpm run prebuild
+        env:
+          RELEASE_REPO: ${{ secrets.RELEASE_REPO || 'your-username/signal-client' }}
+          # 使用内置的 github.token 访问私有仓库（访问当前仓库）
+          # 如果访问其他仓库的私有 Releases，需要设置自定义 token 到 secrets.RELEASE_TOKEN
+          RELEASE_TOKEN: ${{ secrets.RELEASE_TOKEN || github.token }}
 
       - name: Build with Next.js
         run: pnpm run build

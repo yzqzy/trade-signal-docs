@@ -6,6 +6,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "next",
+    "prebuild": "node scripts/fetch-releases.js",
     "postbuild": "pagefind --site .next/server/app --output-path out/_pagefind",
     "build": "next build",
     "start": "next start"

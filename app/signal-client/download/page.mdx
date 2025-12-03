@@ -1,0 +1,45 @@
+---
+title: 下载
+description: 下载最新版本的客户端应用
+---
+
+import ReleaseInfo from '@/components/ReleaseInfo'
+
+## 最新版本
+
+<ReleaseInfo />
+
+## 系统要求
+
+- **macOS**: 10.15 (Catalina) 或更高版本
+- **Windows**: Windows 10 或更高版本
+- **Linux**: Ubuntu 18.04 或更高版本（其他发行版可能兼容）
+
+## 安装说明
+
+### macOS
+
+1. 下载 `.dmg` 文件
+2. 双击打开安装包
+3. 将应用拖拽到应用程序文件夹
+4. 首次运行时，可能需要在"系统偏好设置 > 安全性与隐私"中允许运行应用
+
+### Windows
+
+1. 下载 `.exe` 安装程序
+2. 双击运行安装程序
+3. 按照安装向导完成安装
+4. 安装完成后，从开始菜单启动应用
+
+### Linux
+
+**AppImage 方式：**
+1. 下载 `.AppImage` 文件
+2. 赋予执行权限：`chmod +x signal-client-*.AppImage`
+3. 双击运行或使用命令行：`./signal-client-*.AppImage`
+
+**Debian/Ubuntu 方式：**
+1. 下载 `.deb` 文件
+2. 使用命令安装：`sudo dpkg -i signal-client-*.deb`
+3. 如果缺少依赖，运行：`sudo apt-get install -f`
+

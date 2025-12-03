@@ -1,0 +1,144 @@
+# Cursor Rules for Trade Signal Docs
+
+## 项目概述
+这是一个基于 Next.js 和 Nextra 的文档站点项目，用于 Trade Signal 的官方文档。
+
+## 技术栈
+- **框架**: Next.js 15.4.5 (App Router)
+- **文档框架**: Nextra 4.3.0
+- **UI 库**: React 19.1.1
+- **样式**: Tailwind CSS 4.1.11
+- **语言**: TypeScript 5.9.2 (允许 JavaScript)
+- **文档格式**: MDX
+
+## 代码规范
+
+### 文件命名
+- React 组件使用 PascalCase: `ReleaseInfo.jsx`
+- 页面文件使用小写: `page.tsx`, `page.mdx`
+- 配置文件使用 kebab-case: `next.config.mjs`
+- 工具脚本使用 kebab-case: `fetch-releases.js`
+
+### TypeScript/JavaScript
+- 优先使用 TypeScript，但允许 JavaScript 文件
+- 使用函数组件，优先使用箭头函数
+- 使用 async/await 处理异步操作
+- 使用 ES6+ 语法特性
+- TypeScript 配置中 `strict: false`，但尽量编写类型安全的代码
+
+### React 组件
+- 使用函数组件和 Hooks
+- 客户端组件必须使用 `"use client"` 指令
+- 组件文件扩展名：`.tsx` (TypeScript) 或 `.jsx` (JavaScript)
+- 使用默认导出：`export default function ComponentName() {}`
+- Props 使用 TypeScript 类型或 PropTypes（如果使用 JS）
+
+### 样式规范
+- 使用 Tailwind CSS 进行样式设计
+- 支持暗色模式，使用 `dark:` 前缀
+- 响应式设计使用 `sm:`, `md:`, `lg:` 等断点
+- 颜色主题使用 emerald（主色）和 gray（中性色）
+- 避免内联样式，优先使用 Tailwind 类名
+
+### MDX 文档
+- 使用 YAML frontmatter 定义元数据
+- 标题使用中文
+- 代码块使用适当的语言标识
+- 可以导入和使用 React 组件
+- 使用相对路径或 `@/` 别名导入组件
+
+### 导入规范
+- 使用 `@/` 别名引用项目根目录文件
+- 第三方库导入放在顶部
+- 本地导入放在第三方导入之后
+- 组件导入使用相对路径或别名
+
+### 注释和文档
+- 使用中文编写注释和文档
+- 复杂逻辑必须添加注释说明
+- 组件顶部添加 JSDoc 风格的注释说明用途
+- 函数参数和返回值添加类型注释（TypeScript）
+
+### 代码组织
+- 组件放在 `components/` 目录
+- 页面放在 `app/` 目录下的对应路由目录
+- 工具脚本放在 `scripts/` 目录
+- 静态资源放在 `public/` 目录
+- 配置文件放在项目根目录
+
+### Next.js 特定
+- 使用 App Router 架构
+- 页面组件使用 `async` 函数（如果需要）
+- 使用 Next.js Image 组件优化图片
+- 静态导出模式：`output: "export"`
+- 图片配置：`unoptimized: true`（静态导出需要）
+
+### 错误处理
+- 使用 try-catch 处理异步错误
+- 提供用户友好的错误提示
+- 在控制台记录错误信息用于调试
+
+### 性能优化
+- 使用 React 的 `useEffect` 和 `useState` 管理状态
+- 避免不必要的重新渲染
+- 图片使用 Next.js Image 组件
+- 静态资源优化
+
+### Git 工作流
+- 主分支：`dev`
+- 提交前确保代码可以正常构建
+- **提交信息规范**：
+  - **必须使用中文**编写提交信息
+  - 遵循语义化提交规范（Conventional Commits）
+  - 提交信息要求精炼、清晰、准确
+  - 格式：`<类型>(<范围>): <简短描述>`
+  
+  **提交类型**：
+  - `feat`: 新功能
+  - `fix`: 修复问题
+  - `docs`: 文档更新
+  - `style`: 代码格式调整（不影响功能）
+  - `refactor`: 代码重构
+  - `perf`: 性能优化
+  - `test`: 测试相关
+  - `chore`: 构建/工具链相关
+  - `ci`: CI/CD 相关
+  
+  **示例**：
+  - ✅ `feat(下载页): 添加版本信息展示组件`
+  - ✅ `fix(组件): 修复暗色模式下的显示问题`
+  - ✅ `docs(指南): 更新股票筛选器使用说明`
+  - ✅ `style(布局): 调整响应式断点`
+  - ✅ `chore(构建): 更新依赖版本`
+  - ❌ `update`（过于简单，不符合规范）
+  - ❌ `fix bug`（未使用中文，不符合规范）
+
+## 开发建议
+
+### 添加新页面
+1. 在 `app/` 目录下创建对应的路由目录
+2. 创建 `page.mdx` 或 `page.tsx` 文件
+3. 更新对应的 `_meta.ts` 文件以添加到侧边栏
+
+### 添加新组件
+1. 在 `components/` 目录下创建组件文件
+2. 使用函数组件和 Hooks
+3. 添加必要的类型定义（如果使用 TypeScript）
+4. 支持暗色模式
+
+### 修改样式
+1. 优先使用 Tailwind CSS 类名
+2. 全局样式放在 `app/globals.css`
+3. 确保暗色模式下的可读性
+
+### 调试
+- 使用 `console.log` 进行调试（生产环境前移除）
+- 使用浏览器开发者工具检查样式和性能
+- 检查 Next.js 构建输出
+
+## 注意事项
+- 项目使用静态导出，不支持服务端功能（如 API Routes）
+- 所有数据获取应在构建时完成或使用客户端获取
+- 确保所有路径和资源在静态导出后可以正常访问
+- 图片路径使用相对路径或 `/` 开头的绝对路径
+
