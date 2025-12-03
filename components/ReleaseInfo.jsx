@@ -46,14 +46,6 @@ export default function ReleaseInfo() {
     );
   }
 
-  const formatDate = dateString => {
-    return new Date(dateString).toLocaleDateString("zh-CN", {
-      year: "numeric",
-      month: "long",
-      day: "numeric"
-    });
-  };
-
   const formatSize = bytes => {
     if (!bytes) return "";
     const mb = (bytes / 1024 / 1024).toFixed(1);
@@ -84,7 +76,9 @@ export default function ReleaseInfo() {
         <div className="p-6 border border-gray-200 dark:border-gray-700 rounded-xl bg-white dark:bg-gray-800 hover:border-emerald-500 dark:hover:border-emerald-500 hover:shadow-md transition-all duration-200">
           <div className="text-center">
             <div className="text-5xl mb-4">🍎</div>
-            <h4 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white">macOS</h4>
+            <h4 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white">
+              macOS
+            </h4>
             <p className="text-sm text-gray-500 dark:text-gray-400 mb-5">
               支持 macOS 10.15+
             </p>
@@ -111,7 +105,9 @@ export default function ReleaseInfo() {
         <div className="p-6 border border-gray-200 dark:border-gray-700 rounded-xl bg-white dark:bg-gray-800 hover:border-emerald-500 dark:hover:border-emerald-500 hover:shadow-md transition-all duration-200">
           <div className="text-center">
             <div className="text-5xl mb-4">🪟</div>
-            <h4 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white">Windows</h4>
+            <h4 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white">
+              Windows
+            </h4>
             <p className="text-sm text-gray-500 dark:text-gray-400 mb-5">
               支持 Windows 10+
             </p>
@@ -138,7 +134,9 @@ export default function ReleaseInfo() {
         <div className="p-6 border border-gray-200 dark:border-gray-700 rounded-xl bg-white dark:bg-gray-800 hover:border-emerald-500 dark:hover:border-emerald-500 hover:shadow-md transition-all duration-200">
           <div className="text-center">
             <div className="text-5xl mb-4">🐧</div>
-            <h4 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white">Linux</h4>
+            <h4 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white">
+              Linux
+            </h4>
             <p className="text-sm text-gray-500 dark:text-gray-400 mb-5">
               支持 Ubuntu 18.04+
             </p>
