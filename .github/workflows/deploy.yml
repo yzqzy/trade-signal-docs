@@ -58,16 +58,14 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-
 
-      - name: Fetch latest release info
-        run: pnpm run prebuild
+      - name: Build with Next.js
+        run: pnpm run build
         env:
+          # prebuild 脚本会在 build 之前自动运行，这里设置环境变量供 prebuild 使用
           RELEASE_REPO: ${{ secrets.RELEASE_REPO || 'your-username/signal-client' }}
           # 使用内置的 github.token 访问私有仓库（访问当前仓库）
           # 如果访问其他仓库的私有 Releases，需要设置自定义 token 到 secrets.RELEASE_TOKEN
           RELEASE_TOKEN: ${{ secrets.RELEASE_TOKEN || github.token }}
-
-      - name: Build with Next.js
-        run: pnpm run build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
