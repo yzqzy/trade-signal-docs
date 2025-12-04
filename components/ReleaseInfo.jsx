@@ -89,7 +89,7 @@ export default function ReleaseInfo() {
                   className="inline-block w-full px-6 py-3 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors font-medium shadow-sm hover:shadow"
                   download
                 >
-                  下载 .dmg
+                  下载安装包
                 </a>
                 <p className="text-xs text-gray-400 dark:text-gray-500 mt-3">
                   {formatSize(macAsset.size)}
@@ -118,7 +118,7 @@ export default function ReleaseInfo() {
                   className="inline-block w-full px-6 py-3 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors font-medium shadow-sm hover:shadow"
                   download
                 >
-                  下载 .exe
+                  下载安装程序
                 </a>
                 <p className="text-xs text-gray-400 dark:text-gray-500 mt-3">
                   {formatSize(winAsset.size)}
@@ -147,7 +147,7 @@ export default function ReleaseInfo() {
                   className="block w-full px-6 py-3 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors font-medium shadow-sm hover:shadow"
                   download
                 >
-                  下载 .AppImage
+                  下载 AppImage
                 </a>
               ) : null}
               {linuxDeb ? (
@@ -156,7 +156,7 @@ export default function ReleaseInfo() {
                   className="block w-full px-6 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors font-medium shadow-sm hover:shadow"
                   download
                 >
-                  下载 .deb
+                  下载 Debian 包
                 </a>
               ) : null}
               {!linuxAppImage && !linuxDeb && (
