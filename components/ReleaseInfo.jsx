@@ -70,105 +70,119 @@ export default function ReleaseInfo() {
         </span>
       </div>
 
-      {/* 下载链接 */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-6">
-        {/* macOS */}
-        <div className="p-6 border border-gray-200 dark:border-gray-700 rounded-xl bg-white dark:bg-gray-800 hover:border-emerald-500 dark:hover:border-emerald-500 hover:shadow-md transition-all duration-200">
-          <div className="text-center">
-            <div className="text-5xl mb-4">🍎</div>
-            <h4 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white">
-              macOS
-            </h4>
-            <p className="text-sm text-gray-500 dark:text-gray-400 mb-5">
-              支持 macOS 10.15+
-            </p>
-            {macAsset ? (
-              <>
-                <a
-                  href={macAsset.browser_download_url}
-                  className="inline-block w-full px-6 py-3 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors font-medium shadow-sm hover:shadow"
-                  download
-                >
-                  下载安装包
-                </a>
-                <p className="text-xs text-gray-400 dark:text-gray-500 mt-3">
-                  {formatSize(macAsset.size)}
-                </p>
-              </>
-            ) : (
-              <p className="text-sm text-gray-400">暂无 macOS 版本</p>
-            )}
-          </div>
-        </div>
-
-        {/* Windows */}
-        <div className="p-6 border border-gray-200 dark:border-gray-700 rounded-xl bg-white dark:bg-gray-800 hover:border-emerald-500 dark:hover:border-emerald-500 hover:shadow-md transition-all duration-200">
-          <div className="text-center">
-            <div className="text-5xl mb-4">🪟</div>
-            <h4 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white">
-              Windows
-            </h4>
-            <p className="text-sm text-gray-500 dark:text-gray-400 mb-5">
-              支持 Windows 10+
-            </p>
-            {winAsset ? (
-              <>
-                <a
-                  href={winAsset.browser_download_url}
-                  className="inline-block w-full px-6 py-3 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors font-medium shadow-sm hover:shadow"
-                  download
-                >
-                  下载安装程序
-                </a>
-                <p className="text-xs text-gray-400 dark:text-gray-500 mt-3">
-                  {formatSize(winAsset.size)}
-                </p>
-              </>
-            ) : (
-              <p className="text-sm text-gray-400">暂无 Windows 版本</p>
-            )}
-          </div>
-        </div>
-
-        {/* Linux */}
-        <div className="p-6 border border-gray-200 dark:border-gray-700 rounded-xl bg-white dark:bg-gray-800 hover:border-emerald-500 dark:hover:border-emerald-500 hover:shadow-md transition-all duration-200">
-          <div className="text-center">
-            <div className="text-5xl mb-4">🐧</div>
-            <h4 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white">
-              Linux
-            </h4>
-            <p className="text-sm text-gray-500 dark:text-gray-400 mb-5">
-              支持 Ubuntu 18.04+
-            </p>
-            <div className="space-y-2.5">
-              {linuxAppImage ? (
-                <a
-                  href={linuxAppImage.browser_download_url}
-                  className="block w-full px-6 py-3 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors font-medium shadow-sm hover:shadow"
-                  download
-                >
-                  下载 AppImage
-                </a>
-              ) : null}
-              {linuxDeb ? (
-                <a
-                  href={linuxDeb.browser_download_url}
-                  className="block w-full px-6 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors font-medium shadow-sm hover:shadow"
-                  download
-                >
-                  下载 Debian 包
-                </a>
-              ) : null}
-              {!linuxAppImage && !linuxDeb && (
-                <p className="text-sm text-gray-400">暂无 Linux 版本</p>
+      {/* 下载链接 - 暂时隐藏 */}
+      {false && (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-6">
+          {/* macOS */}
+          <div className="p-6 border border-gray-200 dark:border-gray-700 rounded-xl bg-white dark:bg-gray-800 hover:border-emerald-500 dark:hover:border-emerald-500 hover:shadow-md transition-all duration-200">
+            <div className="text-center">
+              <div className="text-5xl mb-4">🍎</div>
+              <h4 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white">
+                macOS
+              </h4>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mb-5">
+                支持 macOS 10.15+
+              </p>
+              {macAsset ? (
+                <>
+                  <a
+                    href={macAsset.browser_download_url}
+                    className="inline-block w-full px-6 py-3 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors font-medium shadow-sm hover:shadow"
+                    download
+                  >
+                    下载安装包
+                  </a>
+                  <p className="text-xs text-gray-400 dark:text-gray-500 mt-3">
+                    {formatSize(macAsset.size)}
+                  </p>
+                </>
+              ) : (
+                <p className="text-sm text-gray-400">暂无 macOS 版本</p>
               )}
             </div>
-            {(linuxAppImage || linuxDeb) && (
-              <p className="text-xs text-gray-400 dark:text-gray-500 mt-3">
-                {formatSize(linuxAppImage?.size || linuxDeb?.size)}
-              </p>
-            )}
           </div>
+
+          {/* Windows */}
+          <div className="p-6 border border-gray-200 dark:border-gray-700 rounded-xl bg-white dark:bg-gray-800 hover:border-emerald-500 dark:hover:border-emerald-500 hover:shadow-md transition-all duration-200">
+            <div className="text-center">
+              <div className="text-5xl mb-4">🪟</div>
+              <h4 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white">
+                Windows
+              </h4>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mb-5">
+                支持 Windows 10+
+              </p>
+              {winAsset ? (
+                <>
+                  <a
+                    href={winAsset.browser_download_url}
+                    className="inline-block w-full px-6 py-3 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors font-medium shadow-sm hover:shadow"
+                    download
+                  >
+                    下载安装程序
+                  </a>
+                  <p className="text-xs text-gray-400 dark:text-gray-500 mt-3">
+                    {formatSize(winAsset.size)}
+                  </p>
+                </>
+              ) : (
+                <p className="text-sm text-gray-400">暂无 Windows 版本</p>
+              )}
+            </div>
+          </div>
+
+          {/* Linux */}
+          <div className="p-6 border border-gray-200 dark:border-gray-700 rounded-xl bg-white dark:bg-gray-800 hover:border-emerald-500 dark:hover:border-emerald-500 hover:shadow-md transition-all duration-200">
+            <div className="text-center">
+              <div className="text-5xl mb-4">🐧</div>
+              <h4 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white">
+                Linux
+              </h4>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mb-5">
+                支持 Ubuntu 18.04+
+              </p>
+              <div className="space-y-2.5">
+                {linuxAppImage ? (
+                  <a
+                    href={linuxAppImage.browser_download_url}
+                    className="block w-full px-6 py-3 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors font-medium shadow-sm hover:shadow"
+                    download
+                  >
+                    下载 AppImage
+                  </a>
+                ) : null}
+                {linuxDeb ? (
+                  <a
+                    href={linuxDeb.browser_download_url}
+                    className="block w-full px-6 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors font-medium shadow-sm hover:shadow"
+                    download
+                  >
+                    下载 Debian 包
+                  </a>
+                ) : null}
+                {!linuxAppImage && !linuxDeb && (
+                  <p className="text-sm text-gray-400">暂无 Linux 版本</p>
+                )}
+              </div>
+              {(linuxAppImage || linuxDeb) && (
+                <p className="text-xs text-gray-400 dark:text-gray-500 mt-3">
+                  {formatSize(linuxAppImage?.size || linuxDeb?.size)}
+                </p>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* 暂时关闭提示 */}
+      <div className="my-6 p-6 border border-gray-200 dark:border-gray-700 rounded-xl bg-gray-50 dark:bg-gray-800/50">
+        <div className="text-center">
+          <p className="text-base text-gray-600 dark:text-gray-300 mb-2">
+            ⏳ 下载功能即将开放
+          </p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">
+            我们正在准备安装包，敬请期待
+          </p>
         </div>
       </div>
     </>
