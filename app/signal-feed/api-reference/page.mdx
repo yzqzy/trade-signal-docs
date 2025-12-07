@@ -1,0 +1,142 @@
+---
+title: API 接口文档
+description: Signal Feed 完整的 API 接口文档，包含股票数据和新闻资讯接口
+---
+
+## API 接口文档
+
+Signal Feed 提供完整的金融数据 API 接口，支持 A 股股票数据和多来源新闻资讯。
+
+## 基础信息
+
+- **Base URL**: `http://localhost:4000/api/v1`
+- **认证方式**: Bearer Token (所有接口都需要认证)
+- **数据格式**: JSON
+- **响应格式**: 统一使用 TransformInterceptor 格式化
+
+## 接口分类
+
+### 📈 股票数据 (A股)
+- [股票接口](/signal-feed/api-reference/stocks-a) - A股股票数据接口
+- 获取股票列表、详情、行情、筛选器等
+
+### 📰 新闻资讯
+- [新闻接口](/signal-feed/api-reference/news) - 多来源新闻数据接口
+- 支持新浪、富途牛牛、财联社、百度股市通等来源
+
+## 通用查询参数
+
+所有支持分页和排序的接口都支持以下参数：
+
+| 参数 | 类型 | 必需 | 默认值 | 说明 |
+|------|------|------|--------|------|
+| `page` | number | 否 | 1 | 页码 |
+| `pageSize` | number | 否 | 20 | 每页数量 |
+| `sortBy` | string | 否 | - | 排序字段 |
+| `sortOrder` | string | 否 | asc | 排序方向：asc(升序) 或 desc(降序) |
+| `fields[]` | string[] | 否 | - | 返回字段数组 |
+
+## 认证说明
+
+所有 API 接口都需要通过 `ApiAuthGuard` 认证，使用 Bearer Token 方式：
+
+```http
+Authorization: Bearer YOUR_API_TOKEN
+```
+
+## 错误处理
+
+API 使用统一的错误响应格式，包含错误码和错误信息。
+
+## 使用示例
+
+### Node.js 示例
+
+```javascript
+const API_TOKEN = 'your_api_token';
+const BASE_URL = process.env.API_BASE_URL || 'http://localhost:4000/api/v1';
+
+// 基础请求函数
+async function apiRequest(endpoint, options = {}) {
+  const response = await fetch(`${BASE_URL}${endpoint}`, {
+    headers: {
+      'Authorization': `Bearer ${API_TOKEN}`,
+      'Content-Type': 'application/json',
+      ...options.headers
+    },
+    ...options
+  });
+  
+  if (!response.ok) {
+    const error = await response.json();
+    throw new Error(`API 错误: ${error.message} (${error.code})`);
+  }
+  
+  return response.json();
+}
+
+// 获取股票列表
+async function getStockList(page = 1, pageSize = 20) {
+  const params = new URLSearchParams({
+    page: page.toString(),
+    pageSize: pageSize.toString()
+  });
+  
+  return apiRequest(`/stocks-a/stocks/list?${params}`);
+}
+
+// 获取新闻列表
+async function getNews(source = 'sina', page = 1, pageSize = 20) {
+  const params = new URLSearchParams({
+    source,
+    page: page.toString(),
+    pageSize: pageSize.toString()
+  });
+  
+  return apiRequest(`/news/list?${params}`);
+}
+
+// 使用示例
+async function example() {
+  try {
+    // 获取股票列表
+    const stocks = await getStockList(1, 10);
+    console.log('股票列表:', stocks);
+    
+    // 获取新浪新闻
+    const news = await getNews('sina', 1, 10);
+    console.log('新闻列表:', news);
+  } catch (error) {
+    console.error('API 请求失败:', error);
+  }
+}
+```
+
+## 接口列表
+
+### 股票数据接口
+
+| 接口 | 方法 | 路径 | 说明 |
+|------|------|------|------|
+| 获取交易日期 | GET | `/stocks-a/trade-dates` | 获取 A 股交易日期 |
+| 获取股票列表 | GET | `/stocks-a/stocks/list` | 获取股票基本信息列表 |
+| 获取股票详情 | GET | `/stocks-a/stocks/{code}/detail` | 获取指定股票详细信息 |
+| 获取行情列表 | GET | `/stocks-a/quotes/list` | 获取股票行情数据列表 |
+| 获取股票行情 | GET | `/stocks-a/quotes/{code}/detail` | 获取指定股票行情数据 |
+| 获取筛选器列表 | GET | `/stocks-a/screener/list` | 获取股票筛选器数据列表 |
+| 获取筛选器详情 | GET | `/stocks-a/screener/{code}/detail` | 获取指定股票筛选器数据 |
+
+### 新闻资讯接口
+
+| 接口 | 方法 | 路径 | 说明 |
+|------|------|------|------|
+| 获取新闻列表 | GET | `/news/list` | 获取多来源新闻列表 |
+| 获取新浪新闻 | GET | `/news/sina/list` | 获取新浪财经新闻 |
+| 获取富途新闻 | GET | `/news/futunn/list` | 获取富途牛牛新闻 |
+| 获取财联社新闻 | GET | `/news/cls/list` | 获取财联社新闻 |
+| 获取百度新闻 | GET | `/news/baidu/list` | 获取百度财经新闻 |
+
+## 更多资源
+
+- 📖 [股票接口详情](/signal-feed/api-reference/stocks-a) - A股股票数据详细接口
+- 📖 [新闻接口详情](/signal-feed/api-reference/news) - 多来源新闻数据详细接口

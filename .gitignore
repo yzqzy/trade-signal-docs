@@ -30,3 +30,11 @@ Thumbs.db
 
 # Logs
 *.log
+
+# pagefind
+_pagefind/
+
+# temporary directory
+temp/
+
+testing/

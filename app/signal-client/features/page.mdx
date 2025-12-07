@@ -1,0 +1,312 @@
+---
+title: 功能特性
+description: 详细功能说明和使用场景
+---
+
+import Image from '@/components/Image'
+
+## 📊 盘后复盘核心工具
+
+### 看板 - 盘后复盘第一站
+
+**使用场景** 每日收盘后，首先打开看板，快速了解当日市场整体情况
+
+市场总览页面，提供全面的市场数据和分析，是盘后复盘的标准起点
+
+<div className="my-6">
+  <figure className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden shadow-sm">
+    <div className="relative w-full" style={{ aspectRatio: '16/9' }}>
+      <Image
+        src="/imgs/dashboard.png"
+        alt="看板界面（盘后复盘第一站）"
+        fill
+        className="object-cover"
+        unoptimized
+      />
+    </div>
+    <figcaption className="text-xs text-gray-500 dark:text-gray-400 px-4 py-2">
+      看板界面：盘后复盘第一站
+    </figcaption>
+  </figure>
+</div>
+
+**核心功能**
+
+- **市场总览** - 快速把握市场整体状况
+  - 涨跌家数统计，了解市场情况
+  - 市场温度指标，判断市场热度
+  - 全球市场指标对比，把握整体环境
+
+- **资金流向分析** - 识别资金动向，发现机会
+  - 资金流入流出统计，了解资金态度
+  - 资金流向趋势图表，观察资金变化
+  - 行业资金流向排名，发现资金偏好
+
+- **市场主线识别** - 自动发现当前热点
+  - 当前市场热点自动识别
+  - 市场主线分析，把握市场节奏
+  - 板块轮动趋势，预判下一步动作
+
+**使用建议** 盘后复盘时，先看市场总览了解整体，再看资金流向识别机会，最后看市场主线把握热点
+
+### 热图 - 直观发现热点板块
+
+**使用场景** 通过热力图快速发现异动板块和热点概念，是热点追踪的重要工具
+
+<div className="my-6">
+  <figure className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden shadow-sm">
+    <div className="relative w-full" style={{ aspectRatio: '16/9' }}>
+      <Image
+        src="/imgs/hotmap.png"
+        alt="热图界面（热点板块）"
+        fill
+        className="object-cover"
+        unoptimized
+      />
+    </div>
+    <figcaption className="text-xs text-gray-500 dark:text-gray-400 px-4 py-2">
+      热图界面：直观发现热点板块
+    </figcaption>
+  </figure>
+</div>
+
+**核心功能**
+
+- **行业板块热力图** - 直观展示各行业表现
+- **概念板块热力图** - 发现热点概念和题材
+- **多维度指标切换** - 涨跌幅、成交额、市值等不同视角
+- **交互式树状图** - 点击深入查看板块详情
+- **快速筛选** - 按指标筛选，快速定位异动板块
+
+**使用建议** 结合市场主线使用，通过热力图验证和发现新的热点机会
+
+## 🔍 智能筛选工具
+
+### 股票筛选器 - 精准定位目标标的
+
+**使用场景** 基于市场主线和资金流向，使用筛选工具快速定位符合投资理念的个股
+
+<div className="my-6">
+  <figure className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden shadow-sm">
+    <div className="relative w-full" style={{ aspectRatio: '16/9' }}>
+      <Image
+        src="/imgs/stock-screener.png"
+        alt="股票筛选器界面"
+        fill
+        className="object-cover"
+        unoptimized
+      />
+    </div>
+    <figcaption className="text-xs text-gray-500 dark:text-gray-400 px-4 py-2">
+      股票筛选器：多维度指标组合筛选
+    </figcaption>
+  </figure>
+</div>
+
+**核心功能**
+
+- **多维度筛选条件**
+  - 安全边际指标组：市净率、每股净资产、负债率
+  - 趋势共振指标组：价格趋势、资金流向等
+  - 组合稳健指标组：行业分散度、相关性等
+  - 市场脉动指标组：涨跌幅、成交量
+
+- **预设筛选方案**
+  - 内置多种筛选策略
+  - 支持自定义筛选方案
+  - 筛选方案保存与管理
+
+- **指标分组显示**
+  - 按指标类型分组展示
+  - 自定义筛选条件组合
+  - 实时筛选结果更新
+
+### ETF 筛选器 - 估值分位分析，找到合适产品
+
+**使用场景** ETF 产品筛选与分析，基于估值分位和趋势指标找到合适的 ETF 产品
+
+<div className="my-6">
+  <figure className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden shadow-sm">
+    <div className="relative w-full" style={{ aspectRatio: '16/9' }}>
+      <Image
+        src="/imgs/etf-screener.png"
+        alt="ETF 筛选器界面"
+        fill
+        className="object-cover"
+        unoptimized
+      />
+    </div>
+    <figcaption className="text-xs text-gray-500 dark:text-gray-400 px-4 py-2">
+      ETF 筛选器：估值分位与多维度筛选
+    </figcaption>
+  </figure>
+</div>
+
+**核心功能**
+
+- **多维度筛选条件**
+  - 安全边际指标：估值分位、跟踪误差等
+  - 趋势共振指标：价格趋势、资金流向等
+  - 组合稳健指标：相关性、分散度
+
+- **估值分位分析**
+  - 历史估值分位对比
+  - 估值区间识别
+  - 估值合理性评估
+
+## 📈 深度分析工具
+
+### 个股分析 - 全方位研究个股
+
+**使用场景** 通过筛选或热点追踪发现目标个股后，使用个股分析进行深度研究，评估安全边际和趋势共振
+
+<div className="my-6">
+  <figure className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden shadow-sm">
+    <div className="relative w-full" style={{ aspectRatio: '16/9' }}>
+      <Image
+        src="/imgs/stock-analysis.png"
+        alt="个股分析界面"
+        fill
+        className="object-cover"
+        unoptimized
+      />
+    </div>
+    <figcaption className="text-xs text-gray-500 dark:text-gray-400 px-4 py-2">
+      个股分析：安全边际与趋势共振一图掌握
+    </figcaption>
+  </figure>
+</div>
+
+**核心分析维度**
+
+- **安全边际评估** - 判断是否具备安全边际
+  - 市净率（P/B）分析，评估估值水平
+  - 每股净资产、负债率、现金流状况
+  - 内在价值评估，判断价格是否合理
+
+- **趋势共振分析** - 判断是否具备趋势共振条件
+  - 消息面分析，了解基本面变化
+  - 价格走势图表，观察技术面趋势
+  - 资金流向趋势，判断资金态度
+  - 基本面与价格趋势叠加，寻找共振点
+
+- **财务画像** - 快速识别财务风险
+  - 财务风险信号识别，预警异常
+  - 财务健康度评估，整体判断
+  - 财务异常预警，及时规避风险
+
+- **财务评估** - 全面评估财务质量
+  - 财务指标雷达图，直观对比
+  - 盈利能力、成长性、偿债能力分析
+
+- **股东研究** - 关注股东动向
+  - 股东结构分析，了解股权分布
+  - 大股东持股情况，判断稳定性
+  - 股东变动追踪，发现机构动向
+
+- **公司概况** - 了解公司基本情况
+  - 基本信息、主营业务、行业地位
+
+- **十年业绩** - 评估业绩稳定性
+  - 历史业绩分析，观察业绩趋势
+  - 业绩稳定性评估，判断可持续性
+
+- **核心题材** - 识别题材概念
+  - 题材概念识别，了解题材属性
+  - 题材关联分析，把握题材关联
+  - 题材热度评估，判断题材热度
+
+**使用建议** 盘后复盘时，对筛选出的个股进行系统分析，重点关注安全边际和趋势共振两个维度
+
+### 股东分析 - 追踪股东动向
+
+**使用场景** 重点关注个股时，通过股东分析了解机构和大股东动向，判断资金态度
+
+<div className="my-6">
+  <figure className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden shadow-sm">
+    <div className="relative w-full" style={{ aspectRatio: '16/9' }}>
+      <Image
+        src="/imgs/shareholder.png"
+        alt="股东分析界面"
+        fill
+        className="object-cover"
+        unoptimized
+      />
+    </div>
+    <figcaption className="text-xs text-gray-500 dark:text-gray-400 px-4 py-2">
+      股东分析：洞察机构与大股东动向
+    </figcaption>
+  </figure>
+</div>
+
+**核心功能**
+
+- **股东结构可视化** - 直观了解股权分布
+- **大股东持股比例分析** - 判断股权稳定性
+- **股东变动追踪** - 发现股东变动趋势
+- **机构持股分析** - 关注机构资金动向
+- **股东集中度评估** - 判断股权集中度
+
+**使用建议** 重点关注个股时，定期查看股东变动，特别是机构和大股东的增减持情况，判断资金态度
+
+## 🔥 热点追踪工具
+
+### 题材库 - 管理您的题材概念
+
+**使用场景** 建立自己的题材概念库，持续追踪题材热度变化和轮动，把握题材投资机会
+
+<div className="my-6">  
+  <figure className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden shadow-sm">
+    <div className="relative w-full" style={{ aspectRatio: '16/9' }}>
+      <Image
+        src="/imgs/topic-library.png"
+        alt="题材库界面"
+        fill
+        className="object-cover"
+        unoptimized
+      />
+    </div>
+    <figcaption className="text-xs text-gray-500 dark:text-gray-400 px-4 py-2">
+      题材库：管理与追踪题材概念
+    </figcaption>
+  </figure>
+</div>
+
+**核心功能**
+
+- **题材概念管理** - 建立和更新关注的题材概念
+- **题材关联分析** - 了解题材之间的关联关系
+- **题材热度追踪** - 持续监控题材热度变化
+- **题材轮动分析** - 把握题材轮动节奏
+
+**使用建议** 结合市场主线和热力图，及时更新题材库，追踪热点轮动
+
+### 要闻 - 重要信息不错过
+
+**使用场景** 盘后查看市场要闻，了解重要资讯和公告，补充分析信息
+
+<div className="my-6">
+  <figure className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden shadow-sm">
+    <div className="relative w-full" style={{ aspectRatio: '16/9' }}>
+      <Image
+        src="/imgs/news.png"
+        alt="要闻界面"
+        fill
+        className="object-cover"
+        unoptimized
+      />
+    </div>
+    <figcaption className="text-xs text-gray-500 dark:text-gray-400 px-4 py-2">
+      要闻：聚合重要资讯与公告
+    </figcaption>
+  </figure>
+</div>
+
+**核心功能**
+
+- **市场要闻汇** - 重要资讯集中展示，不错过关键信息
+- **新闻资讯分析** - 分类整理，快速定位关注内容
+- **重要公告提醒** - 及时提醒重要公告和事项
+- **行业新闻分类** - 按行业分类，便于追踪关注行业
+
+**使用建议** 盘后复盘时，结合市场主线和个股分析，查看相关要闻，补充分析信息

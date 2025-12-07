@@ -1,0 +1,426 @@
+---
+title: 新闻接口
+description: Signal Feed 新闻资讯 API 接口文档
+---
+
+## 新闻接口
+
+Signal Feed 提供多来源的新闻资讯接口，支持新浪、富途、财联社、百度等主流财经新闻源。
+
+## 基础信息
+
+- **Base URL**: `http://localhost:4000/api/v1`
+- **认证方式**: Bearer Token
+- **数据格式**: JSON
+- **接口前缀**: `/news`
+
+## 接口列表
+
+### 1. 获取新闻列表
+
+获取多来源的新闻列表，支持指定新闻源。
+
+```http
+GET /api/v1/news/list?source=sina&page=1&pageSize=20
+```
+
+**查询参数**:
+
+| 参数 | 类型 | 必需 | 默认值 | 说明 |
+|------|------|------|--------|------|
+| `source` | string | 是 | sina | 新闻来源：sina(新浪)、futunn(富途)、cls(财联社)、baidu(百度) |
+| `page` | number | 否 | 1 | 页码 |
+| `pageSize` | number | 否 | 20 | 每页数量 |
+
+**响应示例**:
+```json
+{
+  "success": true,
+  "data": {
+    "list": [
+      {
+        "id": 401,
+        "source": "sina",
+        "sourceId": "4329427",
+        "sourceUrl": "https://finance.sina.com.cn/7x24/2025-08-09/doc-infkkqsv2518458.shtml",
+        "title": "【黑龙江发布暴雨红色预警信号】黑龙江省气象台8月9日16时20分发布暴雨红色预警信号：过去40分钟牡丹江宁安市三陵乡出现70毫米以上降水，降水仍将持续，预计未来2小时该地及周边乡镇还将有10～30毫米",
+        "summary": "【黑龙江发布暴雨红色预警信号】黑龙江省气象台8月9日16时20分发布暴雨红色预警信号：过去40分钟牡丹江宁安市三陵乡出现70毫米以上降水，降水仍将持续，预计未来2小时该地及周边乡镇还将有10～30毫米降水，请注意防范。",
+        "content": "【黑龙江发布暴雨红色预警信号】黑龙江省气象台8月9日16时20分发布暴雨红色预警信号：过去40分钟牡丹江宁安市三陵乡出现70毫米以上降水，降水仍将持续，预计未来2小时该地及周边乡镇还将有10～30毫米降水，请注意防范。",
+        "publishDate": "2025-08-09 16:45:26",
+        "tags": [
+            "其他"
+        ],
+        "stocks": [],
+        "categories": [
+            "其他"
+        ],
+        "createdAt": "2025-08-09T00:55:55.005Z",
+        "updatedAt": "2025-08-09T00:55:55.005Z"
+      }
+    ],
+    "total": 1000,
+    "page": 1,
+    "pageSize": 20
+  }
+}
+```
+
+### 2. 获取新浪新闻
+
+获取新浪财经新闻列表。
+
+```http
+GET /api/v1/news/sina/list?page=1&pageSize=20
+```
+
+**查询参数**:
+
+| 参数 | 类型 | 必需 | 默认值 | 说明 |
+|------|------|------|--------|------|
+| `page` | number | 否 | 1 | 页码 |
+| `pageSize` | number | 否 | 20 | 每页数量 |
+
+**响应示例**:
+```json
+{
+  "success": true,
+  "data": {
+    "list": [
+      {
+        "id": 401,
+        "source": "sina",
+        "sourceId": "4329427",
+        "sourceUrl": "https://finance.sina.com.cn/7x24/2025-08-09/doc-infkkqsv2518458.shtml",
+        "title": "【黑龙江发布暴雨红色预警信号】黑龙江省气象台8月9日16时20分发布暴雨红色预警信号：过去40分钟牡丹江宁安市三陵乡出现70毫米以上降水，降水仍将持续，预计未来2小时该地及周边乡镇还将有10～30毫米",
+        "summary": "【黑龙江发布暴雨红色预警信号】黑龙江省气象台8月9日16时20分发布暴雨红色预警信号：过去40分钟牡丹江宁安市三陵乡出现70毫米以上降水，降水仍将持续，预计未来2小时该地及周边乡镇还将有10～30毫米降水，请注意防范。",
+        "content": "【黑龙江发布暴雨红色预警信号】黑龙江省气象台8月9日16时20分发布暴雨红色预警信号：过去40分钟牡丹江宁安市三陵乡出现70毫米以上降水，降水仍将持续，预计未来2小时该地及周边乡镇还将有10～30毫米降水，请注意防范。",
+        "publishDate": "2025-08-09 16:45:26",
+        "tags": [
+            "其他"
+        ],
+        "stocks": [],
+        "categories": [
+            "其他"
+        ],
+        "createdAt": "2025-08-09T00:55:55.005Z",
+        "updatedAt": "2025-08-09T00:55:55.005Z"
+      }
+    ],
+    "total": 500,
+    "page": 1,
+    "pageSize": 20
+  }
+}
+```
+
+### 3. 获取富途新闻
+
+获取富途牛牛新闻列表。
+
+```http
+GET /api/v1/news/futunn/list?page=1&pageSize=20
+```
+
+**查询参数**:
+
+| 参数 | 类型 | 必需 | 默认值 | 说明 |
+|------|------|------|--------|------|
+| `page` | number | 否 | 1 | 页码 |
+| `pageSize` | number | 否 | 20 | 每页数量 |
+
+**响应示例**:
+```json
+{
+  "success": true,
+  "data": {
+    "list": [
+      {
+        "id": 1301,
+        "source": "futunn",
+        "sourceId": "19218162",
+        "sourceUrl": "https://news.futunn.com/flash/19218162/bitcoin-has-reached-117000-per-coin-with-a-0-28",
+        "title": "",
+        "summary": "",
+        "content": "比特币站上117000美元/枚，日内涨0.28%。",
+        "publishDate": "2025-08-09 16:43:46",
+        "tags": [],
+        "stocks": [
+            {
+                "market": "cc",
+                "code": "cc_btc",
+                "name": "比特币"
+            }
+        ],
+        "categories": [],
+        "createdAt": "2025-08-09T00:55:57.478Z",
+        "updatedAt": "2025-08-09T00:55:57.478Z"
+      }
+    ],
+    "total": 300,
+    "page": 1,
+    "pageSize": 20
+  }
+}
+```
+
+### 4. 获取财联社新闻
+
+获取财联社新闻列表。
+
+```http
+GET /api/v1/news/cls/list?page=1&pageSize=20
+```
+
+**查询参数**:
+
+| 参数 | 类型 | 必需 | 默认值 | 说明 |
+|------|------|------|--------|------|
+| `page` | number | 否 | 1 | 页码 |
+| `pageSize` | number | 否 | 20 | 每页数量 |
+
+**响应示例**:
+```json
+{
+  "success": true,
+  "data": {
+    "list": [
+      {
+        "id": 2101,
+        "source": "cls",
+        "sourceId": "2110839",
+        "sourceUrl": "https://api3.cls.cn/share/article/2110839?os=web&sv=8.4.6&app=CailianpressWeb",
+        "title": "加密货币普涨 以太坊24小时内涨近8%",
+        "summary": "【加密货币普涨 以太坊24小时内涨近8%】财联社8月9日电，行情显示，比特币涨至117096美元，过去24小时内涨0.48%；以太坊涨至4189.28美元，过去24小时内涨7.69%。",
+        "content": "【加密货币普涨 以太坊24小时内涨近8%】财联社8月9日电，行情显示，比特币涨至117,096美元，过去24小时内涨0.48%；以太坊涨至4189.28美元，过去24小时内涨7.69%。",
+        "publishDate": "2025-08-09 16:46:49",
+        "tags": [
+            "比特币"
+        ],
+        "stocks": [],
+        "categories": [
+            "cls"
+        ],
+        "createdAt": "2025-08-09T00:56:01.129Z",
+        "updatedAt": "2025-08-09T00:56:01.129Z"
+      }
+    ],
+    "total": 200,
+    "page": 1,
+    "pageSize": 20
+  }
+}
+```
+
+### 5. 获取百度新闻
+
+获取百度财经新闻列表。
+
+```http
+GET /api/v1/news/baidu/list?page=1&pageSize=20
+```
+
+**查询参数**:
+
+| 参数 | 类型 | 必需 | 默认值 | 说明 |
+|------|------|------|--------|------|
+| `page` | number | 否 | 1 | 页码 |
+| `pageSize` | number | 否 | 20 | 每页数量 |
+
+**响应示例**:
+```json
+{
+  "success": true,
+  "data": {
+    "list": [
+      {
+        "id": 1,
+        "source": "baidu",
+        "sourceId": "1754728700|d2172a1e1ac0eadbe268a10a95473fb9",
+        "sourceUrl": "http://live.financebe.com/stock/detail.html?d=1954364",
+        "title": "44家公司获QFII持股 3家QFII新进持股公司账面浮盈超4900万元",
+        "summary": "",
+        "content": "2025年半年报披露拉开序幕，上市公司的机构持股动向浮出水面，备受关注的合格境外机构投资者（QFII）持股曝光。据统计，截至2025年8月8日晚10点，已披露2025年半年报的170余家公司中，44家公司获QFII持股。截至2025年6月30日，这44家公司QFII持股数量合计超过2.7亿股，环比增加超26万股；持股市值接近48亿元，环比增加超过7亿元。持股收益如何？以截至今年二季度获QFII新进持股的公司为样本（为保证估算有效性，取2024年三季度至2025年一季度均未获QFII持股的样本），对比最新收盘价与今年二季度的平均成交价，以持股数量（最新收盘价减二季度成交均价）测算持股收益。结果显示，瑞士联合银行集团、巴克莱银行、摩根士丹利国际股份有限公司3家机构账面浮盈均超过4900万元。（证券时报）",
+        "publishDate": "2025-08-09 16:38:20",
+        "tags": [
+            "快讯",
+            "美股"
+        ],
+        "stocks": [
+            {
+                "market": "us",
+                "code": "us_BCS",
+                "name": "巴克莱银行"
+            },
+            {
+                "market": "us",
+                "code": "us_UNB",
+                "name": "联合银行股份"
+            },
+            {
+                "market": "us",
+                "code": "us_MS",
+                "name": "摩根士丹利"
+            },
+            {
+                "market": "us",
+                "code": "us_UBSI",
+                "name": "联合银行"
+            },
+            {
+                "market": "us",
+                "code": "us_UNTY",
+                "name": "Unity Bancorp, Inc."
+            }
+        ],
+        "categories": [
+            "快讯",
+            "美股"
+        ],
+        "createdAt": "2025-08-09T00:54:53.731Z",
+        "updatedAt": "2025-08-09T00:54:53.731Z"
+      }
+    ],
+    "total": 400,
+    "page": 1,
+    "pageSize": 20
+  }
+}
+```
+
+## Node.js 使用示例
+
+```javascript
+const API_TOKEN = 'your_api_token';
+const BASE_URL = process.env.API_BASE_URL || 'http://localhost:4000/api/v1';
+
+// 基础请求函数
+async function apiRequest(endpoint, options = {}) {
+  const response = await fetch(`${BASE_URL}${endpoint}`, {
+    headers: {
+      'Authorization': `Bearer ${API_TOKEN}`,
+      'Content-Type': 'application/json',
+      ...options.headers
+    },
+    ...options
+  });
+  
+  if (!response.ok) {
+    const error = await response.json();
+    throw new Error(`API 错误: ${error.message} (${error.code})`);
+  }
+  
+  return response.json();
+}
+
+// 获取多来源新闻列表
+async function getNewsList(source = 'sina', page = 1, pageSize = 20) {
+  const params = new URLSearchParams({
+    source,
+    page: page.toString(),
+    pageSize: pageSize.toString()
+  });
+  
+  return apiRequest(`/news/list?${params}`);
+}
+
+// 获取新浪新闻
+async function getSinaNews(page = 1, pageSize = 20) {
+  const params = new URLSearchParams({
+    page: page.toString(),
+    pageSize: pageSize.toString()
+  });
+  
+  return apiRequest(`/news/sina/list?${params}`);
+}
+
+// 获取富途新闻
+async function getFutunnNews(page = 1, pageSize = 20) {
+  const params = new URLSearchParams({
+    page: page.toString(),
+    pageSize: pageSize.toString()
+  });
+  
+  return apiRequest(`/news/futunn/list?${params}`);
+}
+
+// 获取财联社新闻
+async function getClsNews(page = 1, pageSize = 20) {
+  const params = new URLSearchParams({
+    page: page.toString(),
+    pageSize: pageSize.toString()
+  });
+  
+  return apiRequest(`/news/cls/list?${params}`);
+}
+
+// 获取百度新闻
+async function getBaiduNews(page = 1, pageSize = 20) {
+  const params = new URLSearchParams({
+    page: page.toString(),
+    pageSize: pageSize.toString()
+  });
+  
+  return apiRequest(`/news/baidu/list?${params}`);
+}
+
+// 使用示例
+async function example() {
+  try {
+    // 获取新浪新闻
+    const sinaNews = await getSinaNews(1, 10);
+    console.log('新浪新闻:', sinaNews);
+    
+    // 获取富途新闻
+    const futunnNews = await getFutunnNews(1, 10);
+    console.log('富途新闻:', futunnNews);
+    
+    // 获取多来源新闻
+    const allNews = await getNewsList('cls', 1, 10);
+    console.log('财联社新闻:', allNews);
+  } catch (error) {
+    console.error('API 请求失败:', error);
+  }
+}
+```
+
+## 常见问题
+
+### Q: 数据更新频率？
+A: 新闻数据实时更新，各新闻源更新频率略有不同，基本每 30 分钟更新一次。
+
+### Q: 支持哪些新闻来源？
+A: 支持新浪(sina)、富途(futunn)、财联社(cls)、百度(baidu) 四个主要新闻源。
+
+## 错误处理
+
+```javascript
+// 错误处理示例
+async function handleApiError(response) {
+  if (!response.ok) {
+    const error = await response.json();
+    throw new Error(`API 错误: ${error.message} (${error.code})`);
+  }
+  return response.json();
+}
+
+// 使用重试机制
+async function apiRequestWithRetry(endpoint, maxRetries = 3) {
+  for (let i = 0; i < maxRetries; i++) {
+    try {
+      const response = await fetch(`${BASE_URL}${endpoint}`, {
+        headers: {
+          'Authorization': `Bearer ${API_TOKEN}`
+        }
+      });
+      return await handleApiError(response);
+    } catch (error) {
+      if (i === maxRetries - 1) throw error;
+      await new Promise(resolve => setTimeout(resolve, 1000 * (i + 1)));
+    }
+  }
+}
+```
+
+## 更多资源
+
+- 📖 [完整 API 文档](/signal-feed/api-reference) - 返回主 API 文档

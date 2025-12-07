@@ -1,6 +1,127 @@
 ---
 title: 快速开始
+description: 快速部署和启动 Signal Feed 服务
 ---
 
-<br />
+## 环境准备
 
+在开始之前，请确保您的系统已安装以下依赖：
+
+- **Node.js** 18+ 
+- **pnpm** 8+
+- **Docker** 和 **Docker Compose**
+- **Git**
+
+## 源码部署
+
+### 1. 克隆仓库
+
+```bash
+git clone git@github.com:yzqzy/signal-feed.git
+cd signal-feed
+```
+
+### 2. 安装依赖
+
+```bash
+pnpm install
+```
+
+### 3. 配置环境变量
+
+复制环境变量模板文件：
+
+```bash
+cp .env.example .env
+```
+
+编辑 `.env` 文件，根据实际情况填写数据库等配置信息：
+
+```env
+# 数据库配置
+DATABASE_URL=postgresql://username:password@localhost:5432/signal_feed
+
+# Redis 配置
+REDIS_URL=redis://localhost:6379
+
+# API 配置
+API_PORT=3000
+API_HOST=localhost
+```
+
+## 开发环境
+
+### 1. 启动依赖服务
+
+使用 Docker Compose 启动 PostgreSQL 和 Redis：
+
+```bash
+docker-compose -p signal-feed -f docker/docker-compose.dev.yml up -d
+```
+
+### 2. 启动开发服务
+
+```bash
+pnpm start:dev
+```
+
+服务启动后，访问 `http://localhost:3000` 查看 API 文档。
+
+## 生产环境部署
+
+### 方式一：本地构建部署
+
+#### 1. 构建应用
+
+```bash
+pnpm build
+```
+
+#### 2. 启动生产服务
+
+```bash
+pnpm start
+```
+
+### 方式二：Docker 部署
+
+#### 1. 构建 Docker 镜像
+
+```bash
+docker-compose -f docker-compose.yml build
+```
+
+#### 2. 配置生产环境变量
+
+```bash
+cp .env.example .env.production.local
+```
+
+编辑 `.env.production.local` 文件，配置生产环境参数。
+
+#### 3. 启动生产服务
+
+```bash
+docker-compose \
+  -p signal-feed-prod \
+  -f docker-compose.yml \
+  --env-file .env.production.local \
+  up -d
+```
+
+## 常见问题
+
+### Q: 数据库连接失败
+A: 检查 PostgreSQL 服务是否正常启动，确认 `.env` 中的数据库连接字符串是否正确。
+
+### Q: Redis 连接失败  
+A: 确认 Redis 服务已启动，检查端口 6379 是否被占用。
+
+### Q: 端口被占用
+A: 修改 `.env` 文件中的 `API_PORT` 配置，或停止占用端口的其他服务。
+
+{/* ## 下一步
+
+- 📖 查看 [API 文档](/signal-feed/api-reference)
+- 🔧 了解 [配置说明](/signal-feed/configuration)  
+- 🚀 探索 [高级功能](/signal-feed/advanced-features) */}

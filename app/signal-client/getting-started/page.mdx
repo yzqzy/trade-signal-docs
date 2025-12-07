@@ -1,0 +1,161 @@
+---
+title: 快速开始
+description: 下载、安装和使用指南，快速开始使用盘后复盘工具
+---
+
+import Image from '@/components/Image'
+
+## 系统要求
+
+支持以下操作系统
+
+- **macOS**: 10.15 或更高版本
+- **Windows**: Windows 10 或更高版本
+- **Linux**: Ubuntu 18.04 或更高版本（其他发行版可能兼容）
+
+## 下载安装
+
+### 1. 下载应用
+
+访问我们的[下载页面](/signal-client/download)，选择适合您操作系统的安装包进行下载。
+
+### 2. 安装应用
+
+#### macOS
+
+1. 下载 `.dmg` 文件
+2. 双击打开安装包
+3. 将应用拖拽到应用程序文件夹
+4. 首次运行时，可能需要在"系统偏好设置 > 安全性与隐私"中允许运行应用
+
+#### Windows
+
+1. 下载 `.exe` 安装程序
+2. 双击运行安装程序
+3. 按照安装向导完成安装
+4. 安装完成后，从开始菜单启动应用
+
+#### Linux
+
+1. 下载 `.AppImage` 或 `.deb` 文件
+2. 对于 `.AppImage`：赋予执行权限后直接运行
+3. 对于 `.deb`：使用 `sudo dpkg -i signal-client.deb` 安装
+
+## 应用界面预览
+
+<div className="my-6">
+  <figure className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden shadow-sm">
+    <div className="relative w-full" style={{ aspectRatio: '16/9' }}>
+      <Image
+        src="/imgs/dashboard.png"
+        alt="应用主界面（盘后看板）"
+        fill
+        className="object-cover"
+        unoptimized
+      />
+    </div>
+    <figcaption className="text-xs text-gray-500 dark:text-gray-400 px-4 py-2">
+      应用主界面：盘后复盘看板
+    </figcaption>
+  </figure>
+</div>
+
+## 首次使用
+
+### 1. 启动应用
+
+安装完成后，启动应用。首次进入时，如果无权限，应用会自动跳转到用户授权页面
+
+### 2. 用户授权
+
+首次使用需要完成用户授权，确保数据访问权限。授权通过后，才能进入主页。
+
+<div className="my-6">
+  <figure className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden shadow-sm">
+    <div className="relative w-full" style={{ aspectRatio: '16/9' }}>
+      <Image
+        src="/imgs/user-auth.png"
+        alt="用户授权界面"
+        fill
+        className="object-cover"
+        unoptimized
+      />
+    </div>
+    <figcaption className="text-xs text-gray-500 dark:text-gray-400 px-4 py-2">
+      用户授权：完成授权以访问数据服务
+    </figcaption>
+  </figure>
+</div>
+
+### 3. 进入主页与数据同步
+
+授权通过后，进入应用主页。应用会通过实时接口自动同步最新的市场数据。
+
+### 4. 用户指南
+
+首次进入主页时，会显示用户指南提示，帮助您快速了解工具的使用方法和最佳实践：
+
+<div className="my-6">
+  <figure className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden shadow-sm">
+    <div className="relative w-full" style={{ aspectRatio: '16/9' }}>
+      <Image
+        src="/imgs/user-guide.png"
+        alt="用户指南界面"
+        fill
+        className="object-cover"
+        unoptimized
+      />
+    </div>
+    <figcaption className="text-xs text-gray-500 dark:text-gray-400 px-4 py-2">
+      用户指南：了解工具使用方法
+    </figcaption>
+  </figure>
+</div>
+
+### 5. 用户设置
+
+在用户设置中配置个性化选项和偏好设置：
+
+<div className="my-6">
+  <figure className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden shadow-sm">
+    <div className="relative w-full" style={{ aspectRatio: '16/9' }}>
+      <Image
+        src="/imgs/user-settings.png"
+        alt="用户设置界面"
+        fill
+        className="object-cover"
+        unoptimized
+      />
+    </div>
+    <figcaption className="text-xs text-gray-500 dark:text-gray-400 px-4 py-2">
+      用户设置：个性化配置与偏好设置
+    </figcaption>
+  </figure>
+</div>
+
+## 常见问题
+
+### Q: 安装后无法启动应用
+
+A: 
+- **macOS**: 检查系统偏好设置 > 安全性与隐私中是否允许运行应用
+- **Windows**: 检查是否被杀毒软件拦截，尝试以管理员身份运行
+- **Linux**: 确保已安装必要的系统依赖
+
+### Q: 数据加载缓慢
+
+A: 应用使用实时接口同步数据，请确保网络连接稳定。如遇加载缓慢，请检查网络连接或联系技术支持。
+
+### Q: 应用崩溃或闪退
+
+A: 请检查系统版本是否符合要求，或联系技术支持获取帮助。
+
+### Q: 如何更新到最新版本
+
+A: 应用支持自动更新。您也可以在设置 > 关于中手动检查更新。
+
+## 下一步
+
+- 📖 查看 [功能特性](/signal-client/features)，了解应用的强大功能
+- 📚 学习 [使用指南](/signal-client/guides/dashboard)，掌握各项功能的使用方法
+

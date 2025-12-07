@@ -1,0 +1,14 @@
+{
+  "tag_name": "v0.1.1",
+  "name": "交易信标客户端 v0.1.1",
+  "published_at": "2025-11-27T14:51:18Z",
+  "body": "## 交易信标客户端 v0.1.1\n\n### 更新内容\n- 自动构建发布\n\n### 下载\n请根据您的操作系统下载对应的安装包。\n",
+  "assets": [
+    {
+      "name": "trade-signal-client-0.1.1-setup.exe",
+      "browser_download_url": "https://github.com/yzqzy/trade-signal-client/releases/download/v0.1.1/trade-signal-client-0.1.1-setup.exe",
+      "size": 99103572,
+      "content_type": "application/x-msdos-program"
+    }
+  ]
+}
