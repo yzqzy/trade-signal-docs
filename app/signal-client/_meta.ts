@@ -5,5 +5,6 @@ export default {
   features: "功能特性",
   security: "安全与隐私",
   guides: "使用指南",
-  methodology: "方法论"
+  methodology: "方法论",
+  changelog: "更新日志"
 };

@@ -4,6 +4,7 @@ description: 详细功能说明和使用场景
 ---
 
 import Image from '@/components/Image'
+import Link from 'next/link'
 
 ## 📊 盘后复盘核心工具
 
@@ -310,3 +311,56 @@ import Image from '@/components/Image'
 - **行业新闻分类** - 按行业分类，便于追踪关注行业
 
 **使用建议** 盘后复盘时，结合市场主线和个股分析，查看相关要闻，补充分析信息
+
+## 📋 投资管理工具
+
+### 计划管理 - 系统化投资决策管理
+
+**使用场景** 记录、跟踪和复盘投资决策过程，支持"纪律执行"和"流程复盘"的投资理念
+
+<div className="my-6">
+  <figure className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden shadow-sm">
+    <div className="relative w-full" style={{ aspectRatio: '16/9' }}>
+      <Image
+        src="/imgs/trading-plans.png"
+        alt="计划管理界面"
+        fill
+        className="object-cover"
+        unoptimized
+      />
+    </div>
+    <figcaption className="text-xs text-gray-500 dark:text-gray-400 px-4 py-2">
+      计划管理：系统化投资决策管理工具
+    </figcaption>
+  </figure>
+</div>
+
+**核心功能**
+
+- **三种计划类型** - 覆盖投资决策全流程
+  - **选股计划**：记录筛选过程、企业质量评估、安全边际评估、趋势验证信号、建仓理由、目标价格、计划仓位、风险控制（止损点、止盈点）
+  - **持仓管理计划**：记录跟踪要点、再平衡计划、卖出条件、卖出理由、风险控制措施
+  - **复盘计划**：记录复盘周期（每周/每月/每季度）、复盘内容、经验教训、下一步行动
+
+- **关键指标记录** - 聚焦中长期指标，支持后续对比分析
+  - 安全边际指标：市净率（PB）、资产负债率
+  - 企业质量指标：ROE、每股自由现金流、每股经营现金流
+  - 成长性指标：净利润3年复合增长率、营收3年复合增长率
+  - 价格位置：K线图分位（0-100%）
+
+- **标的关联** - 支持多标的管理
+  - 支持股票和ETF
+  - 支持关联多个标的
+  - 支持股票池分类（核心池、观察池、备选池）
+
+- **计划管理** - 完整的计划生命周期管理
+  - 计划状态管理：待执行、执行中、已完成
+  - 计划优先级：高、普通
+  - 搜索和筛选：按关键词、类型、状态快速定位计划
+  - 计划详情编辑：根据计划类型显示不同详情字段，支持随时更新
+
+- **便捷创建** - 多种创建方式
+  - 从股票分析页面创建：自动填充标的信息和关键指标，节省录入时间
+  - 手动创建：支持搜索和选择标的，可关联多个标的
+
+**使用建议** 在做出投资决策时，及时创建计划并记录关键信息；定期复盘，总结经验教训，持续改进投资方法。详细使用方法请参考 <Link href="/signal-client/guides/trading-plans">计划管理使用指南</Link>。
