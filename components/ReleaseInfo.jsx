@@ -30,19 +30,19 @@ export default function ReleaseInfo() {
     <div className="my-6">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* macOS */}
-        <div className="p-6 border border-gray-200 dark:border-gray-700 rounded-xl bg-white dark:bg-gray-800 hover:border-emerald-500 dark:hover:border-emerald-500 hover:shadow-md transition-all duration-200">
-          <div className="text-center">
+        <div className="p-6 border border-gray-200 dark:border-gray-700 rounded-xl bg-white dark:bg-gray-800 hover:border-emerald-500 dark:hover:border-emerald-500 hover:shadow-md transition-all duration-200 flex flex-col">
+          <div className="text-center flex-1 flex flex-col">
             <div className="text-5xl mb-4">🍎</div>
             <h4 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white">
               macOS
             </h4>
-            <p className="text-sm text-gray-500 dark:text-gray-400 mb-5">
+            <p className="text-sm text-gray-500 dark:text-gray-400 mb-5 min-h-[2.5rem]">
               支持 macOS 12.0+<br />
               <span className="text-xs">(Intel & Apple Silicon)</span>
             </p>
             <a
               href={downloadLinks.macos}
-              className="inline-block w-full px-6 py-3 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors font-medium shadow-sm hover:shadow"
+              className="inline-block w-full px-6 py-3 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors font-medium shadow-sm hover:shadow mt-auto"
               download
             >
               下载安装包
@@ -51,18 +51,18 @@ export default function ReleaseInfo() {
         </div>
 
         {/* Windows */}
-        <div className="p-6 border border-gray-200 dark:border-gray-700 rounded-xl bg-white dark:bg-gray-800 hover:border-emerald-500 dark:hover:border-emerald-500 hover:shadow-md transition-all duration-200">
-          <div className="text-center">
+        <div className="p-6 border border-gray-200 dark:border-gray-700 rounded-xl bg-white dark:bg-gray-800 hover:border-emerald-500 dark:hover:border-emerald-500 hover:shadow-md transition-all duration-200 flex flex-col">
+          <div className="text-center flex-1 flex flex-col">
             <div className="text-5xl mb-4">🪟</div>
             <h4 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white">
               Windows
             </h4>
-            <p className="text-sm text-gray-500 dark:text-gray-400 mb-5">
+            <p className="text-sm text-gray-500 dark:text-gray-400 mb-5 min-h-[2.5rem]">
               支持 Windows 10+
             </p>
             <a
               href={downloadLinks.windows}
-              className="inline-block w-full px-6 py-3 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors font-medium shadow-sm hover:shadow"
+              className="inline-block w-full px-6 py-3 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors font-medium shadow-sm hover:shadow mt-auto"
               download
             >
               下载安装程序
@@ -71,18 +71,18 @@ export default function ReleaseInfo() {
         </div>
 
         {/* Linux */}
-        <div className="p-6 border border-gray-200 dark:border-gray-700 rounded-xl bg-white dark:bg-gray-800 hover:border-emerald-500 dark:hover:border-emerald-500 hover:shadow-md transition-all duration-200">
-          <div className="text-center">
+        <div className="p-6 border border-gray-200 dark:border-gray-700 rounded-xl bg-white dark:bg-gray-800 hover:border-emerald-500 dark:hover:border-emerald-500 hover:shadow-md transition-all duration-200 flex flex-col">
+          <div className="text-center flex-1 flex flex-col">
             <div className="text-5xl mb-4">🐧</div>
             <h4 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white">
               Linux
             </h4>
-            <p className="text-sm text-gray-500 dark:text-gray-400 mb-5">
+            <p className="text-sm text-gray-500 dark:text-gray-400 mb-5 min-h-[2.5rem]">
               支持 Ubuntu 18.04+
             </p>
             <a
               href={downloadLinks.linux}
-              className="inline-block w-full px-6 py-3 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors font-medium shadow-sm hover:shadow"
+              className="inline-block w-full px-6 py-3 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors font-medium shadow-sm hover:shadow mt-auto"
               download
             >
               下载 AppImage
