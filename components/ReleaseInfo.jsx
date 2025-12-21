@@ -37,7 +37,8 @@ export default function ReleaseInfo() {
               macOS
             </h4>
             <p className="text-sm text-gray-500 dark:text-gray-400 mb-5">
-              支持 macOS 10.15+
+              支持 macOS 12.0+<br />
+              <span className="text-xs">(Intel & Apple Silicon)</span>
             </p>
             <a
               href={downloadLinks.macos}
