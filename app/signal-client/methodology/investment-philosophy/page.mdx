@@ -3,7 +3,7 @@ title: 投资理念
 description: 价值为基、趋势为策、风控优先的投资理念
 ---
 
-import Link from 'next/link'
+import DocLink from '@/components/DocLink'
 
 <div className="mt-8">
 
@@ -40,7 +40,7 @@ import Link from 'next/link'
   - **估值分位参考**：结合估值分位（个股 PE/PB 历史分位数）进行仓位管理，在估值分位 `> 80%` 时即使企业质量仍好，也要考虑减仓
     - **个股估值分位**：指个股的市盈率（PE）或市净率（PB）在其近 3-5 年历史数据中的分位数
     - 优先使用 PB 分位数（适合重资产行业），若不可得则使用 PE 分位数
-    - 如果系统不提供，可通过当前 PE/PB 与历史数据对比，或结合 <Link href="/signal-client/methodology/kline-analysis">K线图位置</Link>判断
+    - 如果系统不提供，可通过当前 PE/PB 与历史数据对比，或结合 <DocLink href="/signal-client/methodology/kline-analysis">K线图位置</DocLink>判断
   - **买入标准**：确保买入价显著低于保守估值，估值分位 `< 30%` 时即使企业质量一般，也可以考虑买入
 
 ### 2. 趋势共振
@@ -260,10 +260,10 @@ ETF 采用"价值-趋势-风控"三维评估框架，建立"估值-趋势"矩阵
 
 ## 相关文档
 
-- <Link href="/signal-client/methodology/kline-analysis">K线图使用指南</Link>：学习如何使用K线图进行价格位置分析和趋势识别
-- <Link href="/signal-client/methodology/filter-presets">预设条件使用指南</Link>：了解如何使用系统预设的筛选条件
-- <Link href="/signal-client/methodology/indicator-guide">指标使用指南</Link>：学习如何正确使用各类指标
-- <Link href="/signal-client/guides/stock-pool">股票池管理指南</Link>：了解如何建立和管理股票池
-- <Link href="/signal-client/methodology/market-indicators">市场指标分析</Link>：理解看板中的市场指标
+- <DocLink href="/signal-client/methodology/kline-analysis">K线图使用指南</DocLink>：学习如何使用K线图进行价格位置分析和趋势识别
+- <DocLink href="/signal-client/methodology/filter-presets">预设条件使用指南</DocLink>：了解如何使用系统预设的筛选条件
+- <DocLink href="/signal-client/methodology/indicator-guide">指标使用指南</DocLink>：学习如何正确使用各类指标
+- <DocLink href="/signal-client/guides/stock-pool">股票池管理指南</DocLink>：了解如何建立和管理股票池
+- <DocLink href="/signal-client/methodology/market-indicators">市场指标分析</DocLink>：理解看板中的市场指标
 
 </div>
