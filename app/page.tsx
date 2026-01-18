@@ -8,7 +8,7 @@ export default function Home() {
         <main className="flex-1 flex items-center px-4 -mt-16 sm:-mt-20">
           <div className="max-w-4xl mx-auto">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 md:mb-8">
-              <span className="bg-gradient-to-r from-emerald-600 to-teal-500 bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-emerald-600 to-teal-500 bg-clip-text text-transparent">
                 交易信标
               </span>
               <span className="text-gray-500 dark:text-gray-400 ml-2 md:ml-4 text-2xl sm:text-3xl md:text-4xl">
