@@ -78,61 +78,59 @@ import DocLink from '@/components/DocLink'
 
 ## 第三步：设定买入卖出标准
 
-### 1. ETF买入标准
+买入卖出标准是投资计划的核心，需要根据<DocLink href="/investment-guide/investment-philosophy">投资理念</DocLink>中的"价值-趋势-风控"三维评估框架来制定。
 
-根据<DocLink href="/investment-guide/core-concepts/safety-margin">安全边际</DocLink>和<DocLink href="/investment-guide/core-concepts/trend-resonance">趋势共振</DocLink>：
+### ETF买入卖出标准
 
 **买入条件**：
 - **估值分位 `< 30%` + 趋势强**：积极买入，建仓至目标仓位
 - **估值分位 `< 30%` + 趋势弱**：谨慎买入，建仓至50%目标仓位
 - **估值分位 30%-50% + 趋势强**：可以买入，建仓至70%目标仓位
 
+**卖出条件**：
+- **估值分位 `> 80%` + 趋势弱**：大幅减仓或清仓
+- **估值分位 `> 80%` + 趋势强**：大幅减仓，但保留部分仓位（如20%）
+
 **仓位限制**：
 - 单只ETF不超过核心层的20%
 - 单一行业ETF合计不超过核心层的30%
 
-### 2. 个股买入标准
+> 💡 **深入了解**：<DocLink href="/investment-guide/core-concepts/safety-margin">安全边际详解</DocLink> | <DocLink href="/investment-guide/core-concepts/trend-resonance">趋势共振详解</DocLink>
 
-根据投资理念，个股买入需要满足：
+### 个股买入卖出标准
 
-**核心条件**：
+**买入条件**（需同时满足）：
 1. **企业质量优秀**：企业质量评分 ≥ 85分（优先）或 ≥ 70分
 2. **估值合理**：估值分位 < 50%，优先 < 30%
 3. **趋势共振**：基本面改善 + 价格/资金共振
+
+**卖出条件**（满足任一即考虑卖出）：
+- **估值分位 `> 80%`**：即使企业质量仍好，也要考虑大幅减仓
+- **企业质量评估下降**：核心财务指标连续两个季度恶化
+- **趋势反转**：价格/资金趋势明显反转，且基本面同步恶化
 
 **仓位限制**：
 - 单只个股不超过总资金的8%
 - 保持3-5只个股持仓
 - 避免与ETF持仓行业过度重叠
 
-> 💡 **深入学习**：了解<DocLink href="/investment-guide/core-concepts/enterprise-quality">企业质量评估</DocLink>的完整标准
-
-### 3. 卖出标准
-
-**ETF卖出条件**：
-- **估值分位 `> 80%` + 趋势弱**：大幅减仓或清仓
-- **估值分位 `> 80%` + 趋势强**：大幅减仓，但保留部分仓位（如20%）
-
-**个股卖出条件**（满足任一即考虑卖出）：
-- **估值分位 `> 80%`**：即使企业质量仍好，也要考虑大幅减仓
-- **企业质量评估下降**：核心财务指标连续两个季度恶化
-- **趋势反转**：价格/资金趋势明显反转，且基本面同步恶化
+> 💡 **深入了解**：<DocLink href="/investment-guide/core-concepts/enterprise-quality">企业质量评估</DocLink>
 
 ## 第四步：制定仓位管理规则
 
-### 1. 核心层仓位管理
+### 核心层仓位管理
 
-**目标比例**：70-80%
-**再平衡缓冲区间**：65-85%
+**目标比例**：70-80%  
+**再平衡缓冲区间**：65-85%  
 **触发再平衡**：超出缓冲区间时
 
 **单只ETF限制**：
 - 不超过核心层的20%
 - 单一行业ETF合计不超过核心层的30%
 
-### 2. 卫星层仓位管理
+### 卫星层仓位管理
 
-**目标比例**：20-30%
+**目标比例**：20-30%  
 **单只个股限制**：
 - 不超过总资金的8%
 - 保持3-5只个股持仓
@@ -141,7 +139,7 @@ import DocLink from '@/components/DocLink'
 - 避免与ETF持仓行业过度重叠
 - 单一行业占比不超过30%
 
-### 3. 再平衡机制
+### 再平衡机制
 
 **触发条件**：
 - 核心/卫星比例超出缓冲区间（65-85%）
@@ -152,13 +150,13 @@ import DocLink from '@/components/DocLink'
 - 优先通过新增资金调整，而非卖出现有持仓
 - 再平衡时仍需遵循价值筛选和趋势验证原则
 
-> 💡 **深入学习**：了解<DocLink href="/investment-guide/core-concepts/portfolio-robustness">组合稳健性</DocLink>中的再平衡机制
+> 💡 **深入了解**：<DocLink href="/investment-guide/core-concepts/portfolio-robustness">组合稳健性详解</DocLink>
 
 ## 第五步：设定风险控制规则
 
-### 1. 风险预算
+风险控制是"风控优先"理念的核心体现，需要建立风险预算表和止损止盈规则。
 
-根据<DocLink href="/investment-guide/core-concepts/risk-management">风险管理</DocLink>，设定风险预算：
+### 风险预算
 
 **核心风险控制指标**：
 - **组合回撤**：单月回撤 > 10% 时减仓
@@ -166,7 +164,7 @@ import DocLink from '@/components/DocLink'
 - **个股集中度**：单只个股占比 > 8% 时减仓
 - **流动性风险**：低流动性资产占比 > 20% 时减仓
 
-### 2. 止损止盈规则
+### 止损止盈规则
 
 **止损标准**：
 - 基本面恶化
@@ -177,6 +175,8 @@ import DocLink from '@/components/DocLink'
 - 估值分位 > 80%
 - 达到目标收益
 - 发现更优质标的
+
+> 💡 **深入了解**：<DocLink href="/investment-guide/core-concepts/risk-management">风险管理详解</DocLink>
 
 ## 第六步：执行和复盘
 
