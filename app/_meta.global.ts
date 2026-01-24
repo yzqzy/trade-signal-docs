@@ -3,6 +3,10 @@ export default {
     type: "page",
     display: "hidden"
   },
+  "investment-guide": {
+    type: "page",
+    title: "投资指南"
+  },
   "signal-client": {
     type: "page",
     title: "客户端"
