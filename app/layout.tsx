@@ -87,7 +87,7 @@ export default async function RootLayout({ children }) {
       <body>
         <Layout
           sidebar={{
-            autoCollapse: true
+            autoCollapse: false
           }}
           navbar={navbar}
           pageMap={await getPageMap()}
