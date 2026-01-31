@@ -5,6 +5,27 @@ description: 交易信标客户端版本更新记录
 
 <div className="mt-8">
 
+## v0.1.26 - 2026-01-31
+
+### 优化
+
+- **交易计划字段精简**：移除冗余和不符合投资理念的字段
+  - 移除通用字段：`description`、`priority`、`tags`
+  - 移除选股计划字段：`filterConditions`、`qualityScore`、`stopLoss`、`takeProfit`
+  - 移除持仓管理字段：`rebalancePlan`、`riskControl.stopLoss`、`riskControl.takeProfit`
+  - 移除关键指标字段：`operatingCashFlow`
+  - 执行记录简化：移除 `quantity`、`amount`，只保留 `buy`/`sell` 操作类型
+  - 复盘记录简化：合并 `lessons` 和 `nextActions` 到 `content` 中
+- **交易计划操作流程优化**：简化操作步骤，提升使用效率
+  - 快速创建直接完成，不再自动打开详细编辑
+  - 批量创建移除冗余字段，只保留计划类型选择
+  - 操作按钮改为文字显示（置顶、收藏、删除），分离窗口功能整合到工具栏
+  - 添加操作成功/失败提示，SSE 订阅自动更新
+  - 修复页面滚动区域高度设置
+- **代码清理**：移除调试日志，清理自选页面和交易计划页面的 console.log 输出
+
+---
+
 ## v0.1.25 - 2026-01-31
 
 ### 新增
