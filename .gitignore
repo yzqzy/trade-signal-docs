@@ -37,4 +37,5 @@ _pagefind/
 # temporary directory
 temp/
 
-testing/
+# testings
+testings/
