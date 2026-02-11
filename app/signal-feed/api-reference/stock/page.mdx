@@ -1,0 +1,202 @@
+---
+title: 股票接口 - A股
+description: Signal Feed A股股票数据 API 接口文档
+---
+
+## 股票接口 - A股
+
+Signal Feed 提供完整的 A 股股票数据接口，支持 A 股股票列表、详情、K线、选股、股东、业绩等功能。
+
+## 基础信息
+
+- **Base URL**: `http://localhost:4000/api/v1`
+- **认证方式**: Bearer Token
+- **数据格式**: JSON
+- **接口前缀**: `/stock`
+
+## 主要接口
+
+### 基础信息
+
+#### 列表
+```http
+GET /api/v1/stock/list?codes=000001,600519
+```
+批量查询股票，支持逗号分隔的股票代码（6位或000001.SZ格式）。
+
+#### 详情
+```http
+GET /api/v1/stock/detail/{code}
+```
+获取单只股票基础信息。
+
+#### 搜索
+```http
+GET /api/v1/stock/search?keyword=平安
+```
+按关键词搜索股票代码与名称。
+
+### 筛选
+
+#### 筛选
+```http
+GET /api/v1/stock/selection?page=1&pageSize=50&filter=
+```
+获取股票筛选列表，支持自定义筛选条件。
+
+### 行情数据
+
+#### K线
+```http
+GET /api/v1/stock/kline?code=000001&period=day&fqt=pre
+```
+获取股票日/周/月K线，支持复权类型。
+
+**查询参数**:
+- `code`: 股票代码（必需）
+- `period`: 周期，可选值：day(日)、week(周)、month(月)
+- `fqt`: 复权类型，可选值：pre(前复权)、post(后复权)、none(不复权)
+
+#### 实时指标
+```http
+GET /api/v1/stock/indicator/realtime/{code}
+```
+获取指定股票的实时行情指标。
+
+### 财务数据
+
+#### 财务指标
+```http
+GET /api/v1/stock/indicator/financial/{code}
+```
+获取指定股票的财务指标。
+
+#### 主营业务
+```http
+GET /api/v1/stock/business/main/{code}
+```
+获取公司主营业务构成与收入结构。
+
+### 分类数据
+
+#### 行业列表
+```http
+GET /api/v1/stock/industry/list
+```
+获取行业分类列表。
+
+#### 地域列表
+```http
+GET /api/v1/stock/area/list
+```
+获取地域分类列表。
+
+#### 概念列表
+```http
+GET /api/v1/stock/concept/list
+```
+获取概念板块列表。
+
+#### 风格列表
+```http
+GET /api/v1/stock/style/list
+```
+获取风格分类列表。
+
+### 股东数据
+
+#### 股东研究
+```http
+GET /api/v1/stock/shareholder/research/{code}?endDate=2024-06-30
+```
+获取股票的十大流通股东数据。
+
+#### 股东持仓列表
+```http
+GET /api/v1/stock/shareholder/list?code=10671586&endDate=2024-06-30
+```
+按股东代码查询该股东持仓的股票列表。
+
+### 业绩数据
+
+#### 业绩预告
+```http
+GET /api/v1/stock/earnings-forecast?reportDate=2024-06-30&page=1&pageSize=20
+```
+获取业绩预告列表，按报告期与分页。
+
+#### 十年业绩
+```http
+GET /api/v1/stock/performance/ten-years?industryName=银行&year=2024
+```
+按行业与年份获取十年业绩数据。
+
+### 其他
+
+#### 个股新闻
+```http
+GET /api/v1/stock/news?code=000001&pageIndex=1&pageSize=20
+```
+获取指定股票相关新闻，支持分页。
+
+#### 核心题材
+```http
+GET /api/v1/stock/theme/core/{code}
+```
+获取股票关联的核心概念与题材。
+
+## 使用示例
+
+```javascript
+const API_TOKEN = 'your_api_token';
+const BASE_URL = 'http://localhost:4000/api/v1';
+
+// 获取股票详情
+async function getStockDetail(code) {
+  const response = await fetch(`${BASE_URL}/stock/detail/${code}`, {
+    headers: {
+      'Authorization': `Bearer ${API_TOKEN}`
+    }
+  });
+  return response.json();
+}
+
+// 获取股票K线
+async function getStockKline(code, period = 'day', fqt = 'pre') {
+  const params = new URLSearchParams({ code, period, fqt });
+  const response = await fetch(`${BASE_URL}/stock/kline?${params}`, {
+    headers: {
+      'Authorization': `Bearer ${API_TOKEN}`
+    }
+  });
+  return response.json();
+}
+
+// 股票筛选
+async function stockSelection(filter = '', page = 1, pageSize = 50) {
+  const params = new URLSearchParams({ filter, page: page.toString(), pageSize: pageSize.toString() });
+  const response = await fetch(`${BASE_URL}/stock/selection?${params}`, {
+    headers: {
+      'Authorization': `Bearer ${API_TOKEN}`
+    }
+  });
+  return response.json();
+}
+```
+
+## 响应格式
+
+所有接口统一返回以下格式：
+
+```json
+{
+  "success": true,
+  "data": {
+    // 具体数据内容
+  }
+}
+```
+
+## 更多资源
+
+- 📖 [完整 API 文档](/signal-feed/api-reference) - 返回主 API 文档

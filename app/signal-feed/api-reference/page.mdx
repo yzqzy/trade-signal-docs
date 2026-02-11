@@ -1,28 +1,40 @@
 ---
 title: API 接口文档
-description: Signal Feed 完整的 API 接口文档，包含股票数据和新闻资讯接口
+description: Signal Feed 完整的 API 接口文档，包含股票、ETF基金、宏观、市场、新闻等数据接口
 ---
 
 ## API 接口文档
 
-Signal Feed 提供完整的金融数据 API 接口，支持 A 股股票数据和多来源新闻资讯。
+Signal Feed 提供完整的金融数据 API 接口，支持股票、ETF基金、宏观、市场、新闻等多维度数据。
 
 ## 基础信息
 
 - **Base URL**: `http://localhost:4000/api/v1`
 - **认证方式**: Bearer Token (所有接口都需要认证)
 - **数据格式**: JSON
-- **响应格式**: 统一使用 TransformInterceptor 格式化
+- **响应格式**: 统一响应格式
 
 ## 接口分类
 
-### 📈 股票数据 (A股)
-- [股票接口](/signal-feed/api-reference/stocks-a) - A股股票数据接口
-- 获取股票列表、详情、行情、筛选器等
+### 📈 股票数据
+- [股票接口](/signal-feed/api-reference/stock) - A股股票列表、详情、K线、选股、股东、业绩等
+- 支持A股股票搜索、行业分类、概念板块、风格分类等
+
+### 💰 基金数据
+- [基金接口 - ETF](/signal-feed/api-reference/fund) - ETF基金列表、详情、持仓、资产配置等
+- 支持ETF基金筛选、K线、持仓明细、行业配置等
+
+### 📊 宏观数据
+- [宏观接口](/signal-feed/api-reference/macro) - PMI、CPI、GDP、货币供应量等
+- 提供宏观经济指标的时间序列数据
+
+### 🌐 市场数据
+- [市场接口](/signal-feed/api-reference/market) - 大盘指数、资金流向、市场热力图等
+- 提供市场整体情况和资金流向数据
 
 ### 📰 新闻资讯
-- [新闻接口](/signal-feed/api-reference/news) - 多来源新闻数据接口
-- 支持新浪、富途牛牛、财联社、百度股市通等来源
+- [新闻接口](/signal-feed/api-reference/news) - 市场概览、题材库、快讯要闻等
+- 提供市场资讯和题材分析数据
 
 ## 通用查询参数
 
@@ -76,36 +88,25 @@ async function apiRequest(endpoint, options = {}) {
 }
 
 // 获取股票列表
-async function getStockList(page = 1, pageSize = 20) {
-  const params = new URLSearchParams({
-    page: page.toString(),
-    pageSize: pageSize.toString()
-  });
-  
-  return apiRequest(`/stocks-a/stocks/list?${params}`);
+async function getStockList(codes = '000001,600519') {
+  return apiRequest(`/stock/list?codes=${codes}`);
 }
 
-// 获取新闻列表
-async function getNews(source = 'sina', page = 1, pageSize = 20) {
-  const params = new URLSearchParams({
-    source,
-    page: page.toString(),
-    pageSize: pageSize.toString()
-  });
-  
-  return apiRequest(`/news/list?${params}`);
+// 获取市场概览
+async function getMarketOverview() {
+  return apiRequest('/news/overview');
 }
 
 // 使用示例
 async function example() {
   try {
     // 获取股票列表
-    const stocks = await getStockList(1, 10);
+    const stocks = await getStockList('000001,600519');
     console.log('股票列表:', stocks);
     
-    // 获取新浪新闻
-    const news = await getNews('sina', 1, 10);
-    console.log('新闻列表:', news);
+    // 获取市场概览
+    const overview = await getMarketOverview();
+    console.log('市场概览:', overview);
   } catch (error) {
     console.error('API 请求失败:', error);
   }
@@ -114,29 +115,140 @@ async function example() {
 
 ## 接口列表
 
-### 股票数据接口
+### 股票数据接口（A股）
+
+#### 基础信息
+| 接口 | 方法 | 路径 | 说明 |
+|------|------|------|------|
+| 股票列表 | GET | `/stock/list` | 批量查询A股股票 |
+| 股票详情 | GET | `/stock/detail/{code}` | 获取A股股票基础信息 |
+| 股票搜索 | GET | `/stock/search` | 按关键词搜索A股股票 |
+| 股票筛选 | GET | `/stock/selection` | 获取A股股票筛选列表 |
+
+#### 行情数据
+| 接口 | 方法 | 路径 | 说明 |
+|------|------|------|------|
+| K线数据 | GET | `/stock/kline` | 获取A股股票K线数据 |
+| 实时指标 | GET | `/stock/indicator/realtime/{code}` | 获取A股实时行情指标 |
+
+#### 财务数据
+| 接口 | 方法 | 路径 | 说明 |
+|------|------|------|------|
+| 财务指标 | GET | `/stock/indicator/financial/{code}` | 获取A股财务指标 |
+| 主营业务 | GET | `/stock/business/main/{code}` | 获取公司主营业务构成 |
+
+#### 分类数据
+| 接口 | 方法 | 路径 | 说明 |
+|------|------|------|------|
+| 行业列表 | GET | `/stock/industry/list` | 获取A股行业分类列表 |
+| 地域列表 | GET | `/stock/area/list` | 获取A股地域分类列表 |
+| 概念列表 | GET | `/stock/concept/list` | 获取A股概念板块列表 |
+| 风格列表 | GET | `/stock/style/list` | 获取A股风格分类列表 |
+
+#### 股东数据
+| 接口 | 方法 | 路径 | 说明 |
+|------|------|------|------|
+| 股东研究 | GET | `/stock/shareholder/research/{code}` | 获取A股股东持仓数据 |
+| 股东持仓列表 | GET | `/stock/shareholder/list` | 按股东代码查询持仓股票列表 |
+
+#### 业绩数据
+| 接口 | 方法 | 路径 | 说明 |
+|------|------|------|------|
+| 业绩预告 | GET | `/stock/earnings-forecast` | 获取A股业绩预告数据 |
+| 十年业绩 | GET | `/stock/performance/ten-years` | 按行业与年份获取十年业绩数据 |
+
+#### 其他数据
+| 接口 | 方法 | 路径 | 说明 |
+|------|------|------|------|
+| 个股新闻 | GET | `/stock/news` | 获取指定股票相关新闻 |
+| 核心题材 | GET | `/stock/theme/core/{code}` | 获取股票关联的核心概念与题材 |
+
+### 基金接口 - ETF
+
+#### 基础信息
+| 接口 | 方法 | 路径 | 说明 |
+|------|------|------|------|
+| ETF列表 | GET | `/fund/all-etf-list` | 获取全量ETF基金列表 |
+| ETF详情 | GET | `/fund/detail/{code}` | 获取ETF基金基础信息 |
+| ETF筛选 | GET | `/fund/selection` | 获取ETF基金筛选列表 |
+
+#### 行情数据
+| 接口 | 方法 | 路径 | 说明 |
+|------|------|------|------|
+| ETF K线 | GET | `/fund/kline` | 获取ETF基金K线数据 |
+
+#### 持仓配置
+| 接口 | 方法 | 路径 | 说明 |
+|------|------|------|------|
+| 持仓明细 | GET | `/fund/holdings/{code}` | 获取ETF基金持仓明细 |
+| 资产配置 | GET | `/fund/asset-allocation/{code}` | 获取ETF基金资产配置结构 |
+| 行业配置 | GET | `/fund/industry-allocation/{code}` | 获取ETF基金行业配置分布 |
+
+#### 其他数据
+| 接口 | 方法 | 路径 | 说明 |
+|------|------|------|------|
+| 调仓记录 | GET | `/fund/transactions/{code}` | 获取ETF基金历史调仓记录 |
+| 跟踪指数 | GET | `/fund/following-index/{code}` | 获取ETF基金跟踪指数信息 |
+| 估值分析 | GET | `/fund/valuation-analysis/{code}` | 获取ETF基金估值分析 |
+
+### 宏观数据接口
+
+#### 经济指标
+| 接口 | 方法 | 路径 | 说明 |
+|------|------|------|------|
+| PMI数据 | GET | `/macro/pmi` | 获取采购经理指数数据 |
+| PMI系列 | GET | `/macro/pmi/series` | 获取PMI系列数据（图表用） |
+| CPI数据 | GET | `/macro/cpi` | 获取居民消费价格指数数据 |
+| CPI系列 | GET | `/macro/cpi/series` | 获取CPI系列数据 |
+| PPI数据 | GET | `/macro/ppi` | 获取工业品出厂价格指数数据 |
+| PPI系列 | GET | `/macro/ppi/series` | 获取PPI系列数据 |
+| GDP数据 | GET | `/macro/gdp` | 获取国内生产总值数据 |
+| GDP系列 | GET | `/macro/gdp/series` | 获取GDP系列数据 |
+
+#### 货币金融
+| 接口 | 方法 | 路径 | 说明 |
+|------|------|------|------|
+| 货币供应量 | GET | `/macro/currency-supply` | 获取M0/M1/M2货币供应量数据 |
+| 货币供应量系列 | GET | `/macro/currency-supply/series` | 获取货币供应量系列数据 |
+| LPR数据 | GET | `/macro/lpr` | 获取贷款市场报价利率数据 |
+| LPR系列 | GET | `/macro/lpr/series` | 获取LPR系列数据 |
+| 新增信贷 | GET | `/macro/new-loans` | 获取新增信贷数据 |
+| 新增信贷系列 | GET | `/macro/new-loans/series` | 获取新增信贷系列数据 |
+
+#### 其他指标
+| 接口 | 方法 | 路径 | 说明 |
+|------|------|------|------|
+| 固定资产投资 | GET | `/macro/fixed-asset-investment` | 获取城镇固定资产投资数据 |
+| 固定资产投资系列 | GET | `/macro/fixed-asset-investment/series` | 获取固定资产投资系列数据 |
+| 社会消费品零售总额 | GET | `/macro/total-retail` | 获取社零数据 |
+| 社会消费品零售总额系列 | GET | `/macro/total-retail/series` | 获取社零系列数据 |
+| 海关进出口 | GET | `/macro/customs-trade` | 获取海关进出口增减情况 |
+| 海关进出口系列 | GET | `/macro/customs-trade/series` | 获取海关进出口系列数据 |
+| 外汇和黄金储备 | GET | `/macro/gold-currency` | 获取外汇与黄金储备数据 |
+| 外汇和黄金储备系列 | GET | `/macro/gold-currency/series` | 获取外汇黄金系列数据 |
+
+### 市场数据接口
 
 | 接口 | 方法 | 路径 | 说明 |
 |------|------|------|------|
-| 获取交易日期 | GET | `/stocks-a/trade-dates` | 获取 A 股交易日期 |
-| 获取股票列表 | GET | `/stocks-a/stocks/list` | 获取股票基本信息列表 |
-| 获取股票详情 | GET | `/stocks-a/stocks/{code}/detail` | 获取指定股票详细信息 |
-| 获取行情列表 | GET | `/stocks-a/quotes/list` | 获取股票行情数据列表 |
-| 获取股票行情 | GET | `/stocks-a/quotes/{code}/detail` | 获取指定股票行情数据 |
-| 获取筛选器列表 | GET | `/stocks-a/screener/list` | 获取股票筛选器数据列表 |
-| 获取筛选器详情 | GET | `/stocks-a/screener/{code}/detail` | 获取指定股票筛选器数据 |
+| 大盘指数 | GET | `/market/indices` | 获取主要股指实时数据 |
+| 资金流向 | GET | `/market/flow` | 获取资金流向数据 |
+| 市场热力图 | GET | `/market/hotmap` | 获取全市场热力图数据 |
 
 ### 新闻资讯接口
 
 | 接口 | 方法 | 路径 | 说明 |
 |------|------|------|------|
-| 获取新闻列表 | GET | `/news/list` | 获取多来源新闻列表 |
-| 获取新浪新闻 | GET | `/news/sina/list` | 获取新浪财经新闻 |
-| 获取富途新闻 | GET | `/news/futunn/list` | 获取富途牛牛新闻 |
-| 获取财联社新闻 | GET | `/news/cls/list` | 获取财联社新闻 |
-| 获取百度新闻 | GET | `/news/baidu/list` | 获取百度财经新闻 |
+| 市场概览 | GET | `/news/overview` | 获取市场概览数据 |
+| 市场主线 | GET | `/news/mainline` | 获取市场主线主题 |
+| 题材库列表 | GET | `/news/topic/library/list` | 获取题材库分类列表 |
+| 题材库详情 | GET | `/news/topic/library/detail/{themeId}` | 获取题材详情 |
+| 快讯要闻 | GET | `/news/feed` | 获取快讯与要闻流 |
 
 ## 更多资源
 
-- 📖 [股票接口详情](/signal-feed/api-reference/stocks-a) - A股股票数据详细接口
-- 📖 [新闻接口详情](/signal-feed/api-reference/news) - 多来源新闻数据详细接口
+- 📖 [股票接口详情](/signal-feed/api-reference/stock) - 股票数据详细接口
+- 📖 [基金接口详情 - ETF](/signal-feed/api-reference/fund) - ETF基金数据详细接口
+- 📖 [宏观接口详情](/signal-feed/api-reference/macro) - 宏观数据详细接口
+- 📖 [市场接口详情](/signal-feed/api-reference/market) - 市场数据详细接口
+- 📖 [新闻接口详情](/signal-feed/api-reference/news) - 新闻资讯详细接口

@@ -9,11 +9,10 @@ export default {
   },
   "signal-client": {
     type: "page",
-    title: "客户端"
+    title: "投资分析工具"
   },
   "signal-feed": {
     type: "page",
-    title: "数据接口库",
-    display: "hidden"
+    title: "数据接口库"
   }
 };

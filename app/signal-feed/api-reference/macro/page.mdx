@@ -1,0 +1,223 @@
+---
+title: 宏观接口
+description: Signal Feed 宏观经济数据 API 接口文档
+---
+
+## 宏观接口
+
+Signal Feed 提供完整的宏观经济数据接口，支持PMI、CPI、GDP、货币供应量等宏观经济指标。
+
+## 基础信息
+
+- **Base URL**: `http://localhost:4000/api/v1`
+- **认证方式**: Bearer Token
+- **数据格式**: JSON
+- **接口前缀**: `/macro`
+
+## 主要接口
+
+### 经济指标
+
+#### PMI数据
+```http
+GET /api/v1/macro/pmi?page=1&pageSize=20
+```
+分页获取采购经理指数数据。
+
+#### PMI系列
+```http
+GET /api/v1/macro/pmi/series
+```
+获取PMI系列数据（图表用）。
+
+#### CPI数据
+```http
+GET /api/v1/macro/cpi?page=1&pageSize=20
+```
+获取居民消费价格指数数据。
+
+#### CPI系列
+```http
+GET /api/v1/macro/cpi/series
+```
+获取CPI系列数据。
+
+#### PPI数据
+```http
+GET /api/v1/macro/ppi?page=1&pageSize=20
+```
+获取工业品出厂价格指数数据。
+
+#### PPI系列
+```http
+GET /api/v1/macro/ppi/series
+```
+获取PPI系列数据。
+
+#### GDP数据
+```http
+GET /api/v1/macro/gdp?page=1&pageSize=20
+```
+获取国内生产总值数据。
+
+#### GDP系列
+```http
+GET /api/v1/macro/gdp/series
+```
+获取GDP系列数据。
+
+### 货币金融
+
+#### 货币供应量
+```http
+GET /api/v1/macro/currency-supply?page=1&pageSize=20
+```
+获取M0/M1/M2货币供应量数据。
+
+#### 货币供应量系列
+```http
+GET /api/v1/macro/currency-supply/series
+```
+获取货币供应量系列数据。
+
+#### LPR数据
+```http
+GET /api/v1/macro/lpr?page=1&pageSize=20
+```
+获取贷款市场报价利率数据。
+
+#### LPR系列
+```http
+GET /api/v1/macro/lpr/series
+```
+获取LPR系列数据。
+
+#### 新增信贷
+```http
+GET /api/v1/macro/new-loans?page=1&pageSize=20
+```
+获取新增信贷数据。
+
+#### 新增信贷系列
+```http
+GET /api/v1/macro/new-loans/series
+```
+获取新增信贷系列数据。
+
+### 其他指标
+
+#### 固定资产投资
+```http
+GET /api/v1/macro/fixed-asset-investment?page=1&pageSize=20
+```
+获取城镇固定资产投资数据。
+
+#### 固定资产投资系列
+```http
+GET /api/v1/macro/fixed-asset-investment/series
+```
+获取固定资产投资系列数据。
+
+#### 社零数据
+```http
+GET /api/v1/macro/total-retail?page=1&pageSize=20
+```
+获取社零数据。
+
+#### 社零系列
+```http
+GET /api/v1/macro/total-retail/series
+```
+获取社零系列数据。
+
+#### 海关进出口
+```http
+GET /api/v1/macro/customs-trade?page=1&pageSize=20
+```
+获取海关进出口增减情况。
+
+#### 海关进出口系列
+```http
+GET /api/v1/macro/customs-trade/series
+```
+获取海关进出口系列数据。
+
+#### 外汇和黄金储备
+```http
+GET /api/v1/macro/gold-currency?page=1&pageSize=20
+```
+获取外汇与黄金储备数据。
+
+#### 外汇黄金系列
+```http
+GET /api/v1/macro/gold-currency/series
+```
+获取外汇黄金系列数据。
+
+## 使用示例
+
+```javascript
+const API_TOKEN = 'your_api_token';
+const BASE_URL = 'http://localhost:4000/api/v1';
+
+// 获取PMI数据
+async function getPMI(page = 1, pageSize = 20) {
+  const params = new URLSearchParams({
+    page: page.toString(),
+    pageSize: pageSize.toString()
+  });
+  const response = await fetch(`${BASE_URL}/macro/pmi?${params}`, {
+    headers: {
+      'Authorization': `Bearer ${API_TOKEN}`
+    }
+  });
+  return response.json();
+}
+
+// 获取PMI系列数据（图表用）
+async function getPMISeries() {
+  const response = await fetch(`${BASE_URL}/macro/pmi/series`, {
+    headers: {
+      'Authorization': `Bearer ${API_TOKEN}`
+    }
+  });
+  return response.json();
+}
+
+// 获取CPI系列数据
+async function getCPISeries() {
+  const response = await fetch(`${BASE_URL}/macro/cpi/series`, {
+    headers: {
+      'Authorization': `Bearer ${API_TOKEN}`
+    }
+  });
+  return response.json();
+}
+
+// 获取GDP系列数据
+async function getGDPSeries() {
+  const response = await fetch(`${BASE_URL}/macro/gdp/series`, {
+    headers: {
+      'Authorization': `Bearer ${API_TOKEN}`
+    }
+  });
+  return response.json();
+}
+```
+
+## 响应格式
+
+所有接口统一返回以下格式：
+
+```json
+{
+  "success": true,
+  "data": {
+    // 具体数据内容
+  }
+}
+```
+
+## 更多资源
+
+- 📖 [完整 API 文档](/signal-feed/api-reference) - 返回主 API 文档

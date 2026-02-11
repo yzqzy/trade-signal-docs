@@ -1,0 +1,115 @@
+---
+title: 市场接口
+description: Signal Feed 市场数据 API 接口文档
+---
+
+## 市场接口
+
+Signal Feed 提供完整的市场数据接口，支持大盘指数、资金流向、市场热力图等功能。
+
+## 基础信息
+
+- **Base URL**: `http://localhost:4000/api/v1`
+- **认证方式**: Bearer Token
+- **数据格式**: JSON
+- **接口前缀**: `/market`
+
+## 主要接口
+
+### 大盘指数
+
+#### 大盘指数
+```http
+GET /api/v1/market/indices
+```
+获取主要股指实时数据。
+
+### 资金流向
+
+#### 资金流向
+```http
+GET /api/v1/market/flow?type=1
+```
+按类型获取资金流向数据。
+
+**查询参数**:
+- `type`: 类型（必需），可选值：
+  - `1`: 地域
+  - `2`: 行业
+  - `3`: 概念
+
+#### 资金流向列表
+```http
+GET /api/v1/market/flow/list?type=1
+```
+按类型获取资金流向明细列表。
+
+### 市场热力图
+
+#### 市场热力图
+```http
+GET /api/v1/market/hotmap?quotedata_hash=
+```
+获取全市场热力图数据，可选传quotedata_hash增量更新。
+
+**查询参数**:
+- `quotedata_hash`: 可选，用于增量更新的哈希值
+
+## 使用示例
+
+```javascript
+const API_TOKEN = 'your_api_token';
+const BASE_URL = 'http://localhost:4000/api/v1';
+
+// 获取大盘指数
+async function getMarketIndices() {
+  const response = await fetch(`${BASE_URL}/market/indices`, {
+    headers: {
+      'Authorization': `Bearer ${API_TOKEN}`
+    }
+  });
+  return response.json();
+}
+
+// 获取资金流向（按行业）
+async function getFundFlow(type = 2) {
+  const params = new URLSearchParams({ type: type.toString() });
+  const response = await fetch(`${BASE_URL}/market/flow?${params}`, {
+    headers: {
+      'Authorization': `Bearer ${API_TOKEN}`
+    }
+  });
+  return response.json();
+}
+
+// 获取市场热力图
+async function getMarketHotmap(quotedataHash = '') {
+  const params = quotedataHash 
+    ? new URLSearchParams({ quotedata_hash: quotedataHash })
+    : '';
+  const url = `${BASE_URL}/market/hotmap${params ? '?' + params : ''}`;
+  const response = await fetch(url, {
+    headers: {
+      'Authorization': `Bearer ${API_TOKEN}`
+    }
+  });
+  return response.json();
+}
+```
+
+## 响应格式
+
+所有接口统一返回以下格式：
+
+```json
+{
+  "success": true,
+  "data": {
+    // 具体数据内容
+  }
+}
+```
+
+## 更多资源
+
+- 📖 [完整 API 文档](/signal-feed/api-reference) - 返回主 API 文档

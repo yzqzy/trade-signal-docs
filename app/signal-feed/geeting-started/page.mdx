@@ -1,127 +1,190 @@
 ---
 title: 快速开始
-description: 快速部署和启动 Signal Feed 服务
+description: 快速了解如何使用 Signal Feed 数据接口
 ---
 
-## 环境准备
+## 基础使用
 
-在开始之前，请确保您的系统已安装以下依赖：
+Signal Feed 提供 RESTful API 接口，通过 HTTP 请求即可获取金融数据。
 
-- **Node.js** 18+ 
-- **pnpm** 8+
-- **Docker** 和 **Docker Compose**
-- **Git**
+## 认证方式
 
-## 源码部署
+所有 API 接口都需要通过 Bearer Token 认证：
 
-### 1. 克隆仓库
-
-```bash
-git clone git@github.com:yzqzy/signal-feed.git
-cd signal-feed
+```http
+Authorization: Bearer YOUR_API_TOKEN
 ```
 
-### 2. 安装依赖
+## 基础请求示例
 
-```bash
-pnpm install
+### JavaScript/Node.js
+
+```javascript
+const API_TOKEN = 'your_api_token';
+const BASE_URL = 'http://localhost:4000/api/v1';
+
+// 基础请求函数
+async function apiRequest(endpoint, options = {}) {
+  const response = await fetch(`${BASE_URL}${endpoint}`, {
+    headers: {
+      'Authorization': `Bearer ${API_TOKEN}`,
+      'Content-Type': 'application/json',
+      ...options.headers
+    },
+    ...options
+  });
+  
+  if (!response.ok) {
+    const error = await response.json();
+    throw new Error(`API 错误: ${error.message}`);
+  }
+  
+  return response.json();
+}
+
+// 获取A股股票详情
+async function getStockDetail(code) {
+  return apiRequest(`/stock/detail/${code}`);
+}
+
+// 获取ETF列表
+async function getETFList() {
+  return apiRequest('/fund/all-etf-list');
+}
+
+// 获取市场指数
+async function getMarketIndices() {
+  return apiRequest('/market/indices');
+}
 ```
 
-### 3. 配置环境变量
+### Python
 
-复制环境变量模板文件：
+```python
+import requests
 
-```bash
-cp .env.example .env
+API_TOKEN = 'your_api_token'
+BASE_URL = 'http://localhost:4000/api/v1'
+
+headers = {
+    'Authorization': f'Bearer {API_TOKEN}',
+    'Content-Type': 'application/json'
+}
+
+# 获取股票详情
+def get_stock_detail(code):
+    response = requests.get(
+        f'{BASE_URL}/stock/detail/{code}',
+        headers=headers
+    )
+    response.raise_for_status()
+    return response.json()
+
+# 获取基金列表
+def get_etf_list():
+    response = requests.get(
+        f'{BASE_URL}/fund/all-etf-list',
+        headers=headers
+    )
+    response.raise_for_status()
+    return response.json()
 ```
 
-编辑 `.env` 文件，根据实际情况填写数据库等配置信息：
+## 响应格式
 
-```env
-# 数据库配置
-DATABASE_URL=postgresql://username:password@localhost:5432/signal_feed
+所有接口统一返回以下格式：
 
-# Redis 配置
-REDIS_URL=redis://localhost:6379
-
-# API 配置
-API_PORT=3000
-API_HOST=localhost
+```json
+{
+  "success": true,
+  "data": {
+    // 具体数据内容
+  },
+  "message": "可选的消息"
+}
 ```
 
-## 开发环境
+## 使用示例
 
-### 1. 启动依赖服务
+### 获取股票数据（A股）
 
-使用 Docker Compose 启动 PostgreSQL 和 Redis：
+```javascript
+// 获取A股股票列表
+const stocks = await apiRequest('/stock/list?codes=000001,600519');
 
-```bash
-docker-compose -p signal-feed -f docker/docker-compose.dev.yml up -d
+// 获取A股股票K线
+const kline = await apiRequest('/stock/kline?code=000001&period=day&fqt=pre');
+
+// 获取A股股票财务指标
+const financial = await apiRequest('/stock/indicator/financial/000001');
 ```
 
-### 2. 启动开发服务
+### 获取ETF基金数据
 
-```bash
-pnpm start:dev
+```javascript
+// 获取ETF基金列表
+const etfList = await apiRequest('/fund/all-etf-list');
+
+// 获取ETF基金详情
+const etfDetail = await apiRequest('/fund/detail/159919');
+
+// 获取ETF基金持仓
+const holdings = await apiRequest('/fund/holdings/159919');
 ```
 
-服务启动后，访问 `http://localhost:3000` 查看 API 文档。
+### 获取宏观数据
 
-## 生产环境部署
+```javascript
+// 获取PMI数据
+const pmi = await apiRequest('/macro/pmi?page=1&pageSize=20');
 
-### 方式一：本地构建部署
+// 获取CPI数据
+const cpi = await apiRequest('/macro/cpi/series');
 
-#### 1. 构建应用
-
-```bash
-pnpm build
+// 获取GDP数据
+const gdp = await apiRequest('/macro/gdp/series');
 ```
 
-#### 2. 启动生产服务
+### 获取市场数据
 
-```bash
-pnpm start
+```javascript
+// 获取大盘指数
+const indices = await apiRequest('/market/indices');
+
+// 获取资金流向
+const flow = await apiRequest('/market/flow?type=1');
+
+// 获取市场热力图
+const hotmap = await apiRequest('/market/hotmap');
 ```
 
-### 方式二：Docker 部署
+### 获取新闻数据
 
-#### 1. 构建 Docker 镜像
+```javascript
+// 获取市场概览
+const overview = await apiRequest('/news/overview');
 
-```bash
-docker-compose -f docker-compose.yml build
+// 获取题材库列表
+const topics = await apiRequest('/news/topic/library/list');
+
+// 获取快讯要闻
+const feed = await apiRequest('/news/feed?cursor=');
 ```
 
-#### 2. 配置生产环境变量
+## 错误处理
 
-```bash
-cp .env.example .env.production.local
+```javascript
+try {
+  const data = await apiRequest('/stock/detail/000001');
+  console.log('数据:', data);
+} catch (error) {
+  console.error('请求失败:', error.message);
+  // 处理错误
+}
 ```
 
-编辑 `.env.production.local` 文件，配置生产环境参数。
+## 下一步
 
-#### 3. 启动生产服务
-
-```bash
-docker-compose \
-  -p signal-feed-prod \
-  -f docker-compose.yml \
-  --env-file .env.production.local \
-  up -d
-```
-
-## 常见问题
-
-### Q: 数据库连接失败
-A: 检查 PostgreSQL 服务是否正常启动，确认 `.env` 中的数据库连接字符串是否正确。
-
-### Q: Redis 连接失败  
-A: 确认 Redis 服务已启动，检查端口 6379 是否被占用。
-
-### Q: 端口被占用
-A: 修改 `.env` 文件中的 `API_PORT` 配置，或停止占用端口的其他服务。
-
-{/* ## 下一步
-
-- 📖 查看 [API 文档](/signal-feed/api-reference)
-- 🔧 了解 [配置说明](/signal-feed/configuration)  
-- 🚀 探索 [高级功能](/signal-feed/advanced-features) */}
+- 📖 查看 [完整 API 文档](/signal-feed/api-reference) - 了解所有可用接口
+- 🔍 查看 [A股股票接口详情](/signal-feed/api-reference/stock) - A股股票数据接口详解
+- 💰 查看 [基金接口详情 - ETF](/signal-feed/api-reference/fund) - ETF基金数据接口详解

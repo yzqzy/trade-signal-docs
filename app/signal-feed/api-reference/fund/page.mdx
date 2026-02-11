@@ -1,0 +1,155 @@
+---
+title: 基金接口 - ETF
+description: Signal Feed ETF基金数据 API 接口文档
+---
+
+## 基金接口 - ETF
+
+Signal Feed 提供完整的 ETF 基金数据接口，支持ETF基金列表、详情、持仓、资产配置等功能。
+
+## 基础信息
+
+- **Base URL**: `http://localhost:4000/api/v1`
+- **认证方式**: Bearer Token
+- **数据格式**: JSON
+- **接口前缀**: `/fund`
+
+## 主要接口
+
+### 基础信息
+
+#### 全量列表
+```http
+GET /api/v1/fund/all-etf-list
+```
+获取全量ETF基金列表（无筛选），供ETF页面搜索用，建议客户端缓存。
+
+#### 详情
+```http
+GET /api/v1/fund/detail/{code}
+```
+获取单只ETF基金基础信息。
+
+#### 筛选
+```http
+GET /api/v1/fund/selection?filter=
+```
+获取ETF基金筛选列表，支持自定义筛选条件。
+
+### 行情数据
+
+#### K线
+```http
+GET /api/v1/fund/kline?code=159919&period=day&fqt=pre
+```
+获取ETF基金日/周/月K线，支持复权类型。
+
+**查询参数**:
+- `code`: ETF基金代码（必需）
+- `period`: 周期，可选值：day(日)、week(周)、month(月)
+- `fqt`: 复权类型，可选值：pre(前复权)、post(后复权)、none(不复权)
+
+### 持仓配置
+
+#### 持仓明细
+```http
+GET /api/v1/fund/holdings/{code}
+```
+获取ETF基金持仓股票/债券明细。
+
+#### 资产配置
+```http
+GET /api/v1/fund/asset-allocation/{code}
+```
+获取ETF基金资产配置结构。
+
+#### 行业配置
+```http
+GET /api/v1/fund/industry-allocation/{code}
+```
+获取ETF基金行业配置分布。
+
+### 其他
+
+#### 调仓记录
+```http
+GET /api/v1/fund/transactions/{code}
+```
+获取ETF基金历史调仓记录。
+
+#### 跟踪指数
+```http
+GET /api/v1/fund/following-index/{code}
+```
+获取ETF基金跟踪指数信息。
+
+#### 估值分析
+```http
+GET /api/v1/fund/valuation-analysis/{code}
+```
+获取ETF基金估值分析。
+
+## 使用示例
+
+```javascript
+const API_TOKEN = 'your_api_token';
+const BASE_URL = 'http://localhost:4000/api/v1';
+
+// 获取ETF列表
+async function getETFList() {
+  const response = await fetch(`${BASE_URL}/fund/all-etf-list`, {
+    headers: {
+      'Authorization': `Bearer ${API_TOKEN}`
+    }
+  });
+  return response.json();
+}
+
+// 获取ETF基金详情
+async function getETFDetail(code) {
+  const response = await fetch(`${BASE_URL}/fund/detail/${code}`, {
+    headers: {
+      'Authorization': `Bearer ${API_TOKEN}`
+    }
+  });
+  return response.json();
+}
+
+// 获取ETF基金持仓
+async function getETFHoldings(code) {
+  const response = await fetch(`${BASE_URL}/fund/holdings/${code}`, {
+    headers: {
+      'Authorization': `Bearer ${API_TOKEN}`
+    }
+  });
+  return response.json();
+}
+
+// 获取ETF基金K线
+async function getETFKline(code, period = 'day', fqt = 'pre') {
+  const params = new URLSearchParams({ code, period, fqt });
+  const response = await fetch(`${BASE_URL}/fund/kline?${params}`, {
+    headers: {
+      'Authorization': `Bearer ${API_TOKEN}`
+    }
+  });
+  return response.json();
+}
+```
+
+## 响应格式
+
+所有接口统一返回以下格式：
+
+```json
+{
+  "success": true,
+  "data": {
+    // 具体数据内容
+  }
+}
+```
+
+## 更多资源
+
+- 📖 [完整 API 文档](/signal-feed/api-reference) - 返回主 API 文档
