@@ -64,7 +64,7 @@ const navbar = (
       </>
     }
     projectLink="https://github.com/yzqzy"
-    projectIcon={<SiGithub className="w-5 h-5" />}
+    projectIcon={<SiGithub className="w-5 h-5 ml-4" />}
   />
 );
 
