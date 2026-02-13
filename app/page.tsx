@@ -43,12 +43,12 @@ export default function Home() {
       <main className="flex-1 flex items-center justify-center px-6 py-12 sm:pl-6 sm:pr-12 lg:pr-16">
         <div className="w-full max-w-6xl mx-auto -translate-y-8">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-y-12 md:gap-x-[110px] md:gap-y-0">
-            <div className="md:col-span-5 flex flex-col gap-6 md:justify-center">
-              <h1 className="text-[36px] font-medium leading-[1.1] tracking-tight">
+            <div className="md:col-span-5 flex flex-col gap-6 md:justify-start">
+              <h1 className="text-[42px] font-medium leading-[1.1] tracking-tight">
                 <span className="bg-linear-to-r from-emerald-600 to-teal-500 bg-clip-text text-transparent">
                   交易信标
                 </span>
-                <span className="ml-2 text-xl font-normal text-gray-500 dark:text-gray-400">
+                <span className="ml-2 text-2xl font-normal text-gray-500 dark:text-gray-400">
                   TradeSignal
                 </span>
               </h1>
