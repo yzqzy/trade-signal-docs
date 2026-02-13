@@ -43,8 +43,8 @@ export default function Home() {
       <main className="flex-1 flex items-center justify-center px-6 py-12 sm:pl-6 sm:pr-12 lg:pr-16">
         <div className="w-full max-w-6xl mx-auto -translate-y-8">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-y-12 md:gap-x-[110px] md:gap-y-0">
-            <div className="md:col-span-5 flex flex-col gap-6 md:justify-start">
-              <h1 className="text-[42px] font-medium leading-[1.1] tracking-tight">
+            <div className="md:col-span-5 flex flex-col md:min-h-0 md:justify-between">
+              <h1 className="text-[42px] font-medium leading-[1.1] tracking-tight shrink-0">
                 <span className="bg-linear-to-r from-emerald-600 to-teal-500 bg-clip-text text-transparent">
                   交易信标
                 </span>
@@ -52,14 +52,14 @@ export default function Home() {
                   TradeSignal
                 </span>
               </h1>
-              <div className="space-y-3 text-base text-gray-600 dark:text-gray-400">
+              <div className="flex-1 flex flex-col justify-evenly min-h-0 py-3 md:py-4 text-base text-gray-600 dark:text-gray-400">
                 <p>以「价值为基、趋势为策、风控优先」为核心理念，专为 A 股投资者而设。</p>
                 <p>整合多维度市场数据，提供专业的投资分析工具，智能追踪市场动态，发现潜在投资机会。</p>
                 <p>从分析工具、投资指南到数据接口与在线 AI，助您系统化完成从市场分析到投资决策的全流程，为投资决策提供可靠支撑。</p>
               </div>
               <Link
                 href="/signal-client"
-                className="mt-4 inline-flex w-fit items-center justify-center px-6 py-3 text-base font-medium text-white rounded-md bg-linear-to-br from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
+                className="shrink-0 inline-flex w-fit items-center justify-center px-6 py-3 text-base font-medium text-white rounded-md bg-linear-to-br from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:ring-offset-2 dark:focus:ring-offset-gray-900 mb-3"
               >
                 立即体验
               </Link>
