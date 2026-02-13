@@ -2,6 +2,7 @@ import { Layout, Navbar } from "nextra-theme-docs";
 import { Head, Search } from "nextra/components";
 import { getPageMap } from "nextra/page-map";
 import Image from "next/image";
+import { SiGithub } from "@icons-pack/react-simple-icons";
 
 import logo from "../public/logo.svg";
 
@@ -62,6 +63,8 @@ const navbar = (
         </span>
       </>
     }
+    projectLink="https://github.com/yzqzy"
+    projectIcon={<SiGithub className="w-5 h-5" />}
   />
 );
 
