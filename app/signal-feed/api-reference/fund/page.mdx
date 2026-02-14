@@ -22,19 +22,19 @@ Signal Feed 提供完整的 ETF 基金数据接口，支持ETF基金列表、详
 ```http
 GET /api/v1/fund/all-etf-list
 ```
-获取全量 ETF 基金列表（无筛选），供 ETF 页面搜索用，建议客户端缓存。
+获取全量 ETF 列表（无筛选）。
 
 #### 详情
 ```http
 GET /api/v1/fund/detail/{code}
 ```
-获取单只 ETF 基金基础信息。
+获取单只基金基础信息。
 
-#### 筛选
+#### 基金选股
 ```http
 GET /api/v1/fund/selection?filter=
 ```
-获取 ETF 基金筛选列表，支持自定义筛选条件。
+获取基金筛选列表，支持自定义筛选条件。
 
 ### 行情数据
 

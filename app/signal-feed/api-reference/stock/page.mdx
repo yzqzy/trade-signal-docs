@@ -22,7 +22,7 @@ Signal Feed 提供完整的 A 股股票数据接口，支持 A 股股票列表�
 ```http
 GET /api/v1/stock/list?codes=000001,600519
 ```
-批量查询股票，支持逗号分隔的股票代码（6 位数字或带 .SH/.SZ/.BJ 后缀）。
+按股票代码列表批量获取，逗号分隔，支持 6 位或 000001.SZ 格式。
 
 #### 详情
 ```http
@@ -57,17 +57,17 @@ GET /api/v1/stock/kline?code=000001&period=day&fqt=pre
 - `period`: 周期，可选值：day(日)、week(周)、month(月)
 - `fqt`: 复权类型，可选值：pre(前复权)、post(后复权)、none(不复权)
 
-#### 实时指标
+#### 实时行情
 ```http
 GET /api/v1/stock/indicator/realtime/{code}
 ```
-获取指定股票的实时行情指标。
+获取指定股票的实时行情。
 
-#### 股票实时行情 SSE (Beta)
+#### 实时行情 SSE
 ```http
-GET /api/v1/stock/sse?codes=000001,600519
+GET /api/v1/stock/indicator/realtime/sse?codes=000001,600519
 ```
-股票实时行情 SSE 服务，返回 `text/event-stream`。
+实时行情推送，返回 `text/event-stream`。
 
 **查询参数**:
 - `codes`: 股票代码，逗号分隔（必需），支持 6 位数字或带后缀
@@ -261,4 +261,4 @@ async function stockSelection(filter = '', page = 1, pageSize = 50) {
 }
 ```
 
-> 注：`stock/sse` 接口返回流式数据，不遵循上述 JSON 格式。
+> 注：`stock/indicator/realtime/sse` 接口返回流式数据，不遵循上述 JSON 格式。
