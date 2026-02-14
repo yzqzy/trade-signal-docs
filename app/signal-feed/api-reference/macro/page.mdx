@@ -18,53 +18,53 @@ Signal Feed 提供完整的宏观经济数据接口，支持PMI、CPI、GDP、�
 
 ### 经济指标
 
-#### PMI数据
+#### PMI 数据
 ```http
 GET /api/v1/macro/pmi?page=1&pageSize=20
 ```
 分页获取采购经理指数数据。
 
-#### PMI系列
+#### PMI 系列
 ```http
 GET /api/v1/macro/pmi/series
 ```
-获取PMI系列数据（图表用）。
+获取 PMI 系列数据（图表用）。
 
-#### CPI数据
+#### CPI 数据
 ```http
 GET /api/v1/macro/cpi?page=1&pageSize=20
 ```
 获取居民消费价格指数数据。
 
-#### CPI系列
+#### CPI 系列
 ```http
 GET /api/v1/macro/cpi/series
 ```
-获取CPI系列数据。
+获取 CPI 系列数据。
 
-#### PPI数据
+#### PPI 数据
 ```http
 GET /api/v1/macro/ppi?page=1&pageSize=20
 ```
 获取工业品出厂价格指数数据。
 
-#### PPI系列
+#### PPI 系列
 ```http
 GET /api/v1/macro/ppi/series
 ```
-获取PPI系列数据。
+获取 PPI 系列数据。
 
-#### GDP数据
+#### GDP 数据
 ```http
 GET /api/v1/macro/gdp?page=1&pageSize=20
 ```
 获取国内生产总值数据。
 
-#### GDP系列
+#### GDP 系列
 ```http
 GET /api/v1/macro/gdp/series
 ```
-获取GDP系列数据。
+获取 GDP 系列数据。
 
 ### 货币金融
 
@@ -72,7 +72,7 @@ GET /api/v1/macro/gdp/series
 ```http
 GET /api/v1/macro/currency-supply?page=1&pageSize=20
 ```
-获取M0/M1/M2货币供应量数据。
+获取 M0/M1/M2 货币供应量数据。
 
 #### 货币供应量系列
 ```http
@@ -80,17 +80,17 @@ GET /api/v1/macro/currency-supply/series
 ```
 获取货币供应量系列数据。
 
-#### LPR数据
+#### LPR 数据
 ```http
 GET /api/v1/macro/lpr?page=1&pageSize=20
 ```
 获取贷款市场报价利率数据。
 
-#### LPR系列
+#### LPR 系列
 ```http
 GET /api/v1/macro/lpr/series
 ```
-获取LPR系列数据。
+获取 LPR 系列数据。
 
 #### 新增信贷
 ```http
@@ -122,7 +122,7 @@ GET /api/v1/macro/fixed-asset-investment/series
 ```http
 GET /api/v1/macro/total-retail?page=1&pageSize=20
 ```
-获取社零数据。
+获取社会消费品零售总额数据。
 
 #### 社零系列
 ```http
@@ -217,7 +217,3 @@ async function getGDPSeries() {
   }
 }
 ```
-
-## 更多资源
-
-- 📖 [完整 API 文档](/signal-feed/api-reference) - 返回主 API 文档

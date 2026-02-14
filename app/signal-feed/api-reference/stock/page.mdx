@@ -22,7 +22,7 @@ Signal Feed 提供完整的 A 股股票数据接口，支持 A 股股票列表�
 ```http
 GET /api/v1/stock/list?codes=000001,600519
 ```
-批量查询股票，支持逗号分隔的股票代码（6位或000001.SZ格式）。
+批量查询股票，支持逗号分隔的股票代码（6 位数字或带 .SH/.SZ/.BJ 后缀）。
 
 #### 详情
 ```http
@@ -36,13 +36,13 @@ GET /api/v1/stock/search?keyword=平安
 ```
 按关键词搜索股票代码与名称。
 
-### 筛选
+### 选股
 
-#### 筛选
+#### 股票选股
 ```http
 GET /api/v1/stock/selection?page=1&pageSize=50&filter=
 ```
-获取股票筛选列表，支持自定义筛选条件。
+分页获取股票选股列表，支持自定义筛选条件（`filter` 可与行业、地域、概念、风格等组合）。
 
 ### 行情数据
 
@@ -62,6 +62,18 @@ GET /api/v1/stock/kline?code=000001&period=day&fqt=pre
 GET /api/v1/stock/indicator/realtime/{code}
 ```
 获取指定股票的实时行情指标。
+
+#### 股票实时行情 SSE (Beta)
+```http
+GET /api/v1/stock/sse?codes=000001,600519
+```
+股票实时行情 SSE 服务，返回 `text/event-stream`。
+
+**查询参数**:
+- `codes`: 股票代码，逗号分隔（必需），支持 6 位数字或带后缀
+- `pz`: 每次推送条数，1-100，默认 20（可选）
+
+**注意**: 需要配置 `BROWSER_SERVICE_URL` 方可使用。
 
 ### 财务数据
 
@@ -109,13 +121,19 @@ GET /api/v1/stock/style/list
 ```http
 GET /api/v1/stock/shareholder/research/{code}?endDate=2024-06-30
 ```
-获取股票的十大流通股东数据。
+获取股票的十大流通股东数据，`endDate` 必填。
 
 #### 股东持仓列表
 ```http
 GET /api/v1/stock/shareholder/list?code=10671586&endDate=2024-06-30
 ```
-按股东代码查询该股东持仓的股票列表。
+按股东代码查询该股东持仓的股票列表。`code` 为股东代码（如 10671586），非股票代码；查某股票的股东请用 `shareholder/research/{code}`。
+
+#### 股东研究最新报告期
+```http
+GET /api/v1/stock/shareholder/research/latest/{code}
+```
+获取该股股东研究最新可用报告日期。
 
 ### 业绩数据
 
@@ -130,6 +148,52 @@ GET /api/v1/stock/earnings-forecast?reportDate=2024-06-30&page=1&pageSize=20
 GET /api/v1/stock/performance/ten-years?industryName=银行&year=2024
 ```
 按行业与年份获取十年业绩数据。
+
+#### 十年业绩最新报告期
+```http
+GET /api/v1/stock/performance/ten-years/latest/{code}
+```
+获取该股十年业绩最新可用报告日期。
+
+### 板块与行业
+
+#### 板块/行业信息
+```http
+GET /api/v1/stock/board/info/{code}
+```
+获取股票所属板块与行业信息。
+
+#### 行业信息
+```http
+GET /api/v1/stock/industry/info/{code}
+```
+获取股票所属行业及行业信息。
+
+### 个股诊断
+
+#### 综合评分
+```http
+GET /api/v1/stock/diagnosis/comprehensive/{code}
+```
+获取个股综合诊断评分。
+
+#### 消息面
+```http
+GET /api/v1/stock/diagnosis/message/{code}
+```
+获取个股消息面诊断。
+
+#### 财务评估
+```http
+GET /api/v1/stock/diagnosis/financial/evaluation/{code}
+```
+获取财务健康状况与风险分析。
+
+#### 财务画像
+```http
+GET /api/v1/stock/diagnosis/financial/portrait/{code}
+```
+获取详细财务画像与趋势。
 
 ### 其他
 
@@ -197,6 +261,4 @@ async function stockSelection(filter = '', page = 1, pageSize = 50) {
 }
 ```
 
-## 更多资源
-
-- 📖 [完整 API 文档](/signal-feed/api-reference) - 返回主 API 文档
+> 注：`stock/sse` 接口返回流式数据，不遵循上述 JSON 格式。

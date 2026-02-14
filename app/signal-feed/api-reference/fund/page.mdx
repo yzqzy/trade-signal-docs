@@ -22,19 +22,19 @@ Signal Feed 提供完整的 ETF 基金数据接口，支持ETF基金列表、详
 ```http
 GET /api/v1/fund/all-etf-list
 ```
-获取全量ETF基金列表（无筛选），供ETF页面搜索用，建议客户端缓存。
+获取全量 ETF 基金列表（无筛选），供 ETF 页面搜索用，建议客户端缓存。
 
 #### 详情
 ```http
 GET /api/v1/fund/detail/{code}
 ```
-获取单只ETF基金基础信息。
+获取单只 ETF 基金基础信息。
 
 #### 筛选
 ```http
 GET /api/v1/fund/selection?filter=
 ```
-获取ETF基金筛选列表，支持自定义筛选条件。
+获取 ETF 基金筛选列表，支持自定义筛选条件。
 
 ### 行情数据
 
@@ -55,19 +55,19 @@ GET /api/v1/fund/kline?code=159919&period=day&fqt=pre
 ```http
 GET /api/v1/fund/holdings/{code}
 ```
-获取ETF基金持仓股票/债券明细。
+获取 ETF 基金持仓股票/债券明细。
 
 #### 资产配置
 ```http
 GET /api/v1/fund/asset-allocation/{code}
 ```
-获取ETF基金资产配置结构。
+获取 ETF 基金资产配置结构。
 
 #### 行业配置
 ```http
 GET /api/v1/fund/industry-allocation/{code}
 ```
-获取ETF基金行业配置分布。
+获取 ETF 基金行业配置分布。
 
 ### 其他
 
@@ -75,19 +75,19 @@ GET /api/v1/fund/industry-allocation/{code}
 ```http
 GET /api/v1/fund/transactions/{code}
 ```
-获取ETF基金历史调仓记录。
+获取 ETF 基金历史调仓记录。
 
 #### 跟踪指数
 ```http
 GET /api/v1/fund/following-index/{code}
 ```
-获取ETF基金跟踪指数信息。
+获取 ETF 基金跟踪指数信息。
 
 #### 估值分析
 ```http
 GET /api/v1/fund/valuation-analysis/{code}
 ```
-获取ETF基金估值分析。
+获取 ETF 基金估值分析。
 
 ## 使用示例
 
@@ -149,7 +149,3 @@ async function getETFKline(code, period = 'day', fqt = 'pre') {
   }
 }
 ```
-
-## 更多资源
-
-- 📖 [完整 API 文档](/signal-feed/api-reference) - 返回主 API 文档

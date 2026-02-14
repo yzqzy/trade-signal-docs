@@ -17,16 +17,12 @@ Signal Feed 提供新闻资讯接口，支持市场概览、题材库、快讯�
 ## 主要接口
 
 ### 市场概览
-
-#### 市场概览
 ```http
 GET /api/v1/news/overview
 ```
 获取市场概览数据。
 
 ### 市场主线
-
-#### 市场主线
 ```http
 GET /api/v1/news/mainline
 ```
@@ -44,7 +40,7 @@ GET /api/v1/news/topic/library/list
 ```http
 GET /api/v1/news/topic/library/detail/{themeId}
 ```
-按题材ID获取题材详情。
+按题材 ID 获取题材详情。
 
 #### 题材成分股
 ```http
@@ -53,28 +49,16 @@ GET /api/v1/news/topic/library/stocks/{themeId}
 获取题材关联的股票列表。
 
 ### 要闻摘要
-
-#### 要闻摘要
 ```http
 GET /api/v1/news/headlines?page=0&pageSize=10&keyword=新闻联播要闻
 ```
 获取新闻联播要闻、新闻精选等摘要，支持分页与关键词。
 
-**查询参数**:
-- `page`: 页码（默认0）
-- `pageSize`: 每页数量（默认10）
-- `keyword`: 关键词（默认"新闻联播要闻"）
-
 ### 快讯要闻
-
-#### 快讯要闻
 ```http
 GET /api/v1/news/feed?cursor=
 ```
 获取快讯与要闻流，支持游标分页。
-
-**查询参数**:
-- `cursor`: 游标，用于分页（可选）
 
 ## 使用示例
 
@@ -162,8 +146,4 @@ async function getHeadlines(keyword = '新闻联播要闻', page = 0, pageSize =
   }
 }
 ```
-
-## 更多资源
-
-- 📖 [完整 API 文档](/signal-feed/api-reference) - 返回主 API 文档
 

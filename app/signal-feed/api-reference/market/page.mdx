@@ -5,7 +5,7 @@ description: Signal Feed 市场数据 API 接口文档
 
 ## 市场接口
 
-Signal Feed 提供完整的市场数据接口，支持大盘指数、资金流向、市场热力图等功能。
+Signal Feed 提供完整的市场数据接口，支持大盘指数、资金流向、市场热力图、资金面分析、全球指数等功能。
 
 ## 基础信息
 
@@ -17,43 +17,40 @@ Signal Feed 提供完整的市场数据接口，支持大盘指数、资金流�
 ## 主要接口
 
 ### 大盘指数
-
-#### 大盘指数
 ```http
 GET /api/v1/market/indices
 ```
 获取主要股指实时数据。
 
 ### 资金流向
-
-#### 资金流向
 ```http
 GET /api/v1/market/flow?type=1
 ```
-按类型获取资金流向数据。
+按类型获取资金流向数据。`type`：1 地域 / 2 行业 / 3 概念。
 
-**查询参数**:
-- `type`: 类型（必需），可选值：
-  - `1`: 地域
-  - `2`: 行业
-  - `3`: 概念
-
-#### 资金流向列表
+### 资金流向列表
 ```http
 GET /api/v1/market/flow/list?type=1
 ```
 按类型获取资金流向明细列表。
 
 ### 市场热力图
-
-#### 市场热力图
 ```http
 GET /api/v1/market/hotmap?quotedata_hash=
 ```
-获取全市场热力图数据，可选传quotedata_hash增量更新。
+获取全市场热力图数据，可选传 `quotedata_hash` 增量更新。
 
-**查询参数**:
-- `quotedata_hash`: 可选，用于增量更新的哈希值
+### 资金面分析
+```http
+GET /api/v1/market/fund-analysis
+```
+获取资金面分析数据。
+
+### 全球指数
+```http
+GET /api/v1/market/global-index
+```
+获取全球主要指数行情。
 
 ## 使用示例
 
@@ -95,6 +92,26 @@ async function getMarketHotmap(quotedataHash = '') {
   });
   return response.json();
 }
+
+// 获取资金面分析
+async function getFundAnalysis() {
+  const response = await fetch(`${BASE_URL}/market/fund-analysis`, {
+    headers: {
+      'Authorization': `Bearer ${API_TOKEN}`
+    }
+  });
+  return response.json();
+}
+
+// 获取全球指数
+async function getGlobalIndex() {
+  const response = await fetch(`${BASE_URL}/market/global-index`, {
+    headers: {
+      'Authorization': `Bearer ${API_TOKEN}`
+    }
+  });
+  return response.json();
+}
 ```
 
 ## 响应格式
@@ -109,7 +126,3 @@ async function getMarketHotmap(quotedataHash = '') {
   }
 }
 ```
-
-## 更多资源
-
-- 📖 [完整 API 文档](/signal-feed/api-reference) - 返回主 API 文档
