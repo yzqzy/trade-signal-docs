@@ -4,5 +4,6 @@ export default {
   "investment-philosophy": "投资理念",
   basics: "基础知识",
   "core-concepts": "核心概念",
+  "investment-mindset": "投资心法",
   "market-analysis": "市场分析"
 };
