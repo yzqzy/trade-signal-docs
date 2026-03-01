@@ -3,6 +3,7 @@ export default {
   download: "下载安装",
   apply: "授权申请",
   "getting-started": "快速开始",
+  videos: "视频教程",
   features: "功能特性",
   security: "安全与隐私",
   guides: "使用指南",
