@@ -63,10 +63,10 @@ jobs:
       - name: Build with Next.js
         run: pnpm run build
         env:
-          # OSS 静态下载地址前缀（必须配置）
-          # 在 GitHub Secrets 中配置 OSS_BASE_URL
-          # 例如：https://download.tradersignal.org/releases/latest
+          # 下载页 OSS 根地址（Secrets: OSS_BASE_URL）
           NEXT_PUBLIC_OSS_BASE_URL: ${{ secrets.OSS_BASE_URL }}
+          # 视频页评论 Utterances 仓库，格式 owner/repo（Secrets: UTTERANCES_REPO，可选）
+          NEXT_PUBLIC_UTTERANCES_REPO: ${{ secrets.UTTERANCES_REPO }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
