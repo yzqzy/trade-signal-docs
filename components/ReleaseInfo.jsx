@@ -9,7 +9,7 @@ import { useState, useRef, useEffect } from "react";
 export default function ReleaseInfo() {
   // OSS 静态下载地址（通过环境变量配置）
   const OSS_BASE_URL = process.env.NEXT_PUBLIC_OSS_BASE_URL;
-  
+
   // macOS 架构选择状态
   const [macosArch, setMacosArch] = useState("arm64"); // 默认选择 Apple Silicon
   const [showMacosMenu, setShowMacosMenu] = useState(false);
@@ -17,7 +17,7 @@ export default function ReleaseInfo() {
 
   // 点击外部关闭菜单
   useEffect(() => {
-    const handleClickOutside = (event) => {
+    const handleClickOutside = event => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
         setShowMacosMenu(false);
       }
@@ -25,7 +25,8 @@ export default function ReleaseInfo() {
 
     if (showMacosMenu) {
       document.addEventListener("mousedown", handleClickOutside);
-      return () => document.removeEventListener("mousedown", handleClickOutside);
+      return () =>
+        document.removeEventListener("mousedown", handleClickOutside);
     }
   }, [showMacosMenu]);
 
@@ -60,7 +61,7 @@ export default function ReleaseInfo() {
             <h4 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white">
               macOS
             </h4>
-            <p className="text-sm text-gray-500 dark:text-gray-400 mb-5 min-h-[2.5rem]">
+            <p className="text-sm text-gray-500 dark:text-gray-400 mb-5 min-h-10">
               支持 macOS 12.0+
               <br />
               <span className="text-xs">(Intel & Apple Silicon)</span>
@@ -93,8 +94,12 @@ export default function ReleaseInfo() {
                     className="block px-4 py-2.5 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-left"
                     download
                   >
-                    <div className="text-sm font-medium text-gray-900 dark:text-white">Apple Silicon (M 系列)</div>
-                    <div className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">适用于 M1/M2/M3/M4 芯片</div>
+                    <div className="text-sm font-medium text-gray-900 dark:text-white">
+                      Apple Silicon (M 系列)
+                    </div>
+                    <div className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
+                      适用于 M1/M2/M3/M4 芯片
+                    </div>
                   </a>
                   <a
                     href={downloadLinks.macos.x64}
@@ -102,8 +107,12 @@ export default function ReleaseInfo() {
                     className="block px-4 py-2.5 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-left border-t border-gray-200 dark:border-gray-700"
                     download
                   >
-                    <div className="text-sm font-medium text-gray-900 dark:text-white">Intel 芯片</div>
-                    <div className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">适用于 Intel 处理器</div>
+                    <div className="text-sm font-medium text-gray-900 dark:text-white">
+                      Intel 芯片
+                    </div>
+                    <div className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
+                      适用于 Intel 处理器
+                    </div>
                   </a>
                 </div>
               )}
@@ -118,7 +127,7 @@ export default function ReleaseInfo() {
             <h4 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white">
               Windows
             </h4>
-            <p className="text-sm text-gray-500 dark:text-gray-400 mb-5 min-h-[2.5rem]">
+            <p className="text-sm text-gray-500 dark:text-gray-400 mb-5 min-h-10">
               支持 Windows 10+
             </p>
             <a
@@ -138,7 +147,7 @@ export default function ReleaseInfo() {
             <h4 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white">
               Linux
             </h4>
-            <p className="text-sm text-gray-500 dark:text-gray-400 mb-5 min-h-[2.5rem]">
+            <p className="text-sm text-gray-500 dark:text-gray-400 mb-5 min-h-10">
               支持 Ubuntu 18.04+
             </p>
             <a
