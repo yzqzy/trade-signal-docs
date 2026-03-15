@@ -22,22 +22,22 @@ const features = [
     disabled: false
   },
   {
-    icon: Plug,
-    title: "数据接口库",
-    description:
-      "金融数据接口库，提供股票、ETF基金、宏观、市场等多维度金融数据",
-    href: "/signal-feed",
-    cta: "查看文档",
-    primary: false,
-    disabled: false
-  },
-  {
     icon: Bot,
     title: "AI 技能包",
     description:
       "可在 Claude、Cursor 等 AI 工具中直接查询金融数据、分析个股与市场",
     href: "/signal-skills",
     cta: "了解更多",
+    primary: false,
+    disabled: false
+  },
+  {
+    icon: Plug,
+    title: "数据接口库",
+    description:
+      "金融数据接口库，提供股票、ETF基金、宏观、市场等多维度金融数据",
+    href: "/signal-feed",
+    cta: "查看文档",
     primary: false,
     disabled: false
   }

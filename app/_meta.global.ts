@@ -11,12 +11,12 @@ export default {
     type: "page",
     title: "投资分析工具"
   },
-  "signal-feed": {
-    type: "page",
-    title: "数据接口库"
-  },
   "signal-skills": {
     type: "page",
     title: "AI 技能包"
+  },
+  "signal-feed": {
+    type: "page",
+    title: "数据接口库"
   }
 };

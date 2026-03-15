@@ -3,11 +3,23 @@ title: 快速开始
 description: 下载 Signal Skills 并配置 MCP 连接
 ---
 
-## 1. 下载技能包
+## 1. 获取 API Key
+
+使用技能包需要 API Key 用于连接 Signal Feed 数据服务。获取流程：
+
+1. **提交授权申请**：前往 [授权申请](/signal-client/apply) 页面提交申请
+2. **获得正式授权**：审核通过并完成付费后，获得用户账号
+3. **登录用户后台**：使用账号登录 [用户后台](https://app.tradersignal.org/dashboard)
+4. **创建 API Key**：进入侧边栏「API Key 管理」，点击「创建 API Key」，填写备注名称（如「本地开发」「生产环境」）
+5. **复制保存**：Key **仅在创建时显示一次**，请立即复制到安全位置
+
+> 仅正式授权用户可创建 API Key。授权用户同时拥有客户端使用权限和 API Key 创建权限，可以创建多个 Key 用于不同场景，也可以随时在后台吊销不再使用的 Key。
+
+## 2. 下载技能包
 
 前往 [下载页面](/signal-skills/download) 获取最新版本，解压到本地任意目录。
 
-## 2. 配置 MCP 连接
+## 3. 配置 MCP 连接
 
 技能包通过 MCP 协议连接 Signal Feed 数据服务。包内已提供 `.mcp.json.example` 模板，复制并填入实际值即可。
 
@@ -86,7 +98,7 @@ description: 下载 Signal Skills 并配置 MCP 连接
 | URL | `<Feed 服务地址>/mcp` |
 | Header | `x-api-key: <你的 API Key>` |
 
-## 3. 开始使用
+## 4. 开始使用
 
 配置完成后，直接在对话中提问即可。AI 会自动路由到对应的数据查询或分析技能。
 
@@ -105,7 +117,7 @@ description: 下载 Signal Skills 并配置 MCP 连接
 - 「帮我复盘一下今天」→ 今日复盘
 - 「降息对股市有什么影响」→ 宏观经济月报
 
-## 切换 AI Soul
+## 5. 切换 AI Soul
 
 默认 Soul 为**均衡型助手**（专业理性，风控时更直接）。如需切换风格，从 [AI Soul](/signal-skills/souls) 页面复制对应风格的完整内容，替换到技能包根目录的 `soul.md` 即可。
 
@@ -116,6 +128,3 @@ description: 下载 Signal Skills 并配置 MCP 连接
 | 老练师父 | 温和耐心，强调纪律与教学 |
 | 冷静分析师 | 数据优先，弱情绪、强结构 |
 
-## API Key 获取
-
-API Key 通过 [授权申请](/signal-client/apply) 获取。授权用户同时拥有客户端使用权限和 API Key。

@@ -369,7 +369,8 @@ Cursor 内置终端可直接运行 `claude` 命令。Cursor 本身也支持 MCP 
 ### 配置步骤
 
 1. [下载 Signal Skills 技能包](/signal-skills/download) 并解压
-2. 将包内的 `.mcp.json.example` 复制为 `.mcp.json`，填入实际的 Feed 服务地址和 API Key：
+2. 在 [用户后台](https://app.tradersignal.org/dashboard/api-keys) 创建 API Key（详见 [快速开始 — API Key 获取](/signal-skills/getting-started#api-key-获取)）
+3. 将包内的 `.mcp.json.example` 复制为 `.mcp.json`，填入实际的 Feed 服务地址和 API Key：
 
 ```json
 {
@@ -385,14 +386,14 @@ Cursor 内置终端可直接运行 `claude` 命令。Cursor 本身也支持 MCP 
 }
 ```
 
-3. 用 Claude Code 打开技能包目录——它会自动读取 `CLAUDE.md` 入口文件，加载全部技能和 AI Soul
-4. 开始对话，直接提问即可
+4. 用 Claude Code 打开技能包目录——它会自动读取 `CLAUDE.md` 入口文件，加载全部技能和 AI Soul
+5. 开始对话，直接提问即可
 
 完整配置说明见 [快速开始](/signal-skills/getting-started)。
 
 ---
 
-## 常见问题
+## 附：常见问题
 
 ### `claude` 命令找不到
 
@@ -454,7 +455,7 @@ $Env:HTTPS_PROXY="http://127.0.0.1:7890"
 
 ---
 
-## 快速检查清单
+## 附：快速检查清单
 
 安装配置完成后，逐项确认：
 
