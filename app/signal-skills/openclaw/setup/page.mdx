@@ -73,35 +73,11 @@ openclaw onboard --install-daemon
 
 ### 配置 API Key
 
-编辑环境变量文件：
-
-```bash
-# macOS/Linux
-vim ~/.openclaw/.env
-
-# Windows
-notepad %USERPROFILE%\.openclaw\.env
-```
-
-填入你的 AI 模型 API Key：
-
-```bash
-# 使用 OpenRouter
-OPENROUTER_API_KEY=your_openrouter_api_key_here
-
-# 或使用 Anthropic
-ANTHROPIC_API_KEY=sk-ant-your_key_here
-```
+API Key 在 `openclaw onboard` 新手引导过程中会自动引导配置。如果需要后续修改，可以重新运行 onboard 或在 OpenClaw 的 Web 界面中调整。
 
 ### 安全配置要点
 
-OpenClaw 默认绑定到 `127.0.0.1:18789`，只允许本机访问。**切勿修改为 `0.0.0.0`**，否则会暴露到局域网甚至公网。
-
-**安全对比：**
-```
-127.0.0.1:18789  ✅ 只有你自己能访问
-0.0.0.0:18789    ❌ 局域网所有人都能访问，存在安全风险
-```
+OpenClaw 默认配置 `bind: "loopback"`，即只允许本机访问（127.0.0.1），同时会自动生成 token 用于认证。**切勿将 bind 修改为非 loopback 模式**，否则会暴露到局域网甚至公网。
 
 ### 验证配置
 
