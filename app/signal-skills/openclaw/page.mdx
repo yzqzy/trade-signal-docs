@@ -1,0 +1,70 @@
+---
+title: OpenClaw 简介
+description: OpenClaw 开源 AI Agent 平台介绍、安全风险警示与 Signal Skills 配合使用
+---
+
+import Link from 'next/link'
+import DocImage from '@/components/DocImage'
+
+## 什么是 OpenClaw
+
+OpenClaw 是一个开源的自托管 AI Agent 平台，支持 MCP 协议，可以连接 Signal Skills 技能包进行投研分析。与 Claude Code、Cursor 等工具不同，OpenClaw 提供 Web 界面和持久化记忆，适合需要长期跟踪和管理投研任务的场景。
+
+### 核心特性
+
+| 特性 | 说明 |
+|------|------|
+| **自托管** | 完全部署在本地，数据不经过第三方服务器 |
+| **MCP 协议** | 原生支持 MCP，可直接连接 Signal Skills 数据服务 |
+| **持久化记忆** | 对话历史和分析结果自动保存，支持长期跟踪 |
+| **浏览器自动化** | 内置浏览器控制能力，可自动化网页操作 |
+| **多模型支持** | 支持 Claude、GPT、Gemini 等多种 AI 模型 |
+| **开源免费** | MIT 协议开源，无使用限制 |
+
+## 为什么用 OpenClaw 做投研
+
+配合 Signal Skills 使用时，OpenClaw 相比其他平台有独特优势：
+
+| 优势 | 说明 |
+|------|------|
+| **数据隐私** | 完全本地部署，投研数据不经过第三方 |
+| **持久化记忆** | 自动保存分析历史，方便回顾和对比 |
+| **自定义工作流** | 可编写自定义脚本和自动化任务 |
+| **成本控制** | 自托管无额外费用，仅需 API Key 调用成本 |
+
+---
+
+## 安全提示
+
+OpenClaw 默认绑定到 `127.0.0.1`，只允许本机访问。**切勿修改为 `0.0.0.0`** 或部署到公网，否则存在安全风险。
+
+详见 [安装配置](/signal-skills/openclaw/setup) 中的安全配置说明。
+
+---
+
+## 与 Signal Skills 配合
+
+OpenClaw 通过 MCP 协议连接 Signal Skills，在 Web 界面中直接查询投研数据和生成分析报告。
+
+### 数据查询示例
+
+```
+查一下贵州茅台实时行情
+帮我选市盈率低于 20 的白酒股
+今天 A 股市场怎么样
+近一年 PMI 趋势如何
+510300 这只基金怎么样
+```
+
+### 分析报告示例
+
+```
+帮我深度分析一下贵州茅台
+白酒行业哪家估值最低
+帮我复盘一下今天
+降息对股市有什么影响
+```
+
+配置 MCP 连接和完整使用步骤见 [快速开始](/signal-skills/getting-started)。
+
+<Link href="/signal-skills/openclaw/setup" className="inline-block px-6 py-3 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors font-medium shadow-sm hover:shadow no-underline mt-4">开始安装配置 →</Link>

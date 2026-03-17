@@ -1,0 +1,153 @@
+---
+title: 前置依赖
+description: Git 和 Node.js 安装指引，适用于 Claude Code、OpenClaw 等工具
+---
+
+import DocImage from '@/components/DocImage'
+
+## Git 安装
+
+Git 是版本管理工具，Claude Code 和 OpenClaw 都依赖 Git。**请先安装 Git，再安装其他工具。**
+
+### 各平台安装方式
+
+| 平台 | 安装方式 |
+|------|---------|
+| **macOS** | `xcode-select --install`（系统自带提示）或 `brew install git` |
+| **Windows** | 从 [git-scm.com](https://git-scm.com/) 下载安装包，按默认选项安装 |
+| **Linux** | `sudo apt install git`（Debian/Ubuntu）或 `sudo dnf install git`（Fedora） |
+
+<DocImage src="/imgs/prerequisites/git-download.png" alt="Git 官网下载页面" caption="Git 官网：选择对应平台的安装包" />
+
+### 验证安装
+
+安装完成后，打开终端执行：
+
+```bash
+git --version
+```
+
+应显示 Git 版本号（如 `git version 2.40.0`）。
+
+<DocImage src="/imgs/prerequisites/git-version.png" alt="验证 Git 安装" caption="终端执行 git --version 确认安装成功" />
+
+---
+
+## Node.js 安装
+
+Node.js 是 JavaScript 运行环境，OpenClaw 等工具需要 Node.js >= 18.0.0。
+
+### 方式一：官网下载（适合新手）
+
+1. 访问 [nodejs.org](https://nodejs.org/)
+2. 下载 **LTS 版本**（长期支持版，推荐）
+3. 按默认选项安装
+
+<DocImage src="/imgs/prerequisites/nodejs-download.png" alt="Node.js 官网下载页面" caption="Node.js 官网：推荐下载 LTS 版本" />
+
+安装后验证：
+
+```bash
+node --version  # 应显示 v18.0.0 或更高
+npm --version   # 应显示 npm 版本号
+```
+
+### 方式二：版本管理工具（推荐，支持多版本切换）
+
+不同项目可能需要不同 Node.js 版本。使用版本管理工具可以在同一台电脑上安装多个版本并快速切换。
+
+#### macOS / Linux：使用 nvm
+
+```bash
+# 安装 nvm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+
+# 重启终端后，安装 Node.js
+nvm install 20      # 安装 Node 20 LTS
+nvm use 20          # 使用 Node 20
+nvm alias default 20  # 设为默认版本
+
+# 验证
+node --version
+```
+
+#### Windows：使用 nvm-windows
+
+1. 如果已安装过 Node.js，建议先卸载
+2. 访问 [nvm-windows Releases](https://github.com/coreybutler/nvm-windows/releases)
+3. 下载最新的 `nvm-setup.exe` 并安装
+4. **重新打开终端**（PowerShell 或 CMD），执行：
+
+```powershell
+# 查看可安装版本
+nvm list available
+
+# 安装 Node 20 LTS
+nvm install 20
+
+# 使用 Node 20
+nvm use 20
+
+# 验证
+node --version
+npm --version
+```
+
+#### 可选：fnm（跨平台，更快）
+
+[fnm](https://github.com/Schniz/fnm) 是更快的 Node.js 版本管理器，支持 macOS/Linux/Windows。
+
+**macOS / Linux：**
+
+```bash
+# 安装 fnm
+curl -fsSL https://fnm.vercel.app/install | bash
+
+# 重启终端后
+fnm install 20
+fnm use 20
+fnm default 20
+```
+
+**Windows（PowerShell）：**
+
+```powershell
+# 使用 winget 安装
+winget install Schniz.fnm
+
+# 重启终端后
+fnm install 20
+fnm use 20
+fnm default 20
+```
+
+### 常见问题
+
+**Q: 如何切换 Node.js 版本？**
+
+- nvm: `nvm use 18` 或 `nvm use 20`
+- fnm: `fnm use 18` 或 `fnm use 20`
+
+**Q: 如何查看已安装的版本？**
+
+- nvm: `nvm list`（Windows）或 `nvm ls`（macOS/Linux）
+- fnm: `fnm list`
+
+**Q: npm 命令找不到？**
+
+确保已执行 `nvm use` 或 `fnm use` 激活某个版本。如果还是找不到，重启终端。
+
+**Q: Windows 下 nvm 命令找不到？**
+
+1. 确认 nvm-windows 已正确安装
+2. 检查环境变量 PATH 中是否包含 nvm 安装目录
+3. 重新打开终端（必须是新窗口）
+
+---
+
+## 下一步
+
+安装完 Git 和 Node.js 后，可以继续：
+
+- [Claude Code 安装配置](/signal-skills/claude-code/setup)
+- [OpenClaw 安装配置](/signal-skills/openclaw/setup)

@@ -1,0 +1,243 @@
+---
+title: 安装与配置
+description: OpenClaw 本地安装、安全配置清单与 Signal Skills MCP 连接
+---
+
+import Link from 'next/link'
+import DocImage from '@/components/DocImage'
+
+## 1. 前置依赖
+
+OpenClaw 需要以下工具：
+
+| 依赖 | 版本要求 |
+|------|---------|
+| Node.js | 24（推荐），支持 22 LTS（22.16+） |
+| Git | 任意版本 |
+
+如果尚未安装，请先查看 [前置依赖安装指引](/signal-skills/prerequisites)。
+
+---
+
+## 2. 安装 OpenClaw
+
+> 如果下载失败或超时，见下方[常见问题 — 网络代理配置](#网络代理配置)。
+
+### 方式一：安装脚本（推荐）
+
+使用官方安装脚本，自动处理 Node 检测、安装和新手引导：
+
+**macOS / Linux / WSL2：**
+
+```bash
+curl -fsSL https://openclaw.ai/install.sh | bash
+```
+
+**Windows (PowerShell)：**
+
+```powershell
+iwr -useb https://openclaw.ai/install.ps1 | iex
+```
+
+### 方式二：npm 安装
+
+```bash
+# 全局安装
+npm install -g openclaw@latest
+
+# 运行新手引导并安装守护进程
+openclaw onboard --install-daemon
+```
+
+验证安装：
+
+```bash
+openclaw --version
+```
+
+---
+
+## 3. 基础配置
+
+安装脚本会自动运行新手引导，完成以下配置：
+- 创建配置文件和状态目录（默认 `~/.openclaw/`）
+- 安装并启动 Gateway 网关服务
+- 引导配置 AI 模型 API Key
+- 设置安全认证
+
+如果跳过了新手引导，可以手动运行：
+
+```bash
+openclaw onboard --install-daemon
+```
+
+### 配置 API Key
+
+编辑环境变量文件：
+
+```bash
+# macOS/Linux
+vim ~/.openclaw/.env
+
+# Windows
+notepad %USERPROFILE%\.openclaw\.env
+```
+
+填入你的 AI 模型 API Key：
+
+```bash
+# 使用 OpenRouter
+OPENROUTER_API_KEY=your_openrouter_api_key_here
+
+# 或使用 Anthropic
+ANTHROPIC_API_KEY=sk-ant-your_key_here
+```
+
+### 安全配置要点
+
+OpenClaw 默认绑定到 `127.0.0.1:18789`，只允许本机访问。**切勿修改为 `0.0.0.0`**，否则会暴露到局域网甚至公网。
+
+**安全对比：**
+```
+127.0.0.1:18789  ✅ 只有你自己能访问
+0.0.0.0:18789    ❌ 局域网所有人都能访问，存在安全风险
+```
+
+### 验证配置
+
+```bash
+# 检查配置和系统状态
+openclaw doctor
+
+# 打开浏览器 UI
+openclaw dashboard
+```
+
+---
+
+## 4. 启动 OpenClaw
+
+Gateway 网关服务已自动启动，直接打开浏览器 UI：
+
+```bash
+openclaw dashboard
+```
+
+访问 `http://localhost:18789`，使用配置的密码登录。
+
+---
+
+## 5. 连接 Signal Skills
+
+### 步骤 A：获取 API Key
+
+前往 [授权申请](/signal-client/apply) 页面获取 Signal Skills API Key。详细流程见 [快速开始](/signal-skills/getting-started)。
+
+### 步骤 B：配置 MCP 连接
+
+在 OpenClaw 设置界面中添加 MCP Server，或通过配置文件 `~/.openclaw/mcp.json` 添加：
+
+```json
+{
+  "mcpServers": {
+    "trade-signal": {
+      "type": "http",
+      "url": "<Feed 服务地址>/mcp",
+      "headers": {
+        "x-api-key": "<你的 Signal Skills API Key>"
+      }
+    }
+  }
+}
+```
+
+| 配置项 | 说明 |
+|--------|------|
+| Server Name | `trade-signal` |
+| Type | `http` |
+| URL | `<Feed 服务地址>/mcp` |
+| Header | `x-api-key: <你的 API Key>` |
+
+### 步骤 C：加载技能包
+
+在 OpenClaw 中导入解压后的 `trade-signal-skills/` 目录，AI 会自动读取技能定义和 `soul.md`。
+
+---
+
+## 开始使用
+
+配置完成后，在 OpenClaw 对话界面中直接提问即可：
+
+```
+查一下贵州茅台实时行情
+帮我深度分析一下宁德时代
+今天 A 股市场怎么样，帮我复盘一下
+```
+
+---
+
+## 常见问题
+
+### 网络代理配置
+
+**安装时使用淘宝镜像（国内用户推荐）：**
+
+```bash
+npm install -g openclaw@latest --registry=https://registry.npmmirror.com
+```
+
+**运行时配置代理（访问 AI API）：**
+
+```bash
+# macOS/Linux
+export HTTP_PROXY="http://127.0.0.1:7890"
+export HTTPS_PROXY="http://127.0.0.1:7890"
+
+# Windows (PowerShell)
+$Env:HTTP_PROXY="http://127.0.0.1:7890"
+$Env:HTTPS_PROXY="http://127.0.0.1:7890"
+```
+
+> 端口号 `7890` 以你本地代理工具的实际端口为准（Clash 7890、V2Ray 10809）。
+
+### 无法访问 Web 界面
+
+1. 确认 OpenClaw 已启动：`openclaw status`
+2. 确认访问地址为 `http://localhost:18789`
+3. 检查防火墙是否阻止了本地访问
+
+### 如何更新
+
+```bash
+npm install -g openclaw@latest
+```
+
+### 如何卸载
+
+```bash
+# 推荐方式
+openclaw uninstall
+
+# 或手动卸载
+npm rm -g openclaw
+rm -rf ~/.openclaw  # macOS/Linux
+```
+
+---
+
+## 常用命令
+
+| 命令 | 说明 |
+|------|------|
+| `openclaw dashboard` | 打开浏览器 UI |
+| `openclaw status` | 查看运行状态 |
+| `openclaw doctor` | 检查配置问题 |
+| `openclaw uninstall` | 卸载 OpenClaw |
+
+---
+
+## 免责声明
+
+使用 OpenClaw 需自行承担安全风险、数据风险和合规风险。本文档作者和 Signal Skills 团队不对因使用 OpenClaw 导致的任何损失承担责任。
+
+**建议：** 仅在可信任的本地环境部署，定期备份数据，及时更新版本。
