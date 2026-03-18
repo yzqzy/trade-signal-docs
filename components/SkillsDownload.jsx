@@ -44,7 +44,7 @@ export default function SkillsDownload() {
     : null;
 
   return (
-    <div className="my-6 grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl mx-auto">
+    <div className="my-6 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
       <div className="p-7 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:border-emerald-500 dark:hover:border-emerald-500 hover:shadow-md transition-all duration-200 flex flex-col">
         <div className="flex items-center gap-4 mb-5">
           <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-emerald-50 dark:bg-emerald-900/30 shrink-0">
