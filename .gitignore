@@ -23,6 +23,8 @@ pnpm-debug.log*
 # IDE
 .vscode/
 .idea/
+.cursor/
+.cursorrules
 
 # OS
 .DS_Store

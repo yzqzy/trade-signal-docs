@@ -35,20 +35,20 @@ git --version
 
 ## Node.js 安装
 
-Node.js 是 JavaScript 运行环境，OpenClaw 等工具需要 Node.js >= 18.0.0。
+Node.js 是 JavaScript 运行环境，OpenClaw 要求 Node.js 24（推荐）或 22 LTS（22.16+）。
 
 ### 方式一：官网下载（适合新手）
 
 1. 访问 [nodejs.org](https://nodejs.org/)
-2. 下载 **LTS 版本**（长期支持版，推荐）
+2. 下载 **v24**（推荐）或 **v22 LTS**（22.16 以上）
 3. 按默认选项安装
 
-<DocImage src="/imgs/prerequisites/nodejs-download.png" alt="Node.js 官网下载页面" caption="Node.js 官网：推荐下载 LTS 版本" />
+<DocImage src="/imgs/prerequisites/nodejs-download.png" alt="Node.js 官网下载页面" caption="Node.js 官网：推荐下载 v24 或 v22 LTS" />
 
 安装后验证：
 
 ```bash
-node --version  # 应显示 v18.0.0 或更高
+node --version  # 应显示 v22.16.0 或更高
 npm --version   # 应显示 npm 版本号
 ```
 
@@ -60,12 +60,12 @@ npm --version   # 应显示 npm 版本号
 
 ```bash
 # 安装 nvm
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
 
 # 重启终端后，安装 Node.js
-nvm install 20      # 安装 Node 20 LTS
-nvm use 20          # 使用 Node 20
-nvm alias default 20  # 设为默认版本
+nvm install 24      # 安装 Node 24（推荐）
+nvm use 24          # 使用 Node 24
+nvm alias default 24  # 设为默认版本
 
 # 验证
 node --version
@@ -82,11 +82,11 @@ node --version
 # 查看可安装版本
 nvm list available
 
-# 安装 Node 20 LTS
-nvm install 20
+# 安装 Node 24（推荐）
+nvm install 24
 
-# 使用 Node 20
-nvm use 20
+# 使用 Node 24
+nvm use 24
 
 # 验证
 node --version
@@ -104,9 +104,9 @@ npm --version
 curl -fsSL https://fnm.vercel.app/install | bash
 
 # 重启终端后
-fnm install 20
-fnm use 20
-fnm default 20
+fnm install 24
+fnm use 24
+fnm default 24
 ```
 
 **Windows（PowerShell）：**
@@ -116,17 +116,17 @@ fnm default 20
 winget install Schniz.fnm
 
 # 重启终端后
-fnm install 20
-fnm use 20
-fnm default 20
+fnm install 24
+fnm use 24
+fnm default 24
 ```
 
 ### 常见问题
 
 **Q: 如何切换 Node.js 版本？**
 
-- nvm: `nvm use 18` 或 `nvm use 20`
-- fnm: `fnm use 18` 或 `fnm use 20`
+- nvm: `nvm use 22` 或 `nvm use 24`
+- fnm: `fnm use 22` 或 `fnm use 24`
 
 **Q: 如何查看已安装的版本？**
 
