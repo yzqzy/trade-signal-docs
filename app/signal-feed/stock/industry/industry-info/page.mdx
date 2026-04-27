@@ -1,0 +1,55 @@
+---
+title: 行业信息
+description: 行业信息
+---
+
+# 行业信息
+
+行业信息。
+
+**HTTP 方法与路径**：`GET /api/v1/stock/industry/info/{code}`
+
+## 入参
+
+### Path
+
+| 参数 | 位置 | 类型 | 必填 | 说明 |
+|------|------|------|------|------|
+| `code` | path | string | 是 | 股票代码 |
+
+
+### Query
+
+| Query 参数 | 无 |
+
+
+## 响应
+
+> **响应外壳**：成功时 JSON 含 `success`、`data`、可选 `message`，见 [统一响应体](/signal-feed/api-reference#api-response-envelope)。
+
+### 响应示例
+
+对应请求 `GET /api/v1/stock/industry/info/000001`。字段以线上为准。
+
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "code": "000001",
+      "secucode": "000001.SZ",
+      "name": "平安银行",
+      "boardCode": 475,
+      "boardName": "银行Ⅱ",
+      "industryRank": null
+    }
+  ]
+}
+```
+
+## 请求示例
+
+```bash
+curl -sS -H "Authorization: Bearer <API_KEY>" "http://localhost:4000/api/v1/stock/industry/info/000001"
+```
+

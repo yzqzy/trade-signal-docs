@@ -1,0 +1,49 @@
+---
+title: 十年业绩
+description: 十年业绩
+---
+
+# 十年业绩
+
+十年业绩。
+
+**HTTP 方法与路径**：`GET /api/v1/stock/performance/ten-years`
+
+## 入参
+
+### Path
+
+| 路径参数 | 无 |
+
+
+### Query
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `industryName` | string | 是 | 行业名称 |
+| `year` | string | 是 | 年份 |
+| `sortColumn` | string | 否 | 默认 `PARENT_NI_3Q` |
+
+
+## 响应
+
+> **响应外壳**：成功时 JSON 含 `success`、`data`、可选 `message`，见 [统一响应体](/signal-feed/api-reference#api-response-envelope)。
+
+### 响应示例
+
+对应请求 `GET /api/v1/stock/performance/ten-years?industryName=银行&year=2023`。字段以线上为准。
+
+```json
+{
+  "success": false,
+  "data": null,
+  "message": "Failed to get performance ten years"
+}
+```
+
+## 请求示例
+
+```bash
+curl -sS -H "Authorization: Bearer <API_KEY>" "http://localhost:4000/api/v1/stock/performance/ten-years?industryName=银行&year=2023"
+```
+

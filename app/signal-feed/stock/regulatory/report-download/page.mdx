@@ -1,0 +1,30 @@
+---
+title: 公告/财报下载（POST）
+description: 下载 PDF 至服务端白名单目录
+---
+
+# 公告/财报下载
+
+**HTTP 方法与路径**：`POST /api/v1/stock/report/download`
+
+## 入参（JSON Body）
+
+| 字段 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `url` | string | 是 | 公告 PDF 直链 |
+| `stockCode` | string | 否 | 股票代码 |
+| `category` | string | 否 | 类目 |
+| `year` | string | 否 | 年份 |
+| `saveDir` | string | 否 | 落盘目录 |
+| `maxRetries` | number | 否 | 最大重试 |
+
+> **响应外壳**：成功时 JSON 含 `success`、`data`、可选 `message`，见 [统一响应体](/signal-feed/api-reference#api-response-envelope)。`data` 为落盘结果说明，字段以线上返回为准。
+
+## 请求示例
+
+```bash
+curl -sS -X POST "http://localhost:4000/api/v1/stock/report/download" \
+  -H "Authorization: Bearer <API_KEY>" \
+  -H "Content-Type: application/json" \
+  -d '{"url":"https://..."}'
+```

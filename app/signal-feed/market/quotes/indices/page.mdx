@@ -1,0 +1,59 @@
+---
+title: 大盘指数
+description: 获取主要股指实时数据。
+---
+
+# 大盘指数
+
+获取主要股指实时数据。
+
+**HTTP 方法与路径**：`GET /api/v1/market/indices`
+
+## 入参
+
+### Path
+
+| 路径参数 | 无 |
+
+
+### Query
+
+| Query 参数 | 无 |
+
+
+## 响应
+
+> **响应外壳**：成功时 JSON 含 `success`、`data`、可选 `message`，见 [统一响应体](/signal-feed/api-reference#api-response-envelope)。
+
+### 响应示例
+
+对应请求 `GET /api/v1/market/indices`。字段以线上为准。
+
+```json
+{
+  "success": true,
+  "data": {
+    "total": 5,
+    "diff": [
+      {
+        "id": 2,
+        "newPrice": 407990,
+        "changeRate": -33,
+        "upsDowns": -1335,
+        "code": "000001",
+        "marketId": 1,
+        "name": "上证指数",
+        "f152": 2
+      },
+      "..."
+    ]
+  }
+}
+```
+
+## 请求示例
+
+```bash
+curl -sS -H "Authorization: Bearer <API_KEY>" "http://localhost:4000/api/v1/market/indices"
+```
+

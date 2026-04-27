@@ -1,0 +1,89 @@
+---
+title: 市场概览
+description: 市场概览数据。
+---
+
+# 市场概览
+
+市场概览数据。
+
+**HTTP 方法与路径**：`GET /api/v1/news/overview`
+
+## 入参
+
+### Path
+
+| 路径参数 | 无 |
+
+
+### Query
+
+| Query 参数 | 无 |
+
+
+## 响应
+
+> **响应外壳**：成功时 JSON 含 `success`、`data`、可选 `message`，见 [统一响应体](/signal-feed/api-reference#api-response-envelope)。
+
+### 响应示例
+
+对应请求 `GET /api/v1/news/overview`。字段以线上为准。
+
+```json
+{
+  "success": true,
+  "data": {
+    "marketDegree": "34",
+    "shszBalance": "2.64万亿",
+    "shszBalanceChangePx": "-1626亿",
+    "previewBalance": "2.64万亿",
+    "previewBalanceChangePx": "-1626亿",
+    "upRatio": "75.00%",
+    "upRatioNum": "59",
+    "upOpenNum": "20",
+    "performance": "0.11%",
+    "upOpenRatio": "56%",
+    "profitRatio": "38%",
+    "upDownDis": {
+      "status": true,
+      "suspend_num": 14,
+      "up_num": 68,
+      "down_num": 37,
+      "rise_num": 2035,
+      "fall_num": 3352,
+      "flat_num": 123,
+      "down_10": 85,
+      "down_8": 79,
+      "down_6": 257,
+      "down_4": 895,
+      "down_2": 2036,
+      "up_2": 1377,
+      "up_4": 366,
+      "up_6": 145,
+      "up_8": 55,
+      "up_10": 92
+    },
+    "limitUpBoard": {
+      "row1": [
+        "一板",
+        "..."
+      ],
+      "row2": [
+        "51",
+        "..."
+      ],
+      "row3": [
+        "连板率",
+        "..."
+      ]
+    }
+  }
+}
+```
+
+## 请求示例
+
+```bash
+curl -sS -H "Authorization: Bearer <API_KEY>" "http://localhost:4000/api/v1/news/overview"
+```
+

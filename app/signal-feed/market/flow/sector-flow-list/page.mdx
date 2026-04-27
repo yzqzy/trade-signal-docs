@@ -1,0 +1,75 @@
+---
+title: 板块资金流向列表
+description: 板块维度下分页列表，与汇总接口的 `dimension` 语义一致。
+---
+
+# 板块资金流向列表
+
+板块维度下分页列表，与汇总接口的 `dimension` 语义一致。
+
+**HTTP 方法与路径**：`GET /api/v1/market/sector-flow/list`
+
+## 入参
+
+### Path
+
+| 路径参数 | 无 |
+
+
+### Query
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `dimension` | string | 否 | 同 summary，默认 `industry` |
+| `page` | number | 否 | 页码，默认 1 |
+| `pageSize` | number | 否 | 每页条数，默认 50 |
+
+
+## 响应
+
+> **响应外壳**：成功时 JSON 含 `success`、`data`、可选 `message`，见 [统一响应体](/signal-feed/api-reference#api-response-envelope)。
+
+### 响应示例
+
+对应请求 `GET /api/v1/market/sector-flow/list?dimension=industry&page=1&pageSize=50`。字段以线上为准。
+
+```json
+{
+  "success": true,
+  "data": {
+    "total": 496,
+    "diff": [
+      {
+        "id": 2,
+        "newPrice": 1663.02,
+        "changeRate": 1.38,
+        "code": "BK1033",
+        "marketId": 90,
+        "name": "电池",
+        "mainNetInflowNetAmount": 6151021568,
+        "superLargeNetInflowNetAmount": 3642606080,
+        "superLargeNetInflowRatio": 2.87,
+        "largeNetInflowNetAmount": 2508415488,
+        "largeNetInflowRatio": 1.97,
+        "mediumNetInflowNetAmount": -3184137984,
+        "mediumNetInflowRatio": -2.51,
+        "smallNetInflowNetAmount": -2891683072,
+        "smallNetInflowRatio": -2.28,
+        "f124": 1777016385,
+        "mainNetInflowRatio": 4.84,
+        "mainNetInflowStockName": 0,
+        "mainNetInflowStockCode": "300750",
+        "f206": 0
+      },
+      "..."
+    ]
+  }
+}
+```
+
+## 请求示例
+
+```bash
+curl -sS -H "Authorization: Bearer <API_KEY>" "http://localhost:4000/api/v1/market/sector-flow/list?dimension=industry&page=1&pageSize=50"
+```
+

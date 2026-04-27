@@ -1,0 +1,72 @@
+---
+title: 治理负面事件归一
+description: 治理负面事件归一
+---
+
+# 治理负面事件归一
+
+治理负面事件归一。
+
+**HTTP 方法与路径**：`GET /api/v1/stock/governance/events/{code}`
+
+## 入参
+
+### Path
+
+| 参数 | 位置 | 类型 | 必填 | 说明 |
+|------|------|------|------|------|
+| `code` | path | string | 是 | 股票代码 |
+
+
+### Query
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `year` | string | 否 |  |
+| `limit` | number | 否 | 1–30 |
+| `timeRange` | string | 否 | `3m`/`6m`/`1y`/`3y`/`5y` |
+| `dedupe` | boolean | 否 |  |
+| `source` | string | 否 | aggregate/cninfo/sse |
+| `startDate` | string | 否 | 上交所检索 |
+| `endDate` | string | 否 |  |
+| `stockName` | string | 否 |  |
+
+
+## 响应
+
+> **响应外壳**：成功时 JSON 含 `success`、`data`、可选 `message`，见 [统一响应体](/signal-feed/api-reference#api-response-envelope)。
+
+### 响应示例
+
+对应请求 `GET /api/v1/stock/governance/events/000001`。字段以线上为准。
+
+```json
+{
+  "success": true,
+  "data": {
+    "code": "000001",
+    "sources": {
+      "cninfo": {
+        "status": "ok",
+        "total": 0,
+        "note": "当前条目在严格主题闸门下无命中公告（已避免制度类误匹配放宽）"
+      },
+      "sse": {
+        "status": "skipped",
+        "total": 0,
+        "note": "上交所监管函接口仅适用于沪市 A 股代码"
+      }
+    },
+    "total": 0,
+    "highSeverityCount": 0,
+    "events": []
+  }
+}
+```
+
+## 请求示例
+
+```bash
+curl -sS -H "Authorization: Bearer <API_KEY>" "http://localhost:4000/api/v1/stock/governance/events/000001"
+```
+

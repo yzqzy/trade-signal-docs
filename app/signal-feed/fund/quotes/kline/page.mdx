@@ -1,0 +1,49 @@
+---
+title: ETF K 线
+description: ETF 日/周/月 K 线，复权类型同股票。
+---
+
+# ETF K 线
+
+ETF 日/周/月 K 线，复权类型同股票。
+
+**HTTP 方法与路径**：`GET /api/v1/fund/kline`
+
+## 入参
+
+### Path
+
+| 路径参数 | 无 |
+
+
+### Query
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `code` | string | 是 | ETF 代码 |
+| `period` | string | 否 | `day`/`week`/`month` 等，默认 `day` |
+| `fqt` | string | 否 | `pre`/`after`/`none`，默认 `pre` |
+
+
+## 响应
+
+> **响应外壳**：成功时 JSON 含 `success`、`data`、可选 `message`，见 [统一响应体](/signal-feed/api-reference#api-response-envelope)。
+
+### 响应示例
+
+对应请求 `GET /api/v1/fund/kline?code=159915&period=day&fqt=pre`。字段以线上为准。
+
+```json
+{
+  "success": false,
+  "data": null,
+  "message": "socket hang up"
+}
+```
+
+## 请求示例
+
+```bash
+curl -sS -H "Authorization: Bearer <API_KEY>" "http://localhost:4000/api/v1/fund/kline?code=159915&period=day&fqt=pre"
+```
+

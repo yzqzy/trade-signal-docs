@@ -1,0 +1,74 @@
+---
+title: 股票详情
+description: 股票详情
+---
+
+# 股票详情
+
+股票详情。
+
+**HTTP 方法与路径**：`GET /api/v1/stock/detail/{code}`
+
+## 入参
+
+### Path
+
+| 参数 | 位置 | 类型 | 必填 | 说明 |
+|------|------|------|------|------|
+| `code` | path | string | 是 | 股票代码 |
+
+
+### Query
+
+| Query 参数 | 无 |
+
+
+## 响应
+
+> **响应外壳**：成功时 JSON 含 `success`、`data`、可选 `message`，见 [统一响应体](/signal-feed/api-reference#api-response-envelope)。
+
+### 响应示例
+
+对应请求 `GET /api/v1/stock/detail/000001`。字段以线上为准。
+
+```json
+{
+  "success": true,
+  "data": {
+    "id": 2,
+    "newPrice": 1100,
+    "changeRate": 0,
+    "upsDowns": 0,
+    "volume": 582710,
+    "dealAmount": 639781173.32,
+    "amplitude": 100,
+    "turnoverRate": 30,
+    "dtsyl": 367,
+    "volumeRatio": 80,
+    "code": "000001",
+    "marketId": 0,
+    "name": "平安银行",
+    "preClosePrice": 1100,
+    "f19": 6,
+    "speedIncrease": 9,
+    "f30": 6011,
+    "f31": 1099,
+    "f32": 1100,
+    "industry": "银行Ⅱ",
+    "basicEps": 0.748379945,
+    "f125": 0,
+    "f139": 2,
+    "f148": 1089,
+    "f152": 2,
+    "f292": 13,
+    "rawTradeStatusCode": 13
+  }
+}
+```
+
+## 请求示例
+
+```bash
+curl -sS -H "Authorization: Bearer <API_KEY>" "http://localhost:4000/api/v1/stock/detail/000001"
+```
+

@@ -1,0 +1,132 @@
+---
+title: 年报杜邦分析序列
+description: 年报杜邦分析序列
+---
+
+# 年报杜邦分析序列
+
+年报杜邦分析序列。
+
+**HTTP 方法与路径**：`GET /api/v1/stock/financial/dupont/{code}`
+
+## 入参
+
+### Path
+
+| 参数 | 位置 | 类型 | 必填 | 说明 |
+|------|------|------|------|------|
+| `code` | path | string | 是 | 股票代码 |
+
+
+### Query
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `reportType` | string | 否 |  |
+| `years` | number | 否 |  |
+
+
+## 响应
+
+> **响应外壳**：成功时 JSON 含 `success`、`data`、可选 `message`，见 [统一响应体](/signal-feed/api-reference#api-response-envelope)。
+
+### 响应示例
+
+对应请求 `GET /api/v1/stock/financial/dupont/000001`。字段以线上为准。
+
+```json
+{
+  "success": true,
+  "data": {
+    "secuCode": "000001.SZ",
+    "code": "000001",
+    "reportType": "annual",
+    "years": 5,
+    "items": [
+      {
+        "securityNameAbbr": "平安银行",
+        "orgCode": "10004085",
+        "orgType": "银行",
+        "reportDate": "2025-12-31",
+        "reportType": "2025年报",
+        "reportDateName": "年报",
+        "securityTypeCode": "058001001",
+        "noticeDate": "2026-03-21 00:00:00",
+        "updateDate": "2026-03-21 00:00:00",
+        "currency": "CNY",
+        "netprofit": 42633000000,
+        "totalOperateIncome": 131442000000,
+        "totalAssets": 5925777000000,
+        "totalLiabilities": 5374593000000,
+        "totalCurrentAssets": null,
+        "totalNoncurrentAssets": null,
+        "parentNetprofit": 42633000000,
+        "saleNpr": 32.434838179577,
+        "totalAssetsTr": 0.022478233734,
+        "jroa": 0.7290778737,
+        "parentNetprofitRatio": 100,
+        "equityMultiplier": 10.750996037621,
+        "roe": 9.15,
+        "debtAssetRatio": 90.698536242589,
+        "totalIncome": 131474000000,
+        "totalCost": 88841000000,
+        "totalExpense": null,
+        "monetaryfunds": null,
+        "tradeFinasset": null,
+        "noteRece": null,
+        "accountsRece": null,
+        "financeRece": null,
+        "otherRece": null,
+        "inventory": null,
+        "creditorInvest": null,
+        "longEquityInvest": null,
+        "investRealestate": null,
+        "fixedAsset": null,
+        "cip": null,
+        "userightAsset": null,
+        "intangibleAsset": null,
+        "developExpense": null,
+        "goodwill": null,
+        "longPrepaidExpense": null,
+        "deferTaxAsset": null,
+        "investIncome": 20474000000,
+        "exchangeIncome": 960000000,
+        "fairvalueChangeIncome": -2518000000,
+        "assetDisposalIncome": 252000000,
+        "operateCost": null,
+        "surrenderValue": null,
+        "netCompensateExpense": null,
+        "netContractReserve": null,
+        "policyBonusExpense": null,
+        "operateTaxAdd": 1271000000,
+        "incomeTax": 8526000000,
+        "assetImpairmentIncome": null,
+        "creditImpairmentIncome": null,
+        "nonbusinessExpense": null,
+        "financeExpense": null,
+        "saleExpense": null,
+        "manageExpense": null,
+        "researchExpense": null,
+        "interestNi": 88021000000,
+        "feeCommissionNi": 23894000000,
+        "earnedPremium": null,
+        "businessManageExpense": 38196000000,
+        "otherCreditorInvest": null,
+        "otherEquityInvest": null,
+        "longRece": null,
+        "availableSaleFinasset": null,
+        "holdMaturityInvest": null,
+        "feeCommissionExpense": null
+      },
+      "..."
+    ]
+  }
+}
+```
+
+## 请求示例
+
+```bash
+curl -sS -H "Authorization: Bearer <API_KEY>" "http://localhost:4000/api/v1/stock/financial/dupont/000001"
+```
+

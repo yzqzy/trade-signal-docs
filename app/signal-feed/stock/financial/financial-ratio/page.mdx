@@ -1,0 +1,196 @@
+---
+title: 年报百分比报表（GRATIO）
+description: 年报百分比报表（GRATIO）
+---
+
+# 年报百分比报表（GRATIO）
+
+年报百分比报表（GRATIO）。
+
+**HTTP 方法与路径**：`GET /api/v1/stock/financial/ratio/{code}`
+
+## 入参
+
+### Path
+
+| 参数 | 位置 | 类型 | 必填 | 说明 |
+|------|------|------|------|------|
+| `code` | path | string | 是 | 股票代码 |
+
+
+### Query
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `reportType` | string | 否 |  |
+| `years` | number | 否 |  |
+
+
+## 响应
+
+> **响应外壳**：成功时 JSON 含 `success`、`data`、可选 `message`，见 [统一响应体](/signal-feed/api-reference#api-response-envelope)。
+
+### 响应示例
+
+对应请求 `GET /api/v1/stock/financial/ratio/000001`。字段以线上为准。
+
+```json
+{
+  "success": true,
+  "data": {
+    "secuCode": "000001.SZ",
+    "code": "000001",
+    "reportType": "annual",
+    "years": 5,
+    "items": [
+      {
+        "reportDate": "2025-12-31",
+        "absolute": {
+          "orgCode": "10004085",
+          "securityNameAbbr": "平安银行",
+          "securityTypeCode": "058001001",
+          "reportType": "2025年报",
+          "reportDateName": "年报",
+          "orgType": "银行",
+          "totalOperateIncome": 131442000000,
+          "totalAssets": 5925777000000,
+          "totalLiabilities": 5374593000000,
+          "netprofit": 42633000000,
+          "otherIncome": 65000000,
+          "investIncome": 20474000000,
+          "fairvalueChangeIncome": -2518000000,
+          "assetDisposalIncome": 252000000,
+          "reportDate": "2025-12-31 00:00:00",
+          "noticeDate": "2026-03-21 00:00:00",
+          "updateDate": "2026-03-21 00:00:00",
+          "currency": "CNY",
+          "operateCost": null,
+          "saleExpense": null,
+          "manageExpense": 38196000000,
+          "researchExpense": null,
+          "financeExpense": null,
+          "operateTaxAdd": 1271000000,
+          "incomeTax": 8526000000,
+          "creditImpairmentIncome": null,
+          "assetImpairmentIncome": null,
+          "nonbusinessExpense": 281000000,
+          "nonbusinessIncome": 32000000,
+          "operateProfit": 51408000000,
+          "totalProfit": 51159000000,
+          "totalCurrentLiab": null,
+          "totalNoncurrentLiab": null,
+          "totalExpense": 38196000000,
+          "totalCurrentAssets": null,
+          "totalNoncurrentAssets": null,
+          "monetaryfunds": 254225000000,
+          "tradeFinasset": 765101000000,
+          "accountsRece": null,
+          "prepayment": null,
+          "inventory": null,
+          "fixedAsset": 11155000000,
+          "intangibleAsset": 5760000000,
+          "longPrepaidExpense": null,
+          "noteRece": null,
+          "financeRece": null,
+          "longRece": null,
+          "longEquityInvest": null,
+          "otherEquityInvest": 4727000000,
+          "investRealestate": 289000000,
+          "cip": null,
+          "userightAsset": 4001000000,
+          "goodwill": 7568000000,
+          "deriveFinliab": 27391000000,
+          "shortLoan": null,
+          "notePayable": null,
+          "accountsPayable": null,
+          "contractLiab": null,
+          "staffSalaryPayable": 14959000000,
+          "longLoan": null,
+          "leaseLiab": 4255000000,
+          "longPayable": null,
+          "totalOperateCost": 80034000000,
+          "interfaceType": 1,
+          "noteAccountsPayable": null,
+          "otherPayable": null
+        },
+        "percentOfRevenue": {
+          "orgCode": "10004085",
+          "securityNameAbbr": "平安银行",
+          "securityTypeCode": "058001001",
+          "reportType": "2025年报",
+          "reportDateName": "年报",
+          "orgType": "银行",
+          "totalOperateIncome": 100,
+          "totalAssets": 100,
+          "totalLiabilities": 100,
+          "netprofit": 32.434838179577,
+          "otherIncome": 0.049451469089,
+          "investIncome": 15.576451971212,
+          "fairvalueChangeIncome": -1.915673833326,
+          "assetDisposalIncome": 0.191719541699,
+          "reportDate": "2025-12-31 00:00:00",
+          "noticeDate": "2026-03-21 00:00:00",
+          "updateDate": "2026-03-21 00:00:00",
+          "currency": "CNY",
+          "operateCost": null,
+          "saleExpense": null,
+          "manageExpense": -29.059204820377,
+          "researchExpense": null,
+          "financeExpense": null,
+          "operateTaxAdd": -0.966966418649,
+          "incomeTax": -6.486511160816,
+          "creditImpairmentIncome": null,
+          "assetImpairmentIncome": null,
+          "nonbusinessExpense": -0.213782504831,
+          "nonbusinessIncome": 0.024345338628,
+          "operateProfit": 39.110786506596,
+          "totalProfit": 38.921349340394,
+          "totalCurrentLiab": null,
+          "totalNoncurrentLiab": null,
+          "totalExpense": -29.059204820377,
+          "totalCurrentAssets": null,
+          "totalNoncurrentAssets": null,
+          "monetaryfunds": 4.29015469195,
+          "tradeFinasset": 12.911403854718,
+          "accountsRece": null,
+          "prepayment": null,
+          "inventory": null,
+          "fixedAsset": 0.188245355841,
+          "intangibleAsset": 0.097202442819,
+          "longPrepaidExpense": null,
+          "noteRece": null,
+          "financeRece": null,
+          "longRece": null,
+          "longEquityInvest": null,
+          "otherEquityInvest": 0.079770129723,
+          "investRealestate": 0.004876997565,
+          "cip": null,
+          "userightAsset": 0.067518571826,
+          "goodwill": 0.127713209593,
+          "deriveFinliab": 0.509638590308,
+          "shortLoan": null,
+          "notePayable": null,
+          "accountsPayable": null,
+          "contractLiab": null,
+          "staffSalaryPayable": 0.278328052003,
+          "longLoan": null,
+          "leaseLiab": 0.079168785432,
+          "longPayable": null,
+          "totalOperateCost": -60.889213493404,
+          "interfaceType": 2,
+          "noteAccountsPayable": null,
+          "otherPayable": null
+        }
+      },
+      "..."
+    ]
+  }
+}
+```
+
+## 请求示例
+
+```bash
+curl -sS -H "Authorization: Bearer <API_KEY>" "http://localhost:4000/api/v1/stock/financial/ratio/000001"
+```
+

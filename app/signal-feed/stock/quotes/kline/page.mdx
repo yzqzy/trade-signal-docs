@@ -1,0 +1,51 @@
+---
+title: 股票 K 线
+description: 股票 K 线
+---
+
+# 股票 K 线
+
+股票 K 线。
+
+**HTTP 方法与路径**：`GET /api/v1/stock/kline`
+
+## 入参
+
+### Path
+
+| 路径参数 | 无 |
+
+
+### Query
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `code` | string | 是 | A股6位或后缀；支持港股美股 secid |
+| `period` | string | 否 | `1m`…`month`，默认 `day` |
+| `fqt` | string | 否 | `pre`/`after`/`none` |
+| `from` | string | 否 | `YYYY-MM-DD` |
+| `to` | string | 否 | `YYYY-MM-DD` |
+
+
+## 响应
+
+> **响应外壳**：成功时 JSON 含 `success`、`data`、可选 `message`，见 [统一响应体](/signal-feed/api-reference#api-response-envelope)。
+
+### 响应示例
+
+对应请求 `GET /api/v1/stock/kline?code=000001&period=day&fqt=pre`。字段以线上为准。
+
+```json
+{
+  "success": false,
+  "data": null,
+  "message": "Failed to fetch kline"
+}
+```
+
+## 请求示例
+
+```bash
+curl -sS -H "Authorization: Bearer <API_KEY>" "http://localhost:4000/api/v1/stock/kline?code=000001&period=day&fqt=pre"
+```
+

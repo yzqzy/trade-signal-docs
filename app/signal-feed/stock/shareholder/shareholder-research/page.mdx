@@ -1,0 +1,61 @@
+---
+title: 股东研究（十大流通股东）
+description: 股东研究（十大流通股东）
+---
+
+# 股东研究（十大流通股东）
+
+股东研究（十大流通股东）。
+
+**HTTP 方法与路径**：`GET /api/v1/stock/shareholder/research/{code}`
+
+## 入参
+
+### Path
+
+| 参数 | 位置 | 类型 | 必填 | 说明 |
+|------|------|------|------|------|
+| `code` | path | string | 是 | **股票代码** |
+
+
+### Query
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `endDate` | string | 是 | 报告期 `YYYY-MM-DD` |
+
+
+## 响应
+
+> **响应外壳**：成功时 JSON 含 `success`、`data`、可选 `message`，见 [统一响应体](/signal-feed/api-reference#api-response-envelope)。
+
+### 响应示例
+
+对应请求 `GET /api/v1/stock/shareholder/research/000001?endDate=2024-06-30`。字段以线上为准。
+
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "code": "000001",
+      "secucode": "000001.SZ",
+      "endDate": "2024-06-30 00:00:00",
+      "holderRank": 1,
+      "holderName": "中国平安保险(集团)股份有限公司-集团本级-自有资金",
+      "holderType": "保险公司",
+      "holdNum": 9618540236,
+      "holdRatio": 49.565751886646,
+      "changeType": "不变"
+    },
+    "..."
+  ]
+}
+```
+
+## 请求示例
+
+```bash
+curl -sS -H "Authorization: Bearer <API_KEY>" "http://localhost:4000/api/v1/stock/shareholder/research/000001?endDate=2024-06-30"
+```
+

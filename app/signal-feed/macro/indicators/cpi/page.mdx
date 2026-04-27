@@ -1,0 +1,69 @@
+---
+title: CPI 分页
+description: CPI 分页
+---
+
+# CPI 分页
+
+分页返回该指标表格数据。
+
+**HTTP 方法与路径**：`GET /api/v1/macro/cpi`
+
+## 入参
+
+### Path
+
+| 路径参数 | 无 |
+
+
+### Query
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `page` | undefined | undefined | undefined |
+| `pageSize` | undefined | undefined | undefined |
+
+
+## 响应
+
+> **响应外壳**：成功时 JSON 含 `success`、`data`、可选 `message`，见 [统一响应体](/signal-feed/api-reference#api-response-envelope)。
+
+### 响应示例
+
+对应请求 `GET /api/v1/macro/cpi?page=1&pageSize=20`。字段以线上为准。
+
+```json
+{
+  "success": true,
+  "data": {
+    "pages": 11,
+    "data": [
+      {
+        "REPORT_DATE": "2026-03-01 00:00:00",
+        "TIME": "2026年03月份",
+        "NATIONAL_SAME": 1,
+        "NATIONAL_BASE": 101,
+        "NATIONAL_SEQUENTIAL": -0.7,
+        "NATIONAL_ACCUMULATE": 100.9,
+        "CITY_SAME": 1.1,
+        "CITY_BASE": 101.1,
+        "CITY_SEQUENTIAL": -0.7,
+        "CITY_ACCUMULATE": 100.9,
+        "RURAL_SAME": 0.9,
+        "RURAL_BASE": 100.9,
+        "RURAL_SEQUENTIAL": -0.5,
+        "RURAL_ACCUMULATE": 100.7
+      },
+      "..."
+    ],
+    "count": 219
+  }
+}
+```
+
+## 请求示例
+
+```bash
+curl -sS -H "Authorization: Bearer <API_KEY>" "http://localhost:4000/api/v1/macro/cpi?page=1&pageSize=20"
+```
+

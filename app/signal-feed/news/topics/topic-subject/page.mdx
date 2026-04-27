@@ -1,0 +1,73 @@
+---
+title: 专题资讯流
+description: 按 `subjectKey` 或 `subjectId` 拉取专题资讯流，支持时间游标分页。
+---
+
+# 专题资讯流
+
+按 `subjectKey` 或 `subjectId` 拉取专题资讯流，支持时间游标分页。
+
+**HTTP 方法与路径**：`GET /api/v1/news/topic-subject`
+
+## 入参
+
+### Path
+
+| 路径参数 | 无 |
+
+
+### Query
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `subjectKey` | string | 否* | 与 `subjectId` 二选一；取值示例：`morning_brief`、`news_broadcast` 等 |
+| `subjectId` | number | 否* | 专题数字 ID |
+| `pageSize` | number | 否 | 默认 20 |
+| `lastTime` | number | 否 | 秒级时间戳游标 |
+
+
+## 响应
+
+> **响应外壳**：成功时 JSON 含 `success`、`data`、可选 `message`，见 [统一响应体](/signal-feed/api-reference#api-response-envelope)。
+
+### 响应示例
+
+对应请求 `GET /api/v1/news/topic-subject?subjectKey=morning_brief&pageSize=5`。字段以线上为准。
+
+```json
+{
+  "success": true,
+  "data": {
+    "subjectId": 1137,
+    "total": 5,
+    "data": [
+      {
+        "id": 1790816,
+        "title": "【盘前必读】鹏鼎控股8月合并营业收入为36.75亿元，同比增长25.56%",
+        "content": "①鹏鼎控股8月合并营业收入为36.75亿元，同比增长25.56%；\n②宝鹰股份公告，大横琴集团要约收购公司股份完成；\n③含全固态电池、电解质及设备等！这一固态电池项目落户此地。",
+        "publishTime": 1725584979,
+        "stocks": [
+          {
+            "code": "sz002989",
+            "name": "中天精装",
+            "changeRate": -1.04
+          },
+          "..."
+        ]
+      },
+      "..."
+    ],
+    "subjectKey": "morning_brief",
+    "subjectNameZh": "盘前必读"
+  }
+}
+```
+
+## 请求示例
+
+```bash
+curl -sS -H "Authorization: Bearer <API_KEY>" "http://localhost:4000/api/v1/news/topic-subject?subjectKey=morning_brief&pageSize=5"
+```
+
+
+> *`subjectKey` 与 `subjectId` 至少填一个。

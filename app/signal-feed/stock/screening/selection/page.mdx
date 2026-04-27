@@ -1,0 +1,211 @@
+---
+title: 股票选股
+description: 股票选股
+---
+
+# 股票选股
+
+股票选股。
+
+**HTTP 方法与路径**：`GET /api/v1/stock/selection`
+
+## 入参
+
+### Path
+
+| 路径参数 | 无 |
+
+
+### Query
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `page` | number | 否 | 默认 1 |
+| `pageSize` | number | 否 | 默认 50 |
+| `filter` | string | 否 | 筛选表达式 |
+
+
+## 响应
+
+> **响应外壳**：成功时 JSON 含 `success`、`data`、可选 `message`，见 [统一响应体](/signal-feed/api-reference#api-response-envelope)。
+
+### 响应示例
+
+对应请求 `GET /api/v1/stock/selection`。字段以线上为准。
+
+```json
+{
+  "success": true,
+  "data": {
+    "nextpage": true,
+    "currentpage": 1,
+    "config": [
+      {
+        "INDICATOR_NAME": "PE9",
+        "DATATYPE": "最新一期"
+      },
+      "..."
+    ],
+    "count": 5188,
+    "data": [
+      {
+        "MAX_TRADE_DATE": "2026-04-24",
+        "SECURITY_CODE": "000906",
+        "SECURITY_NAME_ABBR": "浙商中拓",
+        "SECUCODE": "000906.SZ",
+        "NEW_PRICE": 6.36,
+        "CHANGE_RATE": 10.03,
+        "VOLUME_RATIO": 11.79,
+        "HIGH_PRICE": 6.36,
+        "LOW_PRICE": 6.11,
+        "PRE_CLOSE_PRICE": 5.78,
+        "VOLUME": 582527,
+        "DEAL_AMOUNT": 368362098.43,
+        "TURNOVERRATE": 8.31,
+        "AMPLITUDE": 4.33,
+        "LISTING_DATE": "1999-07-07",
+        "INDUSTRY": "物流",
+        "AREA": "浙江省",
+        "MARKET": "深交所主板",
+        "CONCEPT": [
+          "ERP概念",
+          "..."
+        ],
+        "STYLE": [
+          "股权激励",
+          "..."
+        ],
+        "IS_HS300": "否",
+        "IS_SZ50": "否",
+        "IS_ZZ500": "否",
+        "IS_ZZ1000": "否",
+        "IS_CY50": "否",
+        "PE9": 20.77166823,
+        "PE_TTM": 20.77166823,
+        "PBNEWMRQ": 0.91161118,
+        "PETTMDEDUCTED": -157.95204603,
+        "PS9": 0.01873894,
+        "PCFJYXJL9": -0.84651207,
+        "PREDICT_PE_SYEAR": 8.849917291059,
+        "PREDICT_PE_NYEAR": 6.224085468641,
+        "TOTAL_MARKET_CAP": 4513457818,
+        "FREE_CAP": 4459884899,
+        "DTSYL": 6.03403466,
+        "YCPEG": 0.068608820152,
+        "ENTERPRISE_VALUE_MULTIPLE": 8.419844171,
+        "BASIC_EPS": 0.23,
+        "BVPS": 6.97665865588,
+        "PER_NETCASH_OPERATE": -13.14608292973,
+        "PER_FCFE": 10.860331,
+        "PER_CAPITAL_RESERVE": 1.209085422607,
+        "PER_UNASSIGN_PROFIT": 4.209845781882,
+        "PER_SURPLUS_RESERVE": 0.539945371859,
+        "PER_RETAINED_EARNING": 4.749791153741,
+        "PARENT_NETPROFIT": 186999995.63,
+        "DEDUCT_NETPROFIT": 174679187.97,
+        "TOTAL_OPERATE_INCOME": 56086433580.08,
+        "ROE_WEIGHT": 3.4,
+        "JROA": 0.4545562222,
+        "ROIC": 1.338889348787,
+        "ZXGXL": 2.0440251572,
+        "SALE_GPR": 1.1161651986,
+        "SALE_NPR": 0.4099000604,
+        "NETPROFIT_YOY_RATIO": -2.820333151428,
+        "DEDUCT_NETPROFIT_GROWTHRATE": 395.504880463372,
+        "TOI_YOY_RATIO": 10.5607281441,
+        "NETPROFIT_GROWTHRATE_3Y": -39.4211155864,
+        "INCOME_GROWTHRATE_3Y": 6.7480136451,
+        "PREDICT_NETPROFIT_RATIO": null,
+        "PREDICT_INCOME_RATIO": null,
+        "BASICEPS_YOY_RATIO": -11.5384615385,
+        "TOTAL_PROFIT_GROWTHRATE": 0.5195768873,
+        "OPERATE_PROFIT_GROWTHRATE": 0.431430751051,
+        "DEBT_ASSET_RATIO": 81.6119246552,
+        "EQUITY_RATIO": 4.438307061761,
+        "EQUITY_MULTIPLIER": 5.438307061771,
+        "CURRENT_RATIO": 1.223059902967,
+        "SPEED_RATIO": 0.697203789365,
+        "TOTAL_SHARES": 709663179,
+        "FREE_SHARES": 701239764,
+        "HOLDER_NEWEST": 25680,
+        "HOLDER_RATIO": -5.796038,
+        "HOLD_AMOUNT": 157833.560588766,
+        "AVG_HOLD_NUM": 27306.84439252,
+        "HOLDNUM_GROWTHRATE_3Q": 6.1526479751,
+        "HOLDNUM_GROWTHRATE_HY": 10.845016,
+        "HOLD_RATIO_COUNT": 53.06,
+        "FREE_HOLD_RATIO": 53.541876,
+        "MACD_GOLDEN_FORK": "0",
+        "MACD_GOLDEN_FORKZ": "1",
+        "MACD_GOLDEN_FORKY": "0",
+        "KDJ_GOLDEN_FORK": "0",
+        "KDJ_GOLDEN_FORKZ": "0",
+        "KDJ_GOLDEN_FORKY": "0",
+        "BREAK_THROUGH": "0",
+        "LOW_FUNDS_INFLOW": "0",
+        "HIGH_FUNDS_OUTFLOW": "0",
+        "BREAKUP_MA_5DAYS": "0",
+        "BREAKUP_MA_10DAYS": "0",
+        "BREAKUP_MA_20DAYS": "0",
+        "BREAKUP_MA_30DAYS": "0",
+        "BREAKUP_MA_60DAYS": "1",
+        "LONG_AVG_ARRAY": "0",
+        "SHORT_AVG_ARRAY": "0",
+        "UPPER_LARGE_VOLUME": "1",
+        "DOWN_NARROW_VOLUME": "0",
+        "ONE_DAYANG_LINE": "0",
+        "TWO_DAYANG_LINES": "0",
+        "RISE_SUN": "0",
+        "POWER_FULGUN": "0",
+        "RESTORE_JUSTICE": "0",
+        "DOWN_7DAYS": "0",
+        "UPPER_8DAYS": "0",
+        "UPPER_9DAYS": "0",
+        "UPPER_4DAYS": "0",
+        "HEAVEN_RULE": "0",
+        "UPSIDE_VOLUME": "0",
+        "ALLCORP_NUM": 4,
+        "ALLCORP_FUND_NUM": 1,
+        "ALLCORP_QS_NUM": null,
+        "ALLCORP_QFII_NUM": null,
+        "ALLCORP_BX_NUM": null,
+        "ALLCORP_SB_NUM": null,
+        "ALLCORP_XT_NUM": null,
+        "ALLCORP_RATIO": 50.02769166,
+        "ALLCORP_FUND_RATIO": 0.32409741,
+        "ALLCORP_QS_RATIO": null,
+        "ALLCORP_QFII_RATIO": null,
+        "ALLCORP_BX_RATIO": null,
+        "ALLCORP_SB_RATIO": null,
+        "ALLCORP_XT_RATIO": null,
+        "NET_INFLOW": 61468413,
+        "NETINFLOW_3DAYS": 57650575,
+        "NETINFLOW_5DAYS": 58015390,
+        "NOWINTERST_RATIO": 16.69,
+        "NOWINTERST_RATIO_3D": 13.31,
+        "NOWINTERST_RATIO_5D": 12,
+        "DDX": 1.381,
+        "DDX_3D": 1.286,
+        "DDX_5D": 1.295,
+        "DDX_RED_10D": 3,
+        "CHANGERATE_3DAYS": 11.19,
+        "CHANGERATE_5DAYS": 12.17,
+        "CHANGERATE_10DAYS": 10.99,
+        "CHANGERATE_TY": 7.43,
+        "UPNDAY": 5,
+        "DOWNNDAY": 0,
+        "MUTUAL_NETBUY_AMT": null,
+        "HOLD_RATIO": 1.24
+      },
+      "..."
+    ]
+  }
+}
+```
+
+## 请求示例
+
+```bash
+curl -sS -H "Authorization: Bearer <API_KEY>" "http://localhost:4000/api/v1/stock/selection"
+```
+

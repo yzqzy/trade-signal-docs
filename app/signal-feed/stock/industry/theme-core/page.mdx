@@ -1,0 +1,58 @@
+---
+title: 核心题材
+description: 核心题材
+---
+
+# 核心题材
+
+核心题材。
+
+**HTTP 方法与路径**：`GET /api/v1/stock/theme/core/{code}`
+
+## 入参
+
+### Path
+
+| 参数 | 位置 | 类型 | 必填 | 说明 |
+|------|------|------|------|------|
+| `code` | path | string | 是 | 股票代码 |
+
+
+### Query
+
+| Query 参数 | 无 |
+
+
+## 响应
+
+> **响应外壳**：成功时 JSON 含 `success`、`data`、可选 `message`，见 [统一响应体](/signal-feed/api-reference#api-response-envelope)。
+
+### 响应示例
+
+对应请求 `GET /api/v1/stock/theme/core/000001`。字段以线上为准。
+
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "code": "000001",
+      "secucode": "000001.SZ",
+      "name": "平安银行",
+      "boardCode": "BK1071",
+      "boardName": "跨境支付",
+      "selectedReason": "CIPS是我国重要的金融市场基础设施,在助力人民币国际化等方面发挥着重要作用。公司是首批直接参与者之一。",
+      "boardRank": 20,
+      "boardYield": -0.77
+    },
+    "..."
+  ]
+}
+```
+
+## 请求示例
+
+```bash
+curl -sS -H "Authorization: Bearer <API_KEY>" "http://localhost:4000/api/v1/stock/theme/core/000001"
+```
+

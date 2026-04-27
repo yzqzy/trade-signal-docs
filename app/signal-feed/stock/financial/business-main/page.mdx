@@ -1,0 +1,57 @@
+---
+title: 主营业务
+description: 主营业务
+---
+
+# 主营业务
+
+主营业务。
+
+**HTTP 方法与路径**：`GET /api/v1/stock/business/main/{code}`
+
+## 入参
+
+### Path
+
+| 参数 | 位置 | 类型 | 必填 | 说明 |
+|------|------|------|------|------|
+| `code` | path | string | 是 | 股票代码 |
+
+
+### Query
+
+| Query 参数 | 无 |
+
+
+## 响应
+
+> **响应外壳**：成功时 JSON 含 `success`、`data`、可选 `message`，见 [统一响应体](/signal-feed/api-reference#api-response-envelope)。
+
+### 响应示例
+
+对应请求 `GET /api/v1/stock/business/main/000001`。字段以线上为准。
+
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "code": "000001",
+      "secucode": "000001.SZ",
+      "name": "平安银行",
+      "keyword": "经营范围",
+      "mainPoint": 2,
+      "mainPointContent": "办理人民币存、贷、结算、汇兑业务;人民币票据承兑和贴现;各项信托业务;经监管机构批准发行或买卖人民币有价证券;发行金融债券;代理发行、代理兑付、承销政府债券;买卖政府债券;外汇存款、汇款;境内境外借款;从事同业拆借;外汇借款;外汇担保;在境内境外发行或代理发行外币有价证券;买卖或代客买卖外汇及外币有价证券、自营外汇买卖;贸易、非贸易结算;办理国内结算;国际结算;外币票据的承兑和贴现;外汇贷款;资信调查、咨询、见证业务;保险兼业代理业务;代理收付款项;黄金进口业务;提供信用证服务及担保;提供保管箱服务;外币兑换;结汇、售汇;信用卡业务;经有关监管机构批准或允许的其他业务。",
+      "keyClassif": "经营范围"
+    },
+    "..."
+  ]
+}
+```
+
+## 请求示例
+
+```bash
+curl -sS -H "Authorization: Bearer <API_KEY>" "http://localhost:4000/api/v1/stock/business/main/000001"
+```
+

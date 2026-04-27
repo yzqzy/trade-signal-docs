@@ -1,0 +1,144 @@
+---
+title: 市场主线
+description: 市场主线主题与热点。
+---
+
+# 市场主线
+
+市场主线主题与热点。
+
+**HTTP 方法与路径**：`GET /api/v1/news/mainline`
+
+## 入参
+
+### Path
+
+| 路径参数 | 无 |
+
+
+### Query
+
+| Query 参数 | 无 |
+
+
+## 响应
+
+> **响应外壳**：成功时 JSON 含 `success`、`data`、可选 `message`，见 [统一响应体](/signal-feed/api-reference#api-response-envelope)。
+
+### 响应示例
+
+对应请求 `GET /api/v1/news/mainline`。字段以线上为准。
+
+```json
+{
+  "success": true,
+  "data": {
+    "chanceDesc": "判断主线机会，洞悉趋势强度",
+    "chances": [
+      {
+        "continued": 4,
+        "hot": 4,
+        "id": 4,
+        "mainLine_desc": "AI驱动光模块加速迭代，800G/1.6T光模块迎来快速放量，近期全球光通信器件龙头Lumentum表示，数据中心需求高景气下，公司现有产能已供不应求，预计两个季度后2028年产能将全部售罄。",
+        "plates": [
+          {
+            "article": {
+              "id": 2354298,
+              "img": "https://image..cn/images/20260424/w7YbCg01yu_2500x1500.jpg",
+              "read_count": "919040",
+              "time": 1776993693,
+              "title": "市场放量分歧，算力硬件短期情绪承压，关注其余题材方向轮动机会"
+            },
+            "code": "cls80189",
+            "faucet_1": {
+              "reason": "25天涨超120%",
+              "rise_range": 5.1,
+              "status": "L",
+              "stock_code": "sh688048",
+              "stock_name": "长光华芯"
+            },
+            "faucet_2": {
+              "reason": "10天涨超50%",
+              "rise_range": 7.59,
+              "status": "L",
+              "stock_code": "sh603738",
+              "stock_name": "泰晶科技"
+            },
+            "faucet_3": {
+              "reason": "22天涨超70%",
+              "rise_range": -4.38,
+              "status": "L",
+              "stock_code": "sh601869",
+              "stock_name": "长飞光纤"
+            },
+            "name": "光通信",
+            "reason": "AI驱动光模块加速迭代，800G/1.6T光模块迎来快速放量。",
+            "rise_count": 1,
+            "rise_range": -0.0167,
+            "time": 1777004617,
+            "vip": null
+          }
+        ],
+        "title": "光通信"
+      }
+    ],
+    "mainLineDesc": "精准把控主力动向，掌握主线机会",
+    "styleDesc": "预判风格走向，投资无往不利",
+    "styles": {
+      "id": 2332236,
+      "index_1": {
+        "change30": "+10.80%",
+        "code": "sz399006",
+        "name": "创业板指",
+        "stacks": [
+          {
+            "change_px": -10.01,
+            "last_px": "886.99",
+            "pre30_close": "534.80",
+            "rise_range": "+65.85%",
+            "stock_code": "sz300308",
+            "stock_name": "中际旭创",
+            "trade_status": "ENDTR"
+          },
+          "..."
+        ]
+      },
+      "index_2": null,
+      "interpret": "刚刚过去的3月，在海外风险扰动持续影响下，市场资金交投整体趋于谨慎，全市场赚钱效应与风险偏好均出现明显回落。随着短线情绪反复博弈、充分消化外部压力后，A股市场有望逐步回归自身运行逻辑。此外，4月将迎来上市公司年报与一季报密集披露窗口期，市场对业绩基本面的关注度料将进一步提升。",
+      "title": "外部扰动趋缓，四月市场或聚焦业绩主线"
+    },
+    "windDesc": "紧跟每日风口，领悟市场风向",
+    "winds": [
+      {
+        "faucet_stocks": [
+          {
+            "last_px": 0,
+            "pre30_close": 0,
+            "rise_range": 13.65,
+            "status": "L",
+            "stock_code": "sz300390",
+            "stock_name": "天华新能"
+          },
+          "..."
+        ],
+        "hot": 4,
+        "id": 11,
+        "img": "https://img..cn/images/20230419/e9BcoF5p7D.jpg",
+        "interpret": "据生意社监测，碳酸锂04月23日最新价格170000.00元/吨，最近10天上涨8.28%，30天上涨13.33%，60天上涨17.24%。此外科达制造一季报显示，公司实现归母净利润5.87亿元，同比增长69.10%。",
+        "plate_change": 0.0485,
+        "plate_code": "cls81782",
+        "subject_id": 2355,
+        "title": "锂矿"
+      },
+      "..."
+    ]
+  }
+}
+```
+
+## 请求示例
+
+```bash
+curl -sS -H "Authorization: Bearer <API_KEY>" "http://localhost:4000/api/v1/news/mainline"
+```
+

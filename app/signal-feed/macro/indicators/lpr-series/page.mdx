@@ -1,0 +1,57 @@
+---
+title: LPR 序列
+description: LPR 序列
+---
+
+# LPR 序列
+
+返回该指标的时序序列数据（图表用）。
+
+**HTTP 方法与路径**：`GET /api/v1/macro/lpr/series`
+
+## 入参
+
+### Path
+
+| 路径参数 | 无 |
+
+
+### Query
+
+| Query 参数 | 无 |
+
+
+## 响应
+
+> **响应外壳**：成功时 JSON 含 `success`、`data`、可选 `message`，见 [统一响应体](/signal-feed/api-reference#api-response-envelope)。
+
+### 响应示例
+
+对应请求 `GET /api/v1/macro/lpr/series`。字段以线上为准。
+
+```json
+{
+  "success": true,
+  "data": {
+    "pages": 4,
+    "data": [
+      {
+        "TRADE_DATE": "2026-04-20 00:00:00",
+        "LPR1Y": 3,
+        "LPR5Y": 3.5,
+        "RATE_1": 4.35,
+        "RATE_2": 4.9
+      },
+      "..."
+    ],
+    "count": 1571
+  }
+}
+```
+
+## 请求示例
+
+```bash
+curl -sS -H "Authorization: Bearer <API_KEY>" "http://localhost:4000/api/v1/macro/lpr/series"
+```
+

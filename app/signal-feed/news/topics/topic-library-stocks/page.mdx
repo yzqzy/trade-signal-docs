@@ -1,0 +1,46 @@
+---
+title: 题材成分股
+description: 题材关联股票列表。
+---
+
+# 题材成分股
+
+题材关联股票列表。
+
+**HTTP 方法与路径**：`GET /api/v1/news/topic/library/stocks/{themeId}`
+
+## 入参
+
+### Path
+
+| 参数 | 位置 | 类型 | 必填 | 说明 |
+|------|------|------|------|------|
+| `themeId` | path | string | 是 | 题材 ID |
+
+
+### Query
+
+| Query 参数 | 无 |
+
+
+## 响应
+
+> **响应外壳**：成功时 JSON 含 `success`、`data`、可选 `message`，见 [统一响应体](/signal-feed/api-reference#api-response-envelope)。
+
+### 响应示例
+
+对应请求 `GET /api/v1/news/topic/library/stocks/1001`。字段以线上为准。
+
+```json
+{
+  "success": true,
+  "data": []
+}
+```
+
+## 请求示例
+
+```bash
+curl -sS -H "Authorization: Bearer <API_KEY>" "http://localhost:4000/api/v1/news/topic/library/stocks/1001"
+```
+

@@ -1,0 +1,55 @@
+---
+title: 资产配置
+description: 资产配置结构。
+---
+
+# 资产配置
+
+资产配置结构。
+
+**HTTP 方法与路径**：`GET /api/v1/fund/asset-allocation/{code}`
+
+## 入参
+
+### Path
+
+| 参数 | 位置 | 类型 | 必填 | 说明 |
+|------|------|------|------|------|
+| `code` | path | string | 是 | 基金代码 |
+
+
+### Query
+
+| Query 参数 | 无 |
+
+
+## 响应
+
+> **响应外壳**：成功时 JSON 含 `success`、`data`、可选 `message`，见 [统一响应体](/signal-feed/api-reference#api-response-envelope)。
+
+### 响应示例
+
+对应请求 `GET /api/v1/fund/asset-allocation/159915`。字段以线上为准。
+
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "reportDate": "2026-03-31 00:00:00",
+      "reportType": "2026年一季度",
+      "stockRatio": 99.79,
+      "cashRatio": 0.62,
+      "stockValue": 50925347556.6,
+      "cashValue": 317427884.63
+    }
+  ]
+}
+```
+
+## 请求示例
+
+```bash
+curl -sS -H "Authorization: Bearer <API_KEY>" "http://localhost:4000/api/v1/fund/asset-allocation/159915"
+```
+

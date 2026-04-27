@@ -1,0 +1,55 @@
+---
+title: PPI 序列
+description: PPI 序列
+---
+
+# PPI 序列
+
+返回该指标的时序序列数据（图表用）。
+
+**HTTP 方法与路径**：`GET /api/v1/macro/ppi/series`
+
+## 入参
+
+### Path
+
+| 路径参数 | 无 |
+
+
+### Query
+
+| Query 参数 | 无 |
+
+
+## 响应
+
+> **响应外壳**：成功时 JSON 含 `success`、`data`、可选 `message`，见 [统一响应体](/signal-feed/api-reference#api-response-envelope)。
+
+### 响应示例
+
+对应请求 `GET /api/v1/macro/ppi/series`。字段以线上为准。
+
+```json
+{
+  "success": true,
+  "data": {
+    "pages": 1,
+    "data": [
+      {
+        "REPORT_DATE": "2026-03-01 00:00:00",
+        "BASE": 100.5,
+        "BASE_ACCUMULATE": 99.4
+      },
+      "..."
+    ],
+    "count": 243
+  }
+}
+```
+
+## 请求示例
+
+```bash
+curl -sS -H "Authorization: Bearer <API_KEY>" "http://localhost:4000/api/v1/macro/ppi/series"
+```
+

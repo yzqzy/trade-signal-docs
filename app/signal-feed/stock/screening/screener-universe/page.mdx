@@ -1,0 +1,90 @@
+---
+title: 选股 Universe（Screener）
+description: 选股 Universe（Screener）
+---
+
+# 选股 Universe（Screener）
+
+选股 Universe（Screener）。
+
+**HTTP 方法与路径**：`GET /api/v1/stock/screener/universe`
+
+## 入参
+
+### Path
+
+| 路径参数 | 无 |
+
+
+### Query
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `market` | 'CN_A'|'HK' | 否 | 默认 CN_A |
+| `page` | number | 否 | 默认 1 |
+| `pageSize` | number | 否 | 默认 100，最大 500 |
+| `filter` | string | 否 | 附加筛选 |
+
+
+## 响应
+
+> **响应外壳**：成功时 JSON 含 `success`、`data`、可选 `message`，见 [统一响应体](/signal-feed/api-reference#api-response-envelope)。
+
+### 响应示例
+
+对应请求 `GET /api/v1/stock/screener/universe`。字段以线上为准。
+
+```json
+{
+  "success": true,
+  "data": {
+    "market": "CN_A",
+    "total": 76,
+    "page": 1,
+    "pageSize": 100,
+    "items": [
+      {
+        "code": "000906",
+        "name": "浙商中拓",
+        "market": "CN_A",
+        "secucode": "000906.SZ",
+        "industry": "物流",
+        "listDate": "19990707",
+        "close": 6.36,
+        "pe": 20.77166823,
+        "pb": 0.91161118,
+        "dv": 2.0440251572,
+        "marketCap": 4513.457818,
+        "turnover": 8.31,
+        "debtRatio": 81.6119246552,
+        "grossMargin": 1.1161651986,
+        "roe": 3.4,
+        "netProfit": 186.99999563,
+        "revenue": 56086.43358008,
+        "ocf": -9329.291003309825,
+        "fcfYield": 170.75992140029456
+      },
+      "..."
+    ],
+    "capability": "partial",
+    "degradeReasons": [
+      "tier2_pledge_ratio_not_in_selection_feed",
+      "..."
+    ],
+    "pagination": {
+      "mode": "offset_page",
+      "maxPageSize": 500,
+      "clientMustPageUntilTotal": true,
+      "description": "单页仅返回一页标的；需要全市场时请递增 page 直至已拉取条数 ≥ total（pageSize ≤ maxPageSize）。"
+    },
+    "note": "Tier1 字段已按百万元/YYYYMMDD/% 归一；Tier2 硬否决与部分因子字段见 degradeReasons"
+  }
+}
+```
+
+## 请求示例
+
+```bash
+curl -sS -H "Authorization: Bearer <API_KEY>" "http://localhost:4000/api/v1/stock/screener/universe"
+```
+

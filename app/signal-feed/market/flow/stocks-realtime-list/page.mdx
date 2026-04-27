@@ -1,0 +1,74 @@
+---
+title: 股票实时列表
+description: 个股或标的实时列表（非板块资金流）。
+---
+
+# 股票实时列表
+
+个股或标的实时列表（非板块资金流）。
+
+**HTTP 方法与路径**：`GET /api/v1/market/stocks/realtime-list`
+
+## 入参
+
+### Path
+
+| 路径参数 | 无 |
+
+
+### Query
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `market` | string | 是 | `cn_a` 沪京深合并A股 · `bj` 北证 · `cyb` 创业板 · `kcb` 科创板 · `hk` / `hk_main` / `hk_gem` 港股等（完整取值以线上 OpenAPI `/docs` 为准） |
+| `page` | number | 否 | 默认 1 |
+| `pageSize` | number | 否 | 默认 50 |
+
+
+## 响应
+
+> **响应外壳**：成功时 JSON 含 `success`、`data`、可选 `message`，见 [统一响应体](/signal-feed/api-reference#api-response-envelope)。
+
+### 响应示例
+
+对应请求 `GET /api/v1/market/stocks/realtime-list?market=cyb&page=1&pageSize=50`。字段以线上为准。
+
+```json
+{
+  "success": true,
+  "data": {
+    "total": 1398,
+    "diff": [
+      {
+        "id": 2,
+        "newPrice": 556,
+        "changeRate": 2009,
+        "upsDowns": 93,
+        "volume": 387006,
+        "dealAmount": 213182896.59,
+        "amplitude": 756,
+        "turnoverRate": 749,
+        "dtsyl": 1604,
+        "volumeRatio": 544,
+        "code": "300422",
+        "marketId": 0,
+        "name": "博世科",
+        "highPrice": 556,
+        "lowPrice": 521,
+        "openPrice": 541,
+        "preClosePrice": 463,
+        "pbnewmrq": 448,
+        "quoteState152": 2
+      },
+      "..."
+    ]
+  }
+}
+```
+
+## 请求示例
+
+```bash
+curl -sS -H "Authorization: Bearer <API_KEY>" "http://localhost:4000/api/v1/market/stocks/realtime-list?market=cyb&page=1&pageSize=50"
+```
+

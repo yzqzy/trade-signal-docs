@@ -1,0 +1,63 @@
+---
+title: 财务指标（最新一期简表）
+description: 财务指标（最新一期简表）
+---
+
+# 财务指标（最新一期简表）
+
+财务指标（最新一期简表）。
+
+**HTTP 方法与路径**：`GET /api/v1/stock/indicator/financial/{code}`
+
+## 入参
+
+### Path
+
+| 参数 | 位置 | 类型 | 必填 | 说明 |
+|------|------|------|------|------|
+| `code` | path | string | 是 | 股票代码 |
+
+
+### Query
+
+| Query 参数 | 无 |
+
+
+## 响应
+
+> **响应外壳**：成功时 JSON 含 `success`、`data`、可选 `message`，见 [统一响应体](/signal-feed/api-reference#api-response-envelope)。
+
+### 响应示例
+
+对应请求 `GET /api/v1/stock/indicator/financial/000001`。字段以线上为准。
+
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "code": "000001",
+      "secucode": "000001.SZ",
+      "name": "平安银行",
+      "reportDate": "2026-03-31 00:00:00",
+      "reportType": "2026一季报",
+      "eps": 0.748379945325,
+      "epsKc": 0.67,
+      "bps": 23.914508721769,
+      "totalOperateIncome": 35277000000,
+      "parentNetProfit": 14523000000,
+      "roeJq": 2.83,
+      "zcfzRatio": 90.9829892863,
+      "totalShare": 19405918198,
+      "freeShare": 19405600653
+    }
+  ]
+}
+```
+
+## 请求示例
+
+```bash
+curl -sS -H "Authorization: Bearer <API_KEY>" "http://localhost:4000/api/v1/stock/indicator/financial/000001"
+```
+

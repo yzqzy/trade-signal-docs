@@ -1,0 +1,240 @@
+---
+title: 运营与管理洞察聚合
+description: 运营与管理洞察聚合
+---
+
+# 运营与管理洞察聚合
+
+运营与管理洞察聚合。
+
+**HTTP 方法与路径**：`GET /api/v1/stock/topic/operations-insight/{code}`
+
+## 入参
+
+### Path
+
+| 参数 | 位置 | 类型 | 必填 | 说明 |
+|------|------|------|------|------|
+| `code` | path | string | 是 | 股票代码 |
+
+
+### Query
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `year` | string | 否 |  |
+| `reportDate` | string | 否 | `YYYYMM` 或 `YYYY-MM-DD` |
+| `timeRange` | string | 否 |  |
+| `governanceLimit` | number | 否 |  |
+| `forecastPageSize` | number | 否 |  |
+
+
+## 响应
+
+> **响应外壳**：成功时 JSON 含 `success`、`data`、可选 `message`，见 [统一响应体](/signal-feed/api-reference#api-response-envelope)。
+
+### 响应示例
+
+对应请求 `GET /api/v1/stock/topic/operations-insight/000001`。字段以线上为准。
+
+```json
+{
+  "success": true,
+  "data": {
+    "code": "000001",
+    "secuCode": "000001.SZ",
+    "generatedAt": "2026-04-26T23:37:54.149Z",
+    "status": "degraded",
+    "missingFields": [
+      "governanceTimeline"
+    ],
+    "degradeReasons": [
+      "governance_events_unavailable"
+    ],
+    "data": {
+      "industryCycle": {
+        "code": "000001",
+        "industryName": "股份制银行Ⅲ",
+        "year": "2025",
+        "previousYear": "2024",
+        "cyclicality": "weak",
+        "position": "middle",
+        "confidence": "medium",
+        "metrics": {
+          "sampleSizeCurrent": 9,
+          "sampleSizePrevious": 9,
+          "revenueAllYearYoY": -0.016836441477779008,
+          "parentNiAllYearYoY": -0.0007048848721322868
+        }
+      },
+      "governanceTimeline": [],
+      "earningsGuidance": [
+        {
+          "secucode": "688813.SH",
+          "code": "688813",
+          "name": "泰金新能",
+          "reportDate": "2026-12-31 00:00:00",
+          "predictType": "略减",
+          "predictFinance": "扣除非经常性损益后的净利润",
+          "predictContent": "预计2026年1-12月扣除非经常性损益后的净利润盈利:17,507.39万元,同比上年下降:13.74%。",
+          "tradeMarket": "上交所科创板",
+          "securityType": "A股"
+        },
+        "..."
+      ],
+      "businessHighlights": [
+        {
+          "code": "000001",
+          "secucode": "000001.SZ",
+          "name": "平安银行",
+          "keyword": "经营范围",
+          "mainPoint": 2,
+          "mainPointContent": "办理人民币存、贷、结算、汇兑业务;人民币票据承兑和贴现;各项信托业务;经监管机构批准发行或买卖人民币有价证券;发行金融债券;代理发行、代理兑付、承销政府债券;买卖政府债券;外汇存款、汇款;境内境外借款;从事同业拆借;外汇借款;外汇担保;在境内境外发行或代理发行外币有价证券;买卖或代客买卖外汇及外币有价证券、自营外汇买卖;贸易、非贸易结算;办理国内结算;国际结算;外币票据的承兑和贴现;外汇贷款;资信调查、咨询、见证业务;保险兼业代理业务;代理收付款项;黄金进口业务;提供信用证服务及担保;提供保管箱服务;外币兑换;结汇、售汇;信用卡业务;经有关监管机构批准或允许的其他业务。",
+          "keyClassif": "经营范围"
+        },
+        "..."
+      ],
+      "themeSignals": [
+        {
+          "code": "000001",
+          "secucode": "000001.SZ",
+          "name": "平安银行",
+          "boardCode": "BK1071",
+          "boardName": "跨境支付",
+          "selectedReason": "CIPS是我国重要的金融市场基础设施,在助力人民币国际化等方面发挥着重要作用。公司是首批直接参与者之一。",
+          "boardRank": 20,
+          "boardYield": -0.77
+        },
+        "..."
+      ],
+      "companyOperations": {
+        "code": "000001",
+        "secuCode": "000001.SZ",
+        "generatedAt": "2026-04-26T23:37:53.940Z",
+        "status": "pass",
+        "missingFields": [],
+        "degradeReasons": [],
+        "businessHighlights": [
+          {
+            "code": "000001",
+            "secucode": "000001.SZ",
+            "name": "平安银行",
+            "keyword": "经营范围",
+            "mainPoint": 2,
+            "mainPointContent": "办理人民币存、贷、结算、汇兑业务;人民币票据承兑和贴现;各项信托业务;经监管机构批准发行或买卖人民币有价证券;发行金融债券;代理发行、代理兑付、承销政府债券;买卖政府债券;外汇存款、汇款;境内境外借款;从事同业拆借;外汇借款;外汇担保;在境内境外发行或代理发行外币有价证券;买卖或代客买卖外汇及外币有价证券、自营外汇买卖;贸易、非贸易结算;办理国内结算;国际结算;外币票据的承兑和贴现;外汇贷款;资信调查、咨询、见证业务;保险兼业代理业务;代理收付款项;黄金进口业务;提供信用证服务及担保;提供保管箱服务;外币兑换;结汇、售汇;信用卡业务;经有关监管机构批准或允许的其他业务。",
+            "keyClassif": "经营范围"
+          },
+          "..."
+        ],
+        "themeSignals": [
+          {
+            "code": "000001",
+            "secucode": "000001.SZ",
+            "name": "平安银行",
+            "boardCode": "BK1071",
+            "boardName": "跨境支付",
+            "selectedReason": "CIPS是我国重要的金融市场基础设施,在助力人民币国际化等方面发挥着重要作用。公司是首批直接参与者之一。",
+            "boardRank": 20,
+            "boardYield": -0.77
+          },
+          "..."
+        ],
+        "industryInfo": {
+          "code": "000001",
+          "secucode": "000001.SZ",
+          "name": "平安银行",
+          "boardCode": 475,
+          "boardName": "银行Ⅱ",
+          "industryRank": null
+        },
+        "boardInfo": {
+          "code": "000001",
+          "secucode": "000001.SZ",
+          "name": "平安银行",
+          "industryName": "股份制银行Ⅲ",
+          "maxReportDate": "2025-12-31 00:00:00",
+          "maxYear": 2025,
+          "maxValueDate": "2026-06-30 00:00:00",
+          "maxValueYear": 2026
+        },
+        "peerComparablePool": {
+          "code": "000001",
+          "industryName": "股份制银行Ⅲ",
+          "year": "2025",
+          "sortColumn": "PARENT_NI_3Q",
+          "totalUniverse": 9,
+          "peers": [
+            {
+              "code": "601916",
+              "name": "浙商银行",
+              "industryName": "股份制银行Ⅲ",
+              "year": 2025,
+              "revenueAllYear": 62514000000,
+              "parentNiAllYear": 12931000000,
+              "parentNi3Q": 4001000000,
+              "parentNi4Q": 1263000000,
+              "marketCap1Q": 80746029731.22,
+              "marketCap4Q": 83492493327.52
+            },
+            "..."
+          ]
+        },
+        "signals": [
+          {
+            "label": "主营结构",
+            "category": "business_structure",
+            "summary": "办理人民币存、贷、结算、汇兑业务;人民币票据承兑和贴现;各项信托业务;经监管机构批准发行或买卖人民币有价证券;发行金融债券;代理发行、代理兑付、承销政府债券;买卖政府债券;外汇存款、汇款;境内境外借款;从事同业拆借;外汇借款;外汇担保;在境内境外发行或代理发行外币有价证券;买卖或代客买卖外汇及外币有价证券、自营外汇买卖;贸易、非贸易结算;办理国内结算;国际结算;外币票据的承兑和贴现;外汇贷款;资信调查、咨询、见证业务;保险兼业代理业务;...",
+            "confidence": "medium"
+          },
+          "..."
+        ],
+        "signalGroups": {
+          "businessStructure": [
+            {
+              "label": "主营结构",
+              "category": "business_structure",
+              "summary": "办理人民币存、贷、结算、汇兑业务;人民币票据承兑和贴现;各项信托业务;经监管机构批准发行或买卖人民币有价证券;发行金融债券;代理发行、代理兑付、承销政府债券;买卖政府债券;外汇存款、汇款;境内境外借款;从事同业拆借;外汇借款;外汇担保;在境内境外发行或代理发行外币有价证券;买卖或代客买卖外汇及外币有价证券、自营外汇买卖;贸易、非贸易结算;办理国内结算;国际结算;外币票据的承兑和贴现;外汇贷款;资信调查、咨询、见证业务;保险兼业代理业务;...",
+              "confidence": "medium"
+            },
+            "..."
+          ],
+          "operatingMetrics": [
+            {
+              "label": "经营指标",
+              "category": "operating_metric",
+              "summary": "本行积极加强与平安集团的协同协作，借助平安集团的客户、产品、品牌等优势，通过资源整合、相互协同，打造鲜明的综合金融优势。本行坚持从客户需求出发，全面完善综合金融的管理模式、协作机制和服务平台，持续强化关联交易管理，强化客户信息保护，坚持公允定价，有效做好风险隔离，依法合规开展综合金融业务。",
+              "confidence": "medium"
+            },
+            "..."
+          ],
+          "shareholderReturns": [],
+          "themes": [
+            {
+              "label": "跨境支付",
+              "category": "theme",
+              "summary": "CIPS是我国重要的金融市场基础设施,在助力人民币国际化等方面发挥着重要作用。公司是首批直接参与者之一。",
+              "confidence": "medium"
+            },
+            "..."
+          ],
+          "industry": [
+            {
+              "label": "行业定位",
+              "category": "industry",
+              "summary": "股份制银行Ⅲ",
+              "confidence": "medium"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+```
+
+## 请求示例
+
+```bash
+curl -sS -H "Authorization: Bearer <API_KEY>" "http://localhost:4000/api/v1/stock/topic/operations-insight/000001"
+```
+

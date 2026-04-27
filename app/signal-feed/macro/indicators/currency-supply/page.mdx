@@ -1,0 +1,66 @@
+---
+title: 货币供应量分页
+description: 货币供应量分页
+---
+
+# 货币供应量分页
+
+分页返回该指标表格数据。
+
+**HTTP 方法与路径**：`GET /api/v1/macro/currency-supply`
+
+## 入参
+
+### Path
+
+| 路径参数 | 无 |
+
+
+### Query
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `page` | undefined | undefined | undefined |
+| `pageSize` | undefined | undefined | undefined |
+
+
+## 响应
+
+> **响应外壳**：成功时 JSON 含 `success`、`data`、可选 `message`，见 [统一响应体](/signal-feed/api-reference#api-response-envelope)。
+
+### 响应示例
+
+对应请求 `GET /api/v1/macro/currency-supply?page=1&pageSize=20`。字段以线上为准。
+
+```json
+{
+  "success": true,
+  "data": {
+    "pages": 11,
+    "data": [
+      {
+        "REPORT_DATE": "2026-03-01 00:00:00",
+        "TIME": "2026年03月份",
+        "BASIC_CURRENCY": 3538636.53,
+        "BASIC_CURRENCY_SAME": 8.5,
+        "BASIC_CURRENCY_SEQUENTIAL": 1.33088464,
+        "CURRENCY": 1193202.99,
+        "CURRENCY_SAME": 5.1,
+        "CURRENCY_SEQUENTIAL": 2.92809245,
+        "FREE_CASH": 147082.81,
+        "FREE_CASH_SAME": 12.5,
+        "FREE_CASH_SEQUENTIAL": -2.87487005
+      },
+      "..."
+    ],
+    "count": 219
+  }
+}
+```
+
+## 请求示例
+
+```bash
+curl -sS -H "Authorization: Bearer <API_KEY>" "http://localhost:4000/api/v1/macro/currency-supply?page=1&pageSize=20"
+```
+

@@ -1,0 +1,29 @@
+---
+title: 实时行情 SSE
+description: 实时行情 SSE
+---
+
+# 实时行情 SSE
+
+实时行情 SSE。
+
+**HTTP 方法与路径**：`GET /api/v1/stock/indicator/realtime/sse`
+
+## 入参
+
+### Path
+
+| 路径参数 | 无 |
+
+
+### Query
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `codes` | string | 是 | 逗号分隔代码 |
+| `pz` | number | 否 | 1–100，默认 20 |
+
+
+## 响应
+
+本接口为 Server-Sent Events（`Content-Type: text/event-stream`），**不适用** [统一响应体](/signal-feed/api-reference#api-response-envelope) 的 JSON 包装。需配置 `BROWSER_SERVICE_URL`。调试请使用支持 SSE 的客户端（无 JSON 响应示例）。

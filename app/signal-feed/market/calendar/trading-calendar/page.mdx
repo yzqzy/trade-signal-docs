@@ -1,0 +1,56 @@
+---
+title: 交易日历
+description: 交易日历；当前仅 `CN_A` 沪深京可用，HK/US 请求返回 400。
+---
+
+# 交易日历
+
+交易日历；当前仅 `CN_A` 沪深京可用，HK/US 请求返回 400。
+
+**HTTP 方法与路径**：`GET /api/v1/market/trading-calendar`
+
+## 入参
+
+### Path
+
+| 路径参数 | 无 |
+
+
+### Query
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `market` | 'CN_A'|'HK'|'US' | 是 | 仅 `CN_A` 有效 |
+| `from` | string | 是 | `YYYY-MM-DD` |
+| `to` | string | 是 | `YYYY-MM-DD` |
+
+
+## 响应
+
+> **响应外壳**：成功时 JSON 含 `success`、`data`、可选 `message`，见 [统一响应体](/signal-feed/api-reference#api-response-envelope)。
+
+### 响应示例
+
+对应请求 `GET /api/v1/market/trading-calendar?market=CN_A&from=2024-01-01&to=2024-12-31`。字段以线上为准。
+
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "market": "CN_A",
+      "date": "2024-01-01",
+      "isTradingDay": false,
+      "sessionType": "closed"
+    },
+    "..."
+  ]
+}
+```
+
+## 请求示例
+
+```bash
+curl -sS -H "Authorization: Bearer <API_KEY>" "http://localhost:4000/api/v1/market/trading-calendar?market=CN_A&from=2024-01-01&to=2024-12-31"
+```
+

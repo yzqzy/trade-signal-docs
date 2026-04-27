@@ -1,0 +1,86 @@
+---
+title: 历史 PE TTM
+description: 历史 PE TTM
+---
+
+# 历史 PE TTM
+
+历史 PE TTM。
+
+**HTTP 方法与路径**：`GET /api/v1/stock/valuation/historical-pe`
+
+## 入参
+
+### Path
+
+| 路径参数 | 无 |
+
+
+### Query
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `code` | string | 是 | 股票代码 |
+| `interval` | string | 否 | 默认 `60` |
+
+
+## 响应
+
+> **响应外壳**：成功时 JSON 含 `success`、`data`、可选 `message`，见 [统一响应体](/signal-feed/api-reference#api-response-envelope)。
+
+### 响应示例
+
+对应请求 `GET /api/v1/stock/valuation/historical-pe?code=000001`。字段以线上为准。
+
+```json
+{
+  "success": true,
+  "data": {
+    "code": "000001",
+    "interval": "60",
+    "dates": [
+      "2021-04-28",
+      "..."
+    ],
+    "peTtm": [
+      14.85,
+      "..."
+    ],
+    "prices": [
+      19.32,
+      "..."
+    ],
+    "currentPe": 4.95,
+    "percentile": 41.688424717145345,
+    "mean": 6.39425587467362,
+    "median": 5.19,
+    "p25": 4.68,
+    "p50": 5.19,
+    "p75": 7.16,
+    "min": 3.61,
+    "minDate": "2023-12-20",
+    "max": 15.91,
+    "maxDate": "2021-05-26",
+    "stats": {
+      "currentPe": 4.95,
+      "percentile": 41.688424717145345,
+      "mean": 6.39425587467362,
+      "median": 5.19,
+      "p25": 4.68,
+      "p50": 5.19,
+      "p75": 7.16,
+      "min": 3.61,
+      "minDate": "2023-12-20",
+      "max": 15.91,
+      "maxDate": "2021-05-26"
+    }
+  }
+}
+```
+
+## 请求示例
+
+```bash
+curl -sS -H "Authorization: Bearer <API_KEY>" "http://localhost:4000/api/v1/stock/valuation/historical-pe?code=000001"
+```
+

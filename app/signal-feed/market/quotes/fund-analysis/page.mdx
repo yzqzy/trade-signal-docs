@@ -1,0 +1,70 @@
+---
+title: 资金面分析
+description: 资金面分析（经 mapper 标准化）。
+---
+
+# 资金面分析
+
+资金面分析（经 mapper 标准化）。
+
+**HTTP 方法与路径**：`GET /api/v1/market/fund-analysis`
+
+## 入参
+
+### Path
+
+| 路径参数 | 无 |
+
+
+### Query
+
+| Query 参数 | 无 |
+
+
+## 响应
+
+> **响应外壳**：成功时 JSON 含 `success`、`data`、可选 `message`，见 [统一响应体](/signal-feed/api-reference#api-response-envelope)。
+
+### 响应示例
+
+对应请求 `GET /api/v1/market/fund-analysis`。字段以线上为准。
+
+```json
+{
+  "success": true,
+  "data": {
+    "institutionFlow": {
+      "current": 6060983000,
+      "change": 49961470784,
+      "cumulative": 1,
+      "history": [
+        {
+          "date": "2026/04/20 00:00:00",
+          "value": 18260800000
+        },
+        "..."
+      ]
+    },
+    "shanghaiMarginBalance": {
+      "current": 2695768367122,
+      "change": 3799521090,
+      "cumulative": 13,
+      "history": [
+        {
+          "date": "2026/04/17 00:00:00",
+          "value": 2168486316,
+          "cumulative": 2642847623455
+        },
+        "..."
+      ]
+    }
+  }
+}
+```
+
+## 请求示例
+
+```bash
+curl -sS -H "Authorization: Bearer <API_KEY>" "http://localhost:4000/api/v1/market/fund-analysis"
+```
+
