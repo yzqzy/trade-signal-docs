@@ -18,5 +18,10 @@ export default {
   "signal-feed": {
     type: "page",
     title: "数据接口库"
+  },
+  "research-hub": {
+    type: "page",
+    title: "投研中心",
+    href: "https://research.tradersignal.org/reports"
   }
 };
