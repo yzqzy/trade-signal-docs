@@ -1,22 +1,18 @@
 ---
 title: Signal Skills
-description: AI 投研助手技能包，在 AI 工具中直接查询金融数据、生成分析报告
+description: AI 投研助手技能包，在 AI 工具中查询金融数据、组织证据并生成结构化分析
 ---
 
 import Link from 'next/link'
 
 <br />
 
-> **Signal Skills**
-> AI 投研助手 · 数据查询 · 分析报告 · 多平台支持
+> **Signal Skills**  
+> 把 Trade Signal 的投研框架带进 Claude Code、Cursor、Windsurf 和 OpenClaw。
 
-将你的 AI 工具变成专业投研助手。Signal Skills 为 Claude Code、Cursor、Windsurf、OpenClaw 等支持 MCP 的平台提供金融数据查询与分析报告能力，内置投资理念与回复风格，在对话中直接完成投资分析。
+Signal Skills 是一套面向 AI 工具的投研技能包。它连接 Signal Feed 数据能力，内置「价值为基、趋势为策、风控优先」的分析框架，让 AI 更像投研搭档：查数据、摆证据、找反证、写报告。
 
-## 不只是工具，是投研助手
-
-Signal Skills 不只是数据接口的封装。技能包内置 AI Soul 人设系统，默认为**均衡型助手**——专业理性，结论先行，风控场景语气更硬。还提供毒舌老手、老练师父、冷静分析师等风格可选。
-
-所有分析遵循「**价值为基、趋势为策、风控优先**」投资理念，单票仓位、行业集中度、回撤阈值都有明确标准，不说空话。
+最后的判断仍回到你的风险预算和投资计划。AI 可以把材料摆清楚，把风险讲尖锐，把 thesis 写完整，但不替你承担买卖决定。
 
 ## 两层架构
 
@@ -29,12 +25,12 @@ Signal Skills 不只是数据接口的封装。技能包内置 AI Soul 人设系
                                               ↓
                                    读取投资理念 + 调用 MCP tools 获取数据
                                               ↓
-                                     按专业框架生成结构化报告
+                                     按框架组织证据、风险与待验证问题
 ```
 
 ## 数据获取（feed）
 
-通过 28 个 MCP tools 连接 Signal Feed 服务，覆盖金融数据查询能力。
+通过 MCP tools 连接 Signal Feed 服务，覆盖股票、资讯、市场、宏观、基金与 ETF 等数据。数据层只回答“事实是什么、数据在哪里”，不直接输出投资结论。
 
 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
 
@@ -44,7 +40,7 @@ Signal Skills 不只是数据接口的封装。技能包内置 AI Soul 人设系
 选股筛选、实时行情、K 线、财务指标、综合诊股、股东研究、个股详情、业绩预告、十年业绩、板块列表
 </p>
 <p className="text-xs text-gray-500 dark:text-gray-500 mt-2">
-示例：「帮我选市盈率低于 20 的白酒股」「诊断一下宁德时代」
+示例：「查询宁德时代近三年财务指标」「列出新能源车板块成分股」
 </p>
 </div>
 
@@ -54,7 +50,7 @@ Signal Skills 不只是数据接口的封装。技能包内置 AI Soul 人设系
 市场概览、主线、要闻、题材库、成分股、快讯流
 </p>
 <p className="text-xs text-gray-500 dark:text-gray-500 mt-2">
-示例：「今天 A 股市场怎么样」「有哪些热门题材」
+示例：「今天 A 股有哪些主线」「近期机器人题材有哪些新闻」
 </p>
 </div>
 
@@ -64,27 +60,27 @@ Signal Skills 不只是数据接口的封装。技能包内置 AI Soul 人设系
 大盘指数、资金流向、资金面、热力图、全球指数
 </p>
 <p className="text-xs text-gray-500 dark:text-gray-500 mt-2">
-示例：「今天哪些行业资金流入最多」「美股和欧洲股市表现」
+示例：「今天哪些行业资金流入最多」「全球主要指数表现如何」
 </p>
 </div>
 
 <div className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
 <h3 className="text-lg font-semibold mb-2">📊 宏观经济</h3>
 <p className="text-sm text-gray-600 dark:text-gray-400">
-PMI、CPI、PPI、GDP、LPR、M2、社零、进出口等 11 类指标
+PMI、CPI、PPI、GDP、LPR、M2、社零、进出口等指标
 </p>
 <p className="text-xs text-gray-500 dark:text-gray-500 mt-2">
-示例：「近一年 PMI 趋势」「最新 CPI 数据」
+示例：「近一年 PMI 趋势」「最新 CPI 和 PPI 怎么变化」
 </p>
 </div>
 
 <div className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
 <h3 className="text-lg font-semibold mb-2">💰 基金与 ETF</h3>
 <p className="text-sm text-gray-600 dark:text-gray-400">
-ETF 列表、基金筛选、基金详情（持仓/估值/调仓）、基金 K 线
+ETF 列表、基金筛选、基金详情、持仓、估值、调仓、基金 K 线
 </p>
 <p className="text-xs text-gray-500 dark:text-gray-500 mt-2">
-示例：「510300 这只基金怎么样」「沪深 300 ETF 最近走势」
+示例：「查询 510300 的持仓和估值」「对比几只沪深 300 ETF」
 </p>
 </div>
 
@@ -92,77 +88,77 @@ ETF 列表、基金筛选、基金详情（持仓/估值/调仓）、基金 K �
 
 ## 分析报告（analysis）
 
-覆盖 7 个分析场景，遵循「价值为基、趋势为策、风控优先」投资理念。
+分析层把数据组织成研究报告。报告会给出倾向、风险、反证和后续验证点，但结论应被理解为“研究意见”，不是自动买卖指令。
 
 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
 
 <div className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
 <h3 className="text-lg font-semibold mb-2">🔬 个股深度分析</h3>
 <p className="text-sm text-gray-600 dark:text-gray-400">
-安全边际评估、趋势共振分析、风险识别、投资决策、消息面分析
+安全边际、企业质量、趋势验证、风险识别、消息面和待跟踪问题
 </p>
 <p className="text-xs text-gray-500 dark:text-gray-500 mt-2">
-示例：「帮我分析一下贵州茅台」「宁德时代估值合理吗」
+示例：「帮我分析贵州茅台的质量、估值和风险点」
 </p>
 </div>
 
 <div className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
 <h3 className="text-lg font-semibold mb-2">⚖️ 行业对比分析</h3>
 <p className="text-sm text-gray-600 dark:text-gray-400">
-安全边际、企业质量、趋势共振、风控四维横向对比
+横向比较安全边际、企业质量、趋势证据和风险暴露
 </p>
 <p className="text-xs text-gray-500 dark:text-gray-500 mt-2">
-示例：「白酒行业哪家估值最低」「比亚迪和宁德时代对比」
+示例：「比亚迪和宁德时代的核心差异是什么」
 </p>
 </div>
 
 <div className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
 <h3 className="text-lg font-semibold mb-2">📋 市场日报/周报</h3>
 <p className="text-sm text-gray-600 dark:text-gray-400">
-三大指数、情绪温度、资金动向、行业轮动、全球市场、环境等级
+市场环境、情绪温度、资金结构、行业轮动和风险提示
 </p>
 <p className="text-xs text-gray-500 dark:text-gray-500 mt-2">
-示例：「今天 A 股市场怎么样」「哪些行业在轮动」
+示例：「今天 A 股市场环境有哪些变化」
 </p>
 </div>
 
 <div className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
 <h3 className="text-lg font-semibold mb-2">📝 今日复盘</h3>
 <p className="text-sm text-gray-600 dark:text-gray-400">
-四段式精炼复盘：市场环境、资金结构、要闻要点、下一步计划
+市场环境、资金结构、要闻要点、持仓观察和下一步验证清单
 </p>
 <p className="text-xs text-gray-500 dark:text-gray-500 mt-2">
-示例：「帮我复盘一下今天」「盘后总结给个操作思路」
+示例：「帮我复盘今天的市场，并列出明天要观察什么」
 </p>
 </div>
 
 <div className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
 <h3 className="text-lg font-semibold mb-2">🏦 基金诊断</h3>
 <p className="text-sm text-gray-600 dark:text-gray-400">
-基金概况、业绩评估、持仓分析、估值判断、调仓动态
+基金概况、业绩归因、持仓暴露、估值位置、调仓动态和适用场景
 </p>
 <p className="text-xs text-gray-500 dark:text-gray-500 mt-2">
-示例：「510300 这只基金怎么样」「沪深 300 ETF 值得定投吗」
+示例：「510300 适合承担组合里的什么角色」
 </p>
 </div>
 
 <div className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
 <h3 className="text-lg font-semibold mb-2">📊 ETF 对比</h3>
 <p className="text-sm text-gray-600 dark:text-gray-400">
-估值、成本、表现、规模与流动性四维对比
+估值、成本、规模、流动性、持仓差异与组合角色对比
 </p>
 <p className="text-xs text-gray-500 dark:text-gray-500 mt-2">
-示例：「沪深 300 和中证 500 ETF 哪个好」
+示例：「沪深 300 和中证 500 ETF 分别适合什么风险暴露」
 </p>
 </div>
 
 <div className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
 <h3 className="text-lg font-semibold mb-2">🌍 宏观经济月报</h3>
 <p className="text-sm text-gray-600 dark:text-gray-400">
-经济增长、通胀、货币政策、外贸、行业映射、宏观环境等级
+增长、通胀、货币、信用、外贸和行业映射，用于界定环境，不直接替代标的研究
 </p>
 <p className="text-xs text-gray-500 dark:text-gray-500 mt-2">
-示例：「当前宏观经济形势怎么样」「降息对股市有什么影响」
+示例：「当前宏观环境对权益资产有哪些约束」
 </p>
 </div>
 
@@ -170,13 +166,13 @@ ETF 列表、基金筛选、基金详情（持仓/估值/调仓）、基金 K �
 
 ## AI Soul
 
-技能包内置 **Soul** 人设系统，定义 AI 的身份、投资理念、回复风格与行为准则。默认为均衡型助手，也可切换为其他风格：
+技能包内置 **Soul** 人设系统，定义 AI 的身份、回复风格与行为准则。风格可以很鲜明，但方法边界不能变：无论是毒舌老手、老练师父还是冷静分析师，都必须服从同一套研究框架。
 
 | 风格 | 特点 |
 |------|------|
-| **均衡型助手**（默认） | 专业理性，结论先行，风控时更直接 |
-| 毒舌老手 | 犀利直接，擅长打断情绪化操作 |
-| 老练师父 | 温和耐心，强调纪律与教学 |
+| **均衡型助手**（默认） | 专业理性，结论先行，风险提示清楚 |
+| 毒舌老手 | 犀利直接，擅长打断情绪化叙事 |
+| 老练师父 | 温和耐心，强调纪律、过程和复盘 |
 | 冷静分析师 | 数据优先，弱情绪、强结构 |
 
 切换方式：将对应风格的内容替换到 `soul.md` 即可。各风格完整内容见 [AI Soul](/signal-skills/souls)，支持一键复制。

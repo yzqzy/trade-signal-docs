@@ -44,8 +44,8 @@ import InvestmentDisclaimer from '@/components/InvestmentDisclaimer'
 
 根据<DocLink href="/investment-guide/investment-philosophy">投资理念</DocLink>，采用**核心ETF + 卫星个股**的双层结构：
 
-- **核心层（ETF）**：70-80%，提供市场平均收益（Beta），作为组合的防御性基础
-- **卫星层（个股）**：20-30%，追求超额收益（Alpha），在稳健基础上增强组合收益
+- **核心层（ETF）**：承担长期市场暴露和组合稳定，通常应占据组合主要部分
+- **卫星层（个股）**：表达更高研究强度下的主动判断，规模受风险预算约束
 
 > 💡 **深入学习**：详细了解<DocLink href="/investment-guide/investment-philosophy">投资理念</DocLink>中的核心-卫星策略和<DocLink href="/investment-guide/core-concepts/portfolio-robustness">组合稳健性</DocLink>的构建方法
 
@@ -62,8 +62,8 @@ import InvestmentDisclaimer from '@/components/InvestmentDisclaimer'
 根据投资理念，主要资产类别包括：
 
 1. **股票**
-   - 核心层：ETF（70-80%）
-   - 卫星层：高质量个股（20-30%）
+   - 核心层：ETF，承担长期暴露和稳定器职责
+   - 卫星层：高质量个股，表达主动研究判断
 
 2. **债券**
    - 作为资产配置的稳健部分
@@ -77,18 +77,18 @@ import InvestmentDisclaimer from '@/components/InvestmentDisclaimer'
 
 根据投资理念，建议配置比例：
 
-- **核心层（ETF）**：70-80%
-  - 单只ETF不超过核心层的20%
-- **卫星层（个股）**：20-30%
-  - 单只个股不超过总资金的8%
-  - 保持3-5只个股持仓
+- **核心层（ETF）**：通常占据组合主要部分
+  - 单只ETF设置上限，避免核心层过度集中
+- **卫星层（个股）**：规模取决于研究能力和风险预算
+  - 单只个股设置上限，避免单一 thesis 决定组合命运
+  - 持仓数量要匹配自己的跟踪能力
 
 ### 第四步：动态再平衡
 
 通过动态再平衡机制保持组合稳健，确保核心/卫星比例在合理区间内。
 
 **核心要点**：
-- **再平衡缓冲区间**：核心层目标70-80%，缓冲区间65-85%，在缓冲区间内不触发再平衡
+- **再平衡缓冲区间**：核心层和卫星层预设目标区间，在缓冲区间内不频繁触发再平衡
 - **再平衡原则**：优先通过新增资金调整，而非卖出现有持仓；再平衡时仍需遵循价值筛选和趋势验证原则
 
 > 💡 **深入学习**：详细了解<DocLink href="/investment-guide/investment-philosophy">投资理念</DocLink>中的再平衡规则和<DocLink href="/investment-guide/core-concepts/portfolio-robustness">组合稳健性</DocLink>中的再平衡机制
@@ -134,7 +134,7 @@ import InvestmentDisclaimer from '@/components/InvestmentDisclaimer'
 ### 组合管理
 
 - 使用**股票池管理**工具，建立投资组合
-- 使用**交易计划**工具，系统化管理投资决策
+- 使用**交易计划**工具，系统化管理研究、执行和复盘过程
 - 定期检查组合比例，进行再平衡
 
 ## 投资建议
