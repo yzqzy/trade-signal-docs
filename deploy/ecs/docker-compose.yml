@@ -1,0 +1,13 @@
+services:
+  docs:
+    image: ${ALIYUN_REGISTRY}/${ALIYUN_NAMESPACE}/${ALIYUN_IMAGE}:${IMAGE_TAG}
+    container_name: trade-signal-docs
+    restart: always
+    # 多应用场景下，仅加入公共网络，不直接占用宿主机端口
+    networks:
+      - web
+
+networks:
+  web:
+    external: true
+    name: web

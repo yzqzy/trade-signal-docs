@@ -1,0 +1,26 @@
+# 官网主域名（www）
+www.example.com {
+  encode gzip zstd
+  reverse_proxy trade-signal-docs:80
+
+  header {
+    Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+    X-Content-Type-Options "nosniff"
+    X-Frame-Options "SAMEORIGIN"
+    Referrer-Policy "strict-origin-when-cross-origin"
+  }
+}
+
+# 裸域名跳转到 www（统一入口）
+example.com {
+  redir https://www.example.com{uri} permanent
+}
+
+# 后续应用示例（按需取消注释）
+# admin.example.com {
+#   reverse_proxy admin:3000
+# }
+#
+# api.example.com {
+#   reverse_proxy api:8080
+# }

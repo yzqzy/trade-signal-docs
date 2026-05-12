@@ -1,0 +1,23 @@
+services:
+  caddy:
+    image: caddy:2.9-alpine
+    container_name: gateway-caddy
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    networks:
+      - web
+
+networks:
+  web:
+    external: true
+    name: web
+
+volumes:
+  caddy_data:
+  caddy_config:
