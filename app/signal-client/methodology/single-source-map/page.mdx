@@ -1,0 +1,37 @@
+---
+title: 方法论单源映射
+description: 定义每个核心概念的权威页面，减少跨页重复解释
+---
+
+import DocLink from '@/components/DocLink'
+
+<div className="mt-8">
+
+本文用于定义 Trade Signal 文档中的“概念-权威页面”映射。一个概念只保留一处完整阐述，其他页面采用简述并链接，避免重复铺陈。
+
+## 使用规则
+
+1. 权威页面负责完整定义、边界条件、误用风险与复盘口径。
+2. 非权威页面只保留与本页任务相关的操作说明，不重复解释方法论。
+3. 出现阈值时，必须说明是观察线、筛选线还是风险预算线。
+
+## 概念与权威页面
+
+| 概念 | 权威页面 | 非权威页面处理方式 |
+|------|----------|--------------------|
+| 框架总述（价值/趋势/风控） | <DocLink href="/investment-guide/investment-philosophy">投资理念</DocLink> | 其他页面只保留一段定位说明 |
+| 判断顺序与执行顺序 | <DocLink href="/investment-guide/investment-philosophy">投资理念</DocLink> | 页面内只引用流程，不重复展开五步 |
+| 月K/周K/日K分工 | <DocLink href="/signal-client/methodology/kline-analysis">K线图使用指南</DocLink> | 指南页仅写“参见 K 线权威页” |
+| 指标使用顺序与冲突检查 | <DocLink href="/signal-client/methodology/indicator-guide">指标使用指南</DocLink> | 操作页不再重复“先风险后质量后价格后趋势”全文 |
+| 指标口径与适用边界 | <DocLink href="/signal-client/methodology/indicator-guide/core-indicators">核心指标含义与对比</DocLink> | 操作页只引用关键指标解释入口 |
+| 预设条件设计意图与失效场景 | <DocLink href="/signal-client/methodology/filter-presets">预设条件使用指南</DocLink> | 筛选器页只讲怎么用，不重写阈值列表 |
+| 资产配置流程 | <DocLink href="/investment-guide/basics/asset-allocation">资产配置基础</DocLink> | 组合页不再重复“步骤式资产配置” |
+| 组合风险预算口径 | <DocLink href="/investment-guide/core-concepts/portfolio-robustness">组合稳健性详解</DocLink> | 其他页面只引用预算口径，不重复指标定义 |
+
+## 本次去重重点
+
+- 将“候选池不等于买入名单”保留在筛选器指南的统一表述。
+- 将“月K看位置、周K看方向、日K看节奏”保留在 K 线权威页。
+- 将预设阈值从操作页面剥离到预设说明页。
+
+</div>

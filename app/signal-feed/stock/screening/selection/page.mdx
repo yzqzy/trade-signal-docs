@@ -5,9 +5,17 @@ description: 股票选股
 
 # 股票选股
 
-股票选股。
+股票选股接口用于返回结构化候选池数据，供研究流程使用。
 
 **HTTP 方法与路径**：`GET /api/v1/stock/selection`
+
+## 接口定位与边界
+
+- 本接口提供的是“候选池数据”，不是投资建议，也不是自动交易信号。
+- 推荐配合以下文档使用，形成完整研究链路：
+  - 方法论：`/signal-client/methodology/indicator-guide`
+  - 预设边界：`/signal-client/methodology/filter-presets`
+  - 操作流程：`/signal-client/guides/stock-screener`
 
 ## 入参
 
@@ -24,6 +32,27 @@ description: 股票选股
 | `pageSize` | number | 否 | 默认 50 |
 | `filter` | string | 否 | 筛选表达式 |
 
+
+### `filter` 使用建议
+
+- 先使用较宽条件获取可解释样本，再逐步收敛。
+- 不建议一次叠加过多条件，避免结果为空后无法定位原因。
+- 条件放宽时，优先放宽价格/趋势条件，不优先放宽风险与质量底线。
+
+## 字段语义（研究口径）
+
+下表列出高频字段在研究中的典型用途：
+
+| 字段 | 研究含义 | 误用风险 |
+|------|----------|----------|
+| `PETTMDEDUCTED` / `PE_TTM` | 估值与预期位置参考 | 单看估值忽视盈利质量 |
+| `ROE_WEIGHT` | 盈利效率线索 | 不拆来源会误把杠杆当质量 |
+| `DEBT_ASSET_RATIO` | 杠杆与偿债压力线索 | 不做行业校准会误判 |
+| `PER_NETCASH_OPERATE` / `PER_FCFE` | 现金流质量与可持续性线索 | 忽略周期会误读短期波动 |
+| `NET_INFLOW` / `DDX` | 资金关注度线索 | 把资金流当基本面 |
+| `MACD_*` / `KDJ_*` / `BREAKUP_MA_*` | 趋势验证线索 | 把技术信号当自动指令 |
+
+说明：字段用于证据组织，不直接映射买卖动作。动作应由交易计划中的触发条件决定。
 
 ## 响应
 
@@ -208,4 +237,10 @@ description: 股票选股
 ```bash
 curl -sS -H "Authorization: Bearer <API_KEY>" "http://localhost:4000/api/v1/stock/selection"
 ```
+
+## 最佳实践
+
+1. 从低耦合条件开始分页拉取，先看样本分布与字段质量。
+2. 将结果视为“候选池”，进入二次研究而非直接执行。
+3. 在消费端保留筛选版本、时间戳和关键条件，便于复盘。
 

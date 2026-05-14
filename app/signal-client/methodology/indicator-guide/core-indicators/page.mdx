@@ -7,7 +7,21 @@ import DocLink from '@/components/DocLink'
 
 <div className="mt-8">
 
-本文档详细说明系统中各类指标的含义、计算公式、适用场景，以及不同指标之间的对比关系，帮助理解如何根据"价值为基、趋势为策、风控优先"的投资理念选择和使用指标。
+本文档详细说明系统中各类指标的含义、计算公式、适用场景，以及不同指标之间的对比关系。  
+本页只负责“指标口径定义”，不负责交易决策。组合读法、冲突处理与行动规则请查看 <DocLink href="/signal-client/methodology/indicator-guide">指标使用指南</DocLink>。
+
+## 读取顺序（先口径，再判断）
+
+1. **先确认口径**：指标定义、数据来源、时间窗口是否一致。
+2. **再确认边界**：行业适用性、周期阶段、会计口径是否匹配。
+3. **最后进入决策模板**：把指标放入“前提-证据-边界-触发-行动”框架。
+
+## 通用边界说明
+
+- 指标阈值是观察线，不是万能规则。
+- 跨行业横向比较时，优先使用行业内分位而非绝对数值。
+- 对高杠杆、强周期、强政策敏感行业，优先看趋势与现金流协同，不单看估值。
+- 预测类指标（动态估值、预测增长）只做辅助，不作为核心证据。
 
 ## 估值指标（安全边际评估）
 
@@ -304,12 +318,21 @@ ROE = 净利润 ÷ 净资产 × 100%
 
 ## 指标使用参考
 
-**说明**：关于指标的组合使用、实战经验、特殊情况处理等内容，请参考<DocLink href="/signal-client/methodology/indicator-guide">指标使用指南</DocLink>，该文档提供了更详细的实战指南和案例分析。
+将本页指标应用到研究时，建议使用统一模板：
+
+1. **前提假设**：为什么该资产值得研究。
+2. **证据来源**：选择本页中与假设匹配的指标集合。
+3. **边界条件**：写清该指标在当前行业和阶段的失效场景。
+4. **触发条件**：定义哪些证据变化会触发动作。
+5. **行动映射**：将触发条件映射到观察、推进、减仓或退出。
+
+关于指标组合使用、实战经验、特殊情况处理，请参考 <DocLink href="/signal-client/methodology/indicator-guide">指标使用指南</DocLink>。
 
 ## 相关文档
 
 - <DocLink href="/signal-client/methodology/indicator-guide">指标使用指南</DocLink>：学习如何正确使用各类指标
 - <DocLink href="/signal-client/methodology/filter-presets">预设条件使用指南</DocLink>：了解如何使用系统预设的筛选条件
 - <DocLink href="/investment-guide/investment-philosophy">投资理念</DocLink>：了解产品的投资理念和设计思路
+- <DocLink href="/signal-client/methodology/single-source-map">方法论单源映射</DocLink>：查看各概念权威页面
 
 </div>

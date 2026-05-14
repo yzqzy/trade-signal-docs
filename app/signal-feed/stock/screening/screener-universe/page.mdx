@@ -5,9 +5,18 @@ description: 选股 Universe（Screener）
 
 # 选股 Universe（Screener）
 
-选股 Universe（Screener）。
+选股 Universe（Screener）接口用于返回标准化股票基础面与筛选数据，适合做跨市场候选池构建和分页拉取。
 
 **HTTP 方法与路径**：`GET /api/v1/stock/screener/universe`
+
+## 接口定位与边界
+
+- 返回的是研究用数据视图，不是交易建议或自动信号。
+- 与 `selection` 接口相比，本接口更强调标准化字段和分页能力，适合程序化拉取。
+- 推荐和以下文档配套阅读：
+  - `/signal-client/methodology/indicator-guide`
+  - `/signal-client/methodology/filter-presets`
+  - `/signal-client/guides/stock-screener`
 
 ## 入参
 
@@ -25,6 +34,21 @@ description: 选股 Universe（Screener）
 | `pageSize` | number | 否 | 默认 100，最大 500 |
 | `filter` | string | 否 | 附加筛选 |
 
+
+## 字段与状态语义
+
+| 字段 | 含义 | 研究建议 |
+|------|------|----------|
+| `items` | 当前页样本数据 | 先做样本质量检查，再进入筛选 |
+| `capability` | 字段能力状态（如 `partial`） | 为 `partial` 时，避免把缺失字段当负面结论 |
+| `degradeReasons` | 降级原因列表 | 用于判断哪些策略规则暂不适用 |
+| `pagination.clientMustPageUntilTotal` | 是否必须翻页拉全 | 需要全市场样本时请循环拉取到 `total` |
+| `note` | 口径和归一化说明 | 消费端应持久化，便于复盘口径变化 |
+
+### 关于 `degradeReasons`
+
+- 该字段用于说明“哪些能力或字段暂不可用”。
+- 推荐在策略层将其视为“证据不完整”而不是“自动否定样本”。
 
 ## 响应
 
@@ -87,4 +111,10 @@ description: 选股 Universe（Screener）
 ```bash
 curl -sS -H "Authorization: Bearer <API_KEY>" "http://localhost:4000/api/v1/stock/screener/universe"
 ```
+
+## 实践建议
+
+1. 分页拉取时优先保证口径一致，再比较跨页结果。
+2. 对 `capability=partial` 的结果，建议降级处理而非直接剔除。
+3. 将 `degradeReasons` 与筛选版本一并记录，保证可追溯性。
 
