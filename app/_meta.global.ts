@@ -21,7 +21,7 @@ export default {
   },
   "research-hub": {
     type: "page",
-    title: "投研中心",
-    href: "https://research.tradersignal.org/reports"
+    title: "格子研究站",
+    href: "https://gezilabs.com"
   }
 };
