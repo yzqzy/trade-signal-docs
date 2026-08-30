@@ -1,7 +1,6 @@
 export default {
   index: "产品介绍",
   download: "下载安装",
-  apply: "授权申请",
   "getting-started": "快速开始",
   videos: "视频教程",
   features: "功能特性",
