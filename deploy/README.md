@@ -174,7 +174,20 @@ docker compose up -d
 - 检查容器实际镜像 tag：`docker inspect trade-signal-docs`
 - 强制更新：`docker compose pull && docker compose up -d`
 
-## 10. 设计原则（为什么这样做）
+## 10. 部署路径（basePath）说明
+
+同一个构建产物可在两种路径下运行，由构建时环境变量 `NEXT_PUBLIC_BASE_PATH` 控制：
+
+| 部署目标 | 访问地址 | `NEXT_PUBLIC_BASE_PATH` |
+| --- | --- | --- |
+| GitHub Pages 项目站点 | `https://<user>.github.io/<repo>/` | `/<repo>`（CI 自动取自 `configure-pages` 的 `base_path`） |
+| ECS + Caddy/Nginx 根路径 | `https://你的域名/` | 留空（默认） |
+
+- 使用自定义域名（根路径）时，`base_path` 自动为空，无需改代码。
+- 原生 `<img>`、`window.open` 等不经过 Next.js 路由的站内绝对路径，需要调用 `components/basePath.js` 的 `withBasePath()` 加前缀；`next/link`、`next/image` 会自动加前缀。
+- GitHub Pages 使用自定义域名时，需删除 `public/CNAME` 并在仓库 Settings → Pages 清除 Custom domain。
+
+## 11. 设计原则（为什么这样做）
 
 - 应用与网关分离：避免应用发布覆盖网关配置
 - 单应用独立目录：便于权限管理、审计与故障隔离
